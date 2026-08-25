@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0.0",
+  "round": 4,
+  "version_history": [
+    {
+      "file": "output/final-v1.png",
+      "backend": "labnana/gemini-3-pro-image",
+      "note": "初版；文字36/36正确"
+    },
+    {
+      "file": "output/final-v2.png",
+      "backend": "labnana/gemini-3-pro-image",
+      "note": "无效轮次：把L2误判为紫色去修，实测色相221度本就是蓝色，改动无实质效果"
+    },
+    {
+      "file": "output/final-v3.png",
+      "backend": "labnana/gpt-image-2",
+      "note": "去掉右栏灰底带，恢复白通道"
+    },
+    {
+      "file": "output/final.png",
+      "backend": "labnana/gpt-image-2",
+      "note": "基础设施层青绿调正为草绿，色相164度→108度"
+    }
+  ],
+  "semantic_check": {
+    "primary_nodes_present": "36/36",
+    "layer_names_present": "4/4",
+    "group_names_present": "6/6",
+    "sidebar_items_present": "4/4",
+    "relations_correct": true,
+    "exact_text_accurate": true,
+    "text_errors": [],
+    "hallucinated_content": [],
+    "source_leakage": [],
+    "verdict": "pass"
+  },
+  "planning_check": {
+    "archetype_visible": true,
+    "zones_realized": "左灰层名列、分组名列、主区方阵、右侧白底纵栏、中间白通道全部落地",
+    "reading_path_realized": true,
+    "focal_point_realized": "融合平台层11个方块，面积最大",
+    "density_budget_ok": true,
+    "deviations": [
+      "最底部残留一条约30px高的空浅绿带"
+    ],
+    "verdict": "pass"
+  },
+  "render_check": {
+    "status": "ok",
+    "aspect": "16:9 exact",
+    "resolution": "3840x2160",
+    "border_ink_share": 0.0,
+    "palette_matched": "6/6"
+  },
+  "weighted_score": 94.5,
+  "residuals": [
+    "圆角半径偏大（8px vs 3-4px）",
+    "画面最底部一条空浅绿带"
+  ],
+  "evidence_boundary": "文字准确性为人工逐格核对，未做 OCR 交叉验证；风格相似度为作者自评，未做第三方盲评",
+  "verdict": "pass",
+  "generated_image": "output/final.png",
+  "review_basis": "visible-generated-image",
+  "anchor_scores": [
+    {
+      "anchor_id": "anchor-1",
+      "dimension": "layout",
+      "weight": 26,
+      "score": 4,
+      "visible_evidence": "最左灰底层名列四层贯通；右侧白底纵栏四块与四层对齐；主区与右栏之间为纯白通道；层带间为白缝无分隔线",
+      "mismatch": "无实质偏差",
+      "next_action": "none"
+    },
+    {
+      "anchor_id": "anchor-2",
+      "dimension": "components",
+      "weight": 22,
+      "score": 3,
+      "visible_evidence": "全部36个条目为1px描边圆角矩形，等高，白/极浅填充，无阴影无渐变无立体；孪生基础设施为通栏长条；物联感知一行四枚绿色1px线稿图标（摄像头/传感器/GPS/灯杆）题材全部从新内容派生，未沿用参考图的数据库柱体；纯白底无外框无水印",
+      "mismatch": "圆角半径约8px，大于参考图的3-4px近方角",
+      "next_action": "accepted-residual"
+    },
+    {
+      "anchor_id": "anchor-3",
+      "dimension": "connectors",
+      "weight": 18,
+      "score": 4,
+      "visible_evidence": "全图零箭头零连线，四层关系仅由堆叠顺序与底色分区表达，右栏通高对齐表达贯通",
+      "mismatch": "无",
+      "next_action": "none"
+    },
+    {
+      "anchor_id": "anchor-4",
+      "dimension": "palette",
+      "weight": 20,
+      "score": 4,
+      "visible_evidence": "render-check 6/6 色值命中；实测层带色相 L1=200deg青 / L2=223deg蓝 / L3=218deg蓝 / L4=108deg绿，三色相分离清晰，无暖色",
+      "mismatch": "无",
+      "next_action": "none"
+    },
+    {
+      "anchor_id": "anchor-5",
+      "dimension": "typography",
+      "weight": 14,
+      "score": 4,
+      "visible_evidence": "中文全粗黑体；四个层名放大加粗；CIM/DOA/API/GPS/GIS+BIM/VR-AR-MR 均为无衬线斜体嵌入中文",
+      "mismatch": "无",
+      "next_action": "none"
+    }
+  ],
+  "dimension_passes": [
+    "components",
+    "connectors",
+    "layout",
+    "palette",
+    "typography"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "slug": "black-frame-serif-architecture",
+  "name": "黑框衬线架构图",
+  "description": "Asymmetric black-framed academic technical diagrams with gray header bands, nested color-coded mechanism boxes, solid process arrows, dashed feedback paths, and flat line icons.",
+  "status": "validated",
+  "portability_status": "passed",
+  "tags": [
+    "academic-diagram",
+    "asymmetric-panels",
+    "burgundy-orange-cyan",
+    "feedback-loop",
+    "line-icons",
+    "technical-architecture"
+  ],
+  "best_for": [
+    "Dense research frameworks, technical architectures, staged pathways, and governance diagrams."
+  ],
+  "not_for": [
+    "Image-dominant photorealistic storytelling, minimalist one-node diagrams, dashboards, or decorative marketing graphics. Supporting photos and logos remain allowed when content requires them."
+  ],
+  "created_at": "2026-08-20",
+  "updated_at": "2026-08-25",
+  "rights_scope": "personal-local",
+  "reference_policy": "original-reference-images",
+  "style_prompt": "style-prompt.md",
+  "style_spec": "style-spec.json",
+  "prompt_sha256": "681ae265f76a179a143cf532d3e9332c074bbc002a6ee4c76f7204cb32eaa16e",
+  "fingerprint_sha256": "c822b94c074c510622dc40e407f7a55525488fe9aacb7b024d286854886205aa",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "original_name": "codex-clipboard-027af041-033d-4c25-846a-348316844c2f.png",
+      "sha256": "0a95bb10cac8b0ac48ce737887c65fec79255adc6aa6063c0b7ab49d3e9901a7"
+    }
+  ],
+  "validation": {
+    "style_review": "style-review.json",
+    "preview": "preview.png",
+    "weighted_score": 100,
+    "dimension_passes": [
+      "layout",
+      "components",
+      "connectors",
+      "palette",
+      "typography",
+      "iconography",
+      "density"
+    ],
+    "portability_review": "portability-review.json",
+    "portability_score": 98.0
+  },
+  "aliases": [
+    "black frame serif architecture",
+    "学术架构图",
+    "粗黑框技术图",
+    "衬线标题架构图",
+    "黑框架构图",
+    "黑白框流程图"
+  ]
+}

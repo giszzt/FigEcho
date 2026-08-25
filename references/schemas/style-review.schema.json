@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://figecho.example/schemas/style-review.schema.json",
+  "title": "FigEcho Style Review",
+  "type": "object",
+  "required": ["schema_version", "generated_image", "review_basis", "anchor_scores", "weighted_score", "dimension_passes", "verdict"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "generated_image": {"const": "output/final.png"},
+    "review_basis": {"const": "visible-generated-image"},
+    "anchor_scores": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["anchor_id", "score", "visible_evidence", "mismatch", "next_action"],
+        "properties": {
+          "anchor_id": {"type": "string"},
+          "score": {"type": "integer", "minimum": 0, "maximum": 4},
+          "visible_evidence": {"type": "string", "minLength": 1},
+          "mismatch": {"type": "string"},
+          "next_action": {"type": "string"}
+        }
+      }
+    },
+    "weighted_score": {"type": "number", "minimum": 0, "maximum": 100},
+    "dimension_passes": {"type": "array", "minItems": 4, "items": {"type": "string"}, "uniqueItems": true},
+    "verdict": {"enum": ["pass", "revise"]}
+  }
+}

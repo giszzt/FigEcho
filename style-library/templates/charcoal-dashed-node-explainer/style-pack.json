@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "slug": "charcoal-dashed-node-explainer",
+  "name": "炭黑虚线节点科普图",
+  "aliases": [
+    "ByteByteGo 风格图",
+    "暗底科普信息图",
+    "深色虚线节点图",
+    "虚线箭头技术图",
+    "霓虹胶囊技术图",
+    "黑底贴纸图标图"
+  ],
+  "description": "深炭黑底圆角面板分区，面板顶边断开、标题嵌入缺口；白色虚线箭头为唯一连接语言；薄荷绿空心框与四色实心胶囊构成双轨标签；深绿实心圆加白描边作辐射枢纽；彩色扁平贴纸图标直接落深底并下配短标签。",
+  "status": "validated",
+  "portability_status": "passed",
+  "tags": [
+    "dark-charcoal",
+    "dashed-arrow-connectors",
+    "mint-outline-capsule-labels",
+    "notched-panel-title",
+    "sticker-icons",
+    "tech-explainer"
+  ],
+  "best_for": [
+    "技术路线图、系统机制科普图、分层递进的研究内容图、面向非专业读者的暗底信息图"
+  ],
+  "not_for": [
+    "浅底学术论文插图、需要坐标轴的数据图表、正式公文与申报书正文排版"
+  ],
+  "created_at": "2026-08-23",
+  "updated_at": "2026-08-25",
+  "rights_scope": "personal-local",
+  "reference_policy": "original-reference-images",
+  "style_prompt": "style-prompt.md",
+  "style_spec": "style-spec.json",
+  "prompt_sha256": "94d5899bf5d84eaf14c0324d82568778ca77be45a3c9202a8e611265e4ca7773",
+  "fingerprint_sha256": "6061d490dfd2a8513d5b1d46fc6c1fc26c654c46f3b2a6468082531f0d60fc40",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "original_name": "reference.png",
+      "sha256": "1e5ab71620250610cf1be2796c26efb1ed4aa14d16d97a5dd880af64f6347529"
+    }
+  ],
+  "validation": {
+    "style_review": "style-review.json",
+    "preview": "preview.png",
+    "weighted_score": 95.5,
+    "dimension_passes": [
+      "layout",
+      "components",
+      "connectors",
+      "palette",
+      "icons",
+      "typography"
+    ],
+    "portability_review": "portability-review.json",
+    "portability_score": 94
+  }
+}

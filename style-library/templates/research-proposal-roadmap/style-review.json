@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "generated_image": "output/final.png",
+  "review_basis": "visible-generated-image",
+  "anchor_scores": [
+    {
+      "anchor_id": "anchor-1",
+      "score": 4,
+      "visible_evidence": "标题带下五条行带自上而下堆叠，五个窄标签块与各自行带外框顶底齐平，最底为无标签块的独立通栏结论条；画幅 3:4，行带高度由内部行数自然累加（工具权限三行阶梯最高，能力基线与治理演进最矮），无纵向拉伸。",
+      "mismatch": "无",
+      "next_action": "无"
+    },
+    {
+      "anchor_id": "anchor-2",
+      "score": 4,
+      "visible_evidence": "五条行带外框均为浅灰细虚线圆角框，卡片为浅彩填充加同色深实线描边；本图内容无分组需求，未使用浅灰底板，嵌套只有两层。",
+      "mismatch": "无",
+      "next_action": "无"
+    },
+    {
+      "anchor_id": "anchor-3",
+      "score": 4,
+      "visible_evidence": "行带一为短水平箭头链；行带二为四条互相平行的独立竖直对位箭头，无扇出；行带三仅在左列画两条递进箭头；行带四在卡片下方空白通道走了一条全直角折返线闭合回路；行带五完全无连线。全图无曲线、斜线与交叉。",
+      "mismatch": "无",
+      "next_action": "无"
+    },
+    {
+      "anchor_id": "anchor-4",
+      "score": 4,
+      "visible_evidence": "五条行带依次蓝、紫、琥珀、绿、灰，行带二与行带三各用同色系深浅两档区分角色，底部结论条砖红；背景白与浅灰占 68%。",
+      "mismatch": "无",
+      "next_action": "无"
+    },
+    {
+      "anchor_id": "anchor-5",
+      "score": 4,
+      "visible_evidence": "全图单一中文黑体，标题加粗放大，标签块两字一行竖向折行，节点文字居中且同层级字号一致，中英混排间距正常。",
+      "mismatch": "无",
+      "next_action": "无"
+    },
+    {
+      "anchor_id": "anchor-6",
+      "score": 4,
+      "visible_evidence": "纯白背景，无阴影、渐变、发光与纹理，层次只靠描边深浅与填充明度差。",
+      "mismatch": "无",
+      "next_action": "无"
+    }
+  ],
+  "weighted_score": 100.0,
+  "dimension_passes": [
+    "layout",
+    "components",
+    "connectors",
+    "palette",
+    "typography",
+    "surface"
+  ],
+  "verdict": "pass"
+}

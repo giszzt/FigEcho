@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://figecho.example/schemas/style-catalog.schema.json",
+  "title": "FigEcho Style Catalog",
+  "type": "object",
+  "required": ["schema_version", "updated_at", "reference_policy", "templates"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "updated_at": {"type": "string", "format": "date"},
+    "reference_policy": {"const": "original-reference-images"},
+    "templates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "name", "status", "portability_status", "tags", "best_for", "not_for", "path", "fingerprint_sha256", "reference_count", "updated_at"],
+        "properties": {
+          "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "name": {"type": "string", "minLength": 1},
+          "status": {"enum": ["candidate", "validated", "archived"]},
+          "portability_status": {"enum": ["untested", "passed"]},
+          "tags": {"type": "array", "items": {"type": "string"}},
+          "best_for": {"type": "array", "items": {"type": "string"}},
+          "not_for": {"type": "array", "items": {"type": "string"}},
+          "path": {"type": "string"},
+          "fingerprint_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "reference_count": {"type": "integer", "minimum": 1},
+          "updated_at": {"type": "string", "format": "date"}
+        }
+      }
+    }
+  }
+}

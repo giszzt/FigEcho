@@ -1,0 +1,194 @@
+{
+  "schema_version": "3.0.0",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "notes": "original reference retained in this Style Pack"
+    }
+  ],
+  "evidence_scope": {
+    "reference_count": 1,
+    "generalization": "single-reference-hypothesis"
+  },
+  "style_summary": "白底扁平矢量分层架构图：最左一列灰底层名块逐层贯通，右侧另设纵向能力栏；主区为1px细描边、近方角圆角矩形的等宽方阵，托在浅蓝层带底色上；层与层之间靠白缝而非分隔线；青—蓝—绿三色按层语义分段，蓝色占绝对主导；全图无箭头无连线；中文全粗体，英文产品名用无衬线斜体。",
+  "signature_anchors": [
+    {
+      "id": "anchor-1",
+      "dimension": "layout",
+      "rule": "最左侧灰底层名列逐层贯通 + 右侧独立纵向侧栏，两者之间是等宽方块的规则网格主区，层带之间用6-10px白缝分隔而非分隔线",
+      "evidence": [
+        "左列操作层/展现层/应用层灰块",
+        "右列平台能力纵栏",
+        "层带间白缝"
+      ],
+      "weight": 26,
+      "confidence": "high",
+      "prompt_token": "最左灰底层名列贯通，右侧独立纵向支撑栏，中间等宽方块网格，层间留白缝不画分隔线"
+    },
+    {
+      "id": "anchor-2",
+      "dimension": "components",
+      "rule": "统一1px细描边+白/极浅填充的圆角矩形，圆角3-4px近方角，高度与内边距全图一致，无阴影无渐变无立体",
+      "evidence": [
+        "所有条目方块",
+        "底部通栏长条"
+      ],
+      "weight": 22,
+      "confidence": "high",
+      "prompt_token": "1px均匀细描边圆角矩形，圆角3-4px，白或极浅填充，全图等高，绝对扁平"
+    },
+    {
+      "id": "anchor-3",
+      "dimension": "connectors",
+      "rule": "完全不使用箭头与连线，层级关系仅由垂直堆叠顺序与底色分区表达",
+      "evidence": [
+        "全图无任何箭头或折线"
+      ],
+      "weight": 18,
+      "confidence": "high",
+      "prompt_token": "不画箭头、不画连线，关系靠堆叠顺序和底色分区表达"
+    },
+    {
+      "id": "anchor-4",
+      "dimension": "palette",
+      "rule": "白底 + 灰层名列 + 浅蓝层带底 + 青/蓝/绿三色按层语义分段，蓝色占七成以上色彩面积，色相不超过三种，无暖色",
+      "evidence": [
+        "顶层青色",
+        "中部蓝色主体",
+        "数据层绿色"
+      ],
+      "weight": 20,
+      "confidence": "high",
+      "prompt_token": "白底#FFFFFF，层名列#EFEFEF，层带底#F4F9FF/#E8F1FD，青#22B8CC，蓝#4C86F0描边#1F5FD8文字，绿#33BE72，无暖色"
+    },
+    {
+      "id": "anchor-5",
+      "dimension": "typography",
+      "rule": "中文无衬线全粗体，层名字号约为正文1.35倍且字距略宽，英文专有名词用无衬线斜体与中文叠排",
+      "evidence": [
+        "层名加粗放大",
+        "Banber/HowData/DataBay 斜体"
+      ],
+      "weight": 14,
+      "confidence": "high",
+      "prompt_token": "中文黑体全粗，层名放大加宽字距，英文专名用无衬线斜体"
+    }
+  ],
+  "visual_system": {
+    "layout": {
+      "observations": [
+        "4-5列等宽网格",
+        "分组容器上下叠放",
+        "右侧栏与主区留明显空白通道"
+      ],
+      "transfer_rules": [
+        "每行方块数量按新内容自适应，取3至5个",
+        "分组数量与顺序按新内容拓扑重排"
+      ]
+    },
+    "components": {
+      "observations": [
+        "圆角矩形",
+        "无描边浅色分组容器",
+        "扁圆柱数据图元"
+      ],
+      "transfer_rules": [
+        "柱体只用于真正的数据源实体，其余一律用同规格圆角矩形"
+      ]
+    },
+    "connectors": {
+      "observations": [
+        "零连线"
+      ],
+      "transfer_rules": [
+        "新图同样不画箭头与连线"
+      ]
+    },
+    "palette": {
+      "observations": [
+        "背景 #FFFFFF，层名列 #EFEFEF，层带底 #F4F9FF 与 #E8F1FD",
+        "强调色三槽：#22B8CC 青、#4C86F0 蓝（文字 #1F5FD8）、#33BE72 绿",
+        "高明度低饱和冷色，无暖色，色相不超过三种"
+      ],
+      "transfer_rules": [
+        "强调色A给最贴近使用者的一层",
+        "强调色B给条目最多的主体层",
+        "强调色C给资源或感知类实体"
+      ]
+    },
+    "typography": {
+      "observations": [
+        "全粗体居中"
+      ],
+      "transfer_rules": [
+        "长标签可降一档字号但不改字重"
+      ]
+    },
+    "iconography": {
+      "observations": [
+        "仅数据库柱体，无装饰插图"
+      ],
+      "transfer_rules": [
+        "图标题材从新内容的实体与动作派生，保持1px单色线稿"
+      ]
+    },
+    "surface": {
+      "observations": [
+        "纯白底，无外框，无阴影"
+      ],
+      "transfer_rules": [
+        "保持纯白底与无外框"
+      ]
+    },
+    "density": {
+      "observations": [
+        "方块不塞满层带，行距松弛"
+      ],
+      "transfer_rules": [
+        "宁可留白也不压缩间距"
+      ]
+    }
+  },
+  "transfer_boundary": {
+    "layout_policy": "preserve-visual-rhythm-adapt-to-new-topology",
+    "icon_subject_policy": "derive-from-new-content",
+    "color_role_policy": "assign-by-new-content-hierarchy",
+    "supporting_asset_policy": "allow-user-provided-or-content-required",
+    "hard_constraints": [
+      "preserve user-provided meaning and relationships",
+      "keep all required text legible and accurate",
+      "exclude source-specific content from new figures"
+    ],
+    "style_defaults": [
+      "无Logo无照片无渐变无阴影，用户明确要求时可覆盖"
+    ]
+  },
+  "conditional_rules": [
+    {
+      "if": "某层条目不足以填满一行",
+      "then": "左对齐留白，不拉伸方块宽度"
+    },
+    {
+      "if": "某组只有1-2个条目",
+      "then": "改为通栏长条，条目用斜杠分隔，复刻参考图中间件行的写法"
+    }
+  ],
+  "anti_generic": [
+    "不要退化成只有配色像的通用蓝色PPT架构图：层名灰列、1px等宽描边方阵和零连线三项必须同时成立",
+    "不要自作主张加箭头表达层级：这套风格靠堆叠和底色分区表达关系"
+  ],
+  "source_exclusions": [
+    "Banber",
+    "HowData",
+    "DataBay",
+    "指挥中心大屏",
+    "政务微信",
+    "企业微信",
+    "OA门户",
+    "小程序",
+    "主题模型",
+    "数据源",
+    "中间件"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://figecho.example/schemas/style-pack.schema.json",
+  "title": "FigEcho Style Pack",
+  "type": "object",
+  "required": ["schema_version", "slug", "name", "description", "status", "portability_status", "tags", "best_for", "not_for", "created_at", "updated_at", "rights_scope", "reference_policy", "style_prompt", "style_spec", "prompt_sha256", "fingerprint_sha256", "references", "validation"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "name": {"type": "string", "minLength": 1},
+    "description": {"type": "string"},
+    "status": {"enum": ["candidate", "validated", "archived"]},
+    "portability_status": {"enum": ["untested", "passed"]},
+    "tags": {"type": "array", "items": {"type": "string"}},
+    "best_for": {"type": "array", "items": {"type": "string"}},
+    "not_for": {"type": "array", "items": {"type": "string"}},
+    "created_at": {"type": "string", "format": "date"},
+    "updated_at": {"type": "string", "format": "date"},
+    "rights_scope": {"const": "personal-local"},
+    "reference_policy": {"const": "original-reference-images"},
+    "style_prompt": {"const": "style-prompt.md"},
+    "style_spec": {"const": "style-spec.json"},
+    "prompt_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "fingerprint_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "references": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["path", "role", "original_name", "sha256"],
+        "properties": {
+          "path": {"type": "string"},
+          "role": {"const": "style_reference"},
+          "original_name": {"type": "string"},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "validation": {"type": "object"}
+  }
+}

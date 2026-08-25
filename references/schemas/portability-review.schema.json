@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://figecho.example/schemas/portability-review.schema.json",
+  "title": "FigEcho Cross-topic Portability Review",
+  "type": "object",
+  "required": ["schema_version", "distinct_topic", "content_summary", "checks", "style_anchor_score", "visible_evidence"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "distinct_topic": {"const": true},
+    "content_summary": {"type": "string", "minLength": 1},
+    "checks": {
+      "type": "object",
+      "required": ["topology_replanned", "icon_subjects_derived_from_new_content", "color_roles_reassigned", "no_source_content_carryover"],
+      "properties": {
+        "topology_replanned": {"const": true},
+        "icon_subjects_derived_from_new_content": {"const": true},
+        "color_roles_reassigned": {"const": true},
+        "no_source_content_carryover": {"const": true}
+      }
+    },
+    "style_anchor_score": {"type": "number", "minimum": 75, "maximum": 100},
+    "visible_evidence": {"type": "string", "minLength": 1}
+  }
+}

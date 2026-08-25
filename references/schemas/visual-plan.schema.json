@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://figecho.example/schemas/visual-plan.schema.json",
+  "title": "FigEcho Visual Plan",
+  "type": "object",
+  "required": ["schema_version", "communication_frame", "archetype", "layout", "content_mapping", "relation_encodings", "anchor_placements", "compression", "plan_risks"],
+  "properties": {
+    "schema_version": {"const": "2.0.0"},
+    "communication_frame": {
+      "type": "object",
+      "required": ["audience", "intended_use", "communication_goal", "core_narrative", "primary_takeaway", "reading_time"]
+    },
+    "archetype": {
+      "type": "object",
+      "required": ["chosen", "content_reason", "rejected_alternatives"],
+      "properties": {
+        "chosen": {"type": "string", "minLength": 3},
+        "content_reason": {"type": "string", "minLength": 12},
+        "rejected_alternatives": {"type": "array", "minItems": 1}
+      }
+    },
+    "layout": {
+      "type": "object",
+      "required": ["canvas", "zones", "reading_path", "focal_point", "whitespace_strategy", "density_budget", "connector_routes"],
+      "properties": {
+        "zones": {"type": "array", "minItems": 2}
+      }
+    },
+    "content_mapping": {"type": "array", "minItems": 1},
+    "relation_encodings": {"type": "array"},
+    "anchor_placements": {"type": "array", "minItems": 5},
+    "compression": {
+      "type": "object",
+      "required": ["decisions", "verbatim_text", "omitted_from_canvas"],
+      "properties": {
+        "decisions": {"type": "array", "minItems": 1}
+      }
+    },
+    "plan_risks": {"type": "array", "minItems": 1}
+  }
+}

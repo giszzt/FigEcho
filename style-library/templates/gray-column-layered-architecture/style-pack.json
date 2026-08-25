@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "slug": "gray-column-layered-architecture",
+  "name": "层带灰名列架构图",
+  "aliases": [
+    "gray column layered architecture",
+    "分层白皮书架构图",
+    "层带架构图",
+    "无连线分层架构图",
+    "浅蓝层带技术架构图",
+    "灰名列架构图"
+  ],
+  "description": "以左侧贯通灰底层名列、右侧独立支撑栏和无连线等宽方阵组织多层技术能力的高密度架构图。",
+  "status": "validated",
+  "portability_status": "untested",
+  "tags": [
+    "cyan-blue-green",
+    "gray-layer-column",
+    "hairline-outline-boxes",
+    "layered-stack",
+    "no-connectors",
+    "spanning-sidebar",
+    "technical-architecture"
+  ],
+  "best_for": [
+    "分层技术架构、平台能力总览、体系框架图，尤其是层级明确且每层条目较多的中文技术图"
+  ],
+  "not_for": [
+    "需要用箭头表达时序或因果的流程图、单节点极简图、以图像或照片为主体的叙事图；内容确实需要时仍可嵌入 Logo 与照片"
+  ],
+  "created_at": "2026-08-25",
+  "updated_at": "2026-08-25",
+  "rights_scope": "personal-local",
+  "reference_policy": "original-reference-images",
+  "style_prompt": "style-prompt.md",
+  "style_spec": "style-spec.json",
+  "prompt_sha256": "cf5d8efa49fb31899f4fb568198bfdd42d918ae4c967bf2221d9af7a39106888",
+  "fingerprint_sha256": "959d9ea35b1d1d786c37b3a46cdc2e3c2685a126b74be46f71e2bfb472b1818c",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "original_name": "reference.png",
+      "sha256": "0b63ee3f232572ab0ff9240e0112f44e834562c6582364d08454f878e2ca70c4"
+    }
+  ],
+  "validation": {
+    "style_review": "style-review.json",
+    "preview": "preview.png",
+    "weighted_score": 94.5,
+    "dimension_passes": [
+      "components",
+      "connectors",
+      "layout",
+      "palette",
+      "typography"
+    ]
+  }
+}

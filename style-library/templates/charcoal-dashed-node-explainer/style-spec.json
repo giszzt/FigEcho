@@ -1,0 +1,146 @@
+{
+  "schema_version": "3.0.0",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "notes": "original reference retained in this Style Pack"
+    }
+  ],
+  "evidence_scope": {
+    "reference_count": 1,
+    "generalization": "single-reference-hypothesis"
+  },
+  "style_summary": "深炭黑底(#1F1F1F)+略亮圆角面板(#2B2B2B/描边#4D4D4D)分区；面板顶边断开、标题嵌入缺口；白色虚线箭头为唯一连接语言；薄荷绿空心圆角框与紫/红实心胶囊构成双轨标签；中心深绿实心圆带白描边作辐射枢纽；彩色扁平贴纸图标直接落深底并下配短标签；几何无衬线粗体标题带左侧亮绿竖条与蓝底反白关键词块。",
+  "signature_anchors": [
+    {
+      "id": "anchor-1",
+      "dimension": "layout",
+      "rule": "深色底上的圆角面板分区，面板顶边线在标题左右断开、标题居中悬在缺口中；主区中心辐射，次区并排",
+      "evidence": [
+        "顶部 How AI Agents Work 面板顶边缺口",
+        "下方左右两个并排面板"
+      ],
+      "weight": 22,
+      "confidence": "high",
+      "prompt_token": "圆角面板分区+标题骑在顶边缺口上"
+    },
+    {
+      "id": "anchor-2",
+      "dimension": "components",
+      "rule": "薄荷绿2px描边空心圆角框(分类项)与紫#9B30FF/红#FF6B6B实心胶囊(类别名)双轨标签；中心为深绿实心圆+白描边",
+      "evidence": [
+        "Learning Agents 等空心绿框",
+        "Single Agent 紫胶囊",
+        "Tools 红胶囊",
+        "AI Agents 深绿圆"
+      ],
+      "weight": 22,
+      "confidence": "high",
+      "prompt_token": "绿描边空心框+实心胶囊+深绿枢纽圆"
+    },
+    {
+      "id": "anchor-3",
+      "dimension": "connectors",
+      "rule": "全图仅用白色虚线箭头，2px，短划8:6，细三角箭头，放射或弧线绕开元素，中段配浅灰小字关系标签",
+      "evidence": [
+        "中心机器人向四周的虚线箭头",
+        "Access 标签"
+      ],
+      "weight": 20,
+      "confidence": "high",
+      "prompt_token": "白色虚线细箭头唯一连接语言"
+    },
+    {
+      "id": "anchor-4",
+      "dimension": "palette",
+      "rule": "底#1F1F1F/面板#2B2B2B/描边#4D4D4D/白字#FFFFFF/次级#C9C9C9，强调仅薄荷绿#35D48A、蓝#4C6EF5、紫#9B30FF、珊瑚红#FF6B6B，无渐变无发光",
+      "evidence": [
+        "整图深炭黑底",
+        "标题蓝色高亮块",
+        "绿色节点文字"
+      ],
+      "weight": 18,
+      "confidence": "high",
+      "prompt_token": "深炭黑+四色霓虹强调"
+    },
+    {
+      "id": "anchor-5",
+      "dimension": "icons",
+      "rule": "彩色扁平贴纸风图标(粗描边块面填色轻高光)直接落深底，下方居中配短标签，同图内绘制手法统一",
+      "evidence": [
+        "脑/眼/齿轮/地球/机器人贴纸图标"
+      ],
+      "weight": 10,
+      "confidence": "high",
+      "prompt_token": "扁平贴纸图标+下置短标签"
+    },
+    {
+      "id": "anchor-6",
+      "dimension": "typography",
+      "rule": "几何无衬线；主标题Extra Bold为正文3.5-4倍并带左侧亮绿短竖条，关键词包在蓝底圆角块内反白；面板标题Bold 1.8-2倍",
+      "evidence": [
+        "What is an AI Agent? 标题条"
+      ],
+      "weight": 8,
+      "confidence": "high",
+      "prompt_token": "几何无衬线粗体+竖条起始记号+蓝底反白关键词"
+    }
+  ],
+  "palette": {
+    "background": "#1F1F1F",
+    "panel": "#2B2B2B",
+    "panel_stroke": "#4D4D4D",
+    "text_primary": "#FFFFFF",
+    "text_secondary": "#C9C9C9",
+    "accent_a": "#35D48A",
+    "accent_b": "#4C6EF5",
+    "accent_c": "#9B30FF",
+    "accent_d": "#FF6B6B",
+    "hub_fill": "#0F3D2E",
+    "title_bar": "#3DFF8B"
+  },
+  "colors": [
+    "#1F1F1F",
+    "#2B2B2B",
+    "#4D4D4D",
+    "#FFFFFF",
+    "#C9C9C9",
+    "#35D48A",
+    "#4C6EF5",
+    "#9B30FF",
+    "#FF6B6B",
+    "#0F3D2E"
+  ],
+  "transfer_rules": [
+    "面板数量与栏数按新内容拓扑重排，不照搬参考图的1大2小",
+    "四个强调色按新内容的层级与分组重新映射语义",
+    "图标题材完全由新内容实体派生，不保留源图题材",
+    "无品牌标识时右上留白，不生成任何 Logo"
+  ],
+  "visual_system": {
+    "palette": {
+      "background": "#1F1F1F",
+      "panel": "#2B2B2B",
+      "panel_stroke": "#4D4D4D",
+      "text_primary": "#FFFFFF",
+      "text_secondary": "#C9C9C9",
+      "accent_a": "#35D48A",
+      "accent_b": "#4C6EF5",
+      "accent_c": "#9B30FF",
+      "accent_d": "#FF6B6B",
+      "hub_fill": "#0F3D2E",
+      "title_bar": "#3DFF8B"
+    },
+    "connectors": "白色虚线细箭头",
+    "components": "薄荷绿空心圆角框 + 四色实心胶囊 + 深绿描白枢纽圆",
+    "icons": "彩色扁平贴纸图标",
+    "typography": "几何无衬线，粗体标题+竖条起始记号"
+  },
+  "transfer_boundary": {
+    "layout_policy": "preserve-visual-rhythm-adapt-to-new-topology",
+    "icon_subject_policy": "derive-from-new-content",
+    "color_role_policy": "assign-by-new-content-hierarchy",
+    "supporting_asset_policy": "allow-user-provided-or-content-required"
+  }
+}

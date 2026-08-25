@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "distinct_topic": true,
+  "content_summary": "Harness Engineering 技术路线：能力基线、上下文工程、工具与权限、反馈闭环、治理演进五段，与原参考图的城市/医疗类课题内容完全无关。",
+  "checks": {
+    "topology_replanned": true,
+    "icon_subjects_derived_from_new_content": true,
+    "color_roles_reassigned": true,
+    "no_source_content_carryover": true
+  },
+  "style_anchor_score": 100,
+  "visible_evidence": "行带数量由参考图的六条重算为五条，行带内部结构（四步横排、底座三分支、三列汇聚、四层展开、四列汇聚）按新内容拓扑重排；全图无图标故无题材沿用；强调色按新内容五个板块重新分配，砖红只给三处结论；成图中不含参考图的任何文字与主题。"
+}

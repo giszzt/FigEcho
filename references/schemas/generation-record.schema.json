@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://figecho.example/schemas/generation-record.schema.json",
+  "title": "FigEcho Generation Record",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "provider_mode",
+    "intent",
+    "prompt_file",
+    "prompt_sha256",
+    "binding_mechanism",
+    "input_images",
+    "output_path"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "provider_mode": {
+      "enum": [
+        "built-in-imagegen",
+        "external-image-api"
+      ]
+    },
+    "intent": {
+      "const": "generate"
+    },
+    "prompt_file": {
+      "const": "prompt.md"
+    },
+    "prompt_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "binding_mechanism": {
+      "enum": [
+        "none",
+        "referenced_image_paths",
+        "num_last_images_to_include",
+        "reference_images_payload"
+      ]
+    },
+    "input_images": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "role"
+        ],
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "style_reference",
+              "supporting_insert",
+              "edit_target"
+            ]
+          }
+        }
+      }
+    },
+    "output_path": {
+      "const": "output/final.png"
+    },
+    "provider": {
+      "type": "object",
+      "description": "Required when provider_mode is external-image-api. Written by scripts/generate_figure.py.",
+      "required": [
+        "backend",
+        "model"
+      ],
+      "properties": {
+        "backend": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requested_aspect_ratio": {
+          "type": "string"
+        },
+        "submitted_aspect_ratio": {
+          "type": "string"
+        },
+        "attempts": {
+          "type": "array"
+        }
+      }
+    },
+    "output_size": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        }
+      }
+    },
+    "render_check": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Summary copied from scripts/check_render.py: status plus the findings that were acted on."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "provider_mode": {
+            "const": "external-image-api"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "provider"
+        ],
+        "properties": {
+          "binding_mechanism": {
+            "enum": [
+              "reference_images_payload"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "provider_mode": {
+            "const": "built-in-imagegen"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "binding_mechanism": {
+            "enum": [
+              "referenced_image_paths",
+              "num_last_images_to_include"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

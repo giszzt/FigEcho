@@ -1,0 +1,180 @@
+{
+  "schema_version": "3.0.0",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "notes": "original reference retained in this Style Pack"
+    }
+  ],
+  "evidence_scope": {
+    "reference_count": 1,
+    "generalization": "single-reference-hypothesis"
+  },
+  "style_summary": "竖向行带堆叠：每行由窄标签块与浅灰虚线圆角外框构成，框内是低饱和浅彩填充加同色深描边的等宽圆角卡片，行带之间以近黑细直角箭头串联，白底浅灰底板承担分组，全图无图标、无阴影、无渐变。",
+  "signature_anchors": [
+    {
+      "id": "anchor-1",
+      "dimension": "layout",
+      "rule": "竖向行带堆叠：通栏标题带在顶，其下每条行带为“占宽7%–10%的窄标签块 + 通栏内容区”的两段式，标签与内容区顶底齐平，行带高度按内部层数不等",
+      "evidence": [
+        "reference.png 全图重复出现"
+      ],
+      "weight": 24,
+      "confidence": "high",
+      "prompt_token": "竖向行带结构，左侧窄标签块加右侧通栏内容区，行带高度随内容层数变化"
+    },
+    {
+      "id": "anchor-2",
+      "dimension": "components",
+      "rule": "层级二分：最外层内容区一律浅灰细虚线圆角框，内部卡片一律浅彩填充加同色相深色实线圆角框，中间可插入无描边浅灰实心分组底板",
+      "evidence": [
+        "reference.png 全图重复出现"
+      ],
+      "weight": 22,
+      "confidence": "high",
+      "prompt_token": "外层浅灰虚线圆角框包住浅彩实线描边卡片，分组用无描边浅灰底板"
+    },
+    {
+      "id": "anchor-3",
+      "dimension": "connectors",
+      "rule": "近黑1px细直线加小实心三角箭头，横向推进走短水平箭头，纵向一对多走90°硬折角分支，无曲线无斜线无交叉",
+      "evidence": [
+        "reference.png 全图重复出现"
+      ],
+      "weight": 18,
+      "confidence": "high",
+      "prompt_token": "黑色细直角箭头，横向短箭头推进，纵向硬折角分支与汇聚"
+    },
+    {
+      "id": "anchor-4",
+      "dimension": "palette",
+      "rule": "低饱和高明度浅彩填充配同色相中低明度描边，一条行带一个色系，白与浅灰占六成以上，深色只在文字与线条",
+      "evidence": [
+        "reference.png 全图重复出现"
+      ],
+      "weight": 18,
+      "confidence": "high",
+      "prompt_token": "浅彩填充配同色深描边，按行带切换色系，白底为主"
+    },
+    {
+      "id": "anchor-5",
+      "dimension": "typography",
+      "rule": "全图单一中文黑体家族，标题为节点文字1.8–2.0倍加粗，标签块两字一行竖向折行加粗，节点文字全部居中，同层级字号完全一致",
+      "evidence": [
+        "reference.png 全图重复出现"
+      ],
+      "weight": 12,
+      "confidence": "high",
+      "prompt_token": "统一中文黑体，标题加粗放大，标签竖向折行，节点文字居中"
+    },
+    {
+      "id": "anchor-6",
+      "dimension": "surface",
+      "rule": "纯平面：无阴影、无渐变、无发光、无背景纹理，深度只靠描边深浅与填充明度差",
+      "evidence": [
+        "reference.png 全图重复出现"
+      ],
+      "weight": 6,
+      "confidence": "high",
+      "prompt_token": "纯平面无阴影无渐变，深度靠描边与明度差"
+    }
+  ],
+  "visual_system": {
+    "layout": {
+      "observations": [
+        "顶部通栏标题带，其下6条水平行带自上而下堆叠",
+        "标签块占宽约8%，与内容区上下齐平",
+        "行带高度不等，矮行带与高行带交替"
+      ],
+      "transfer_rules": [
+        "行带数量按新内容阶段数取4–8条",
+        "内容区列数按该阶段条目数重算"
+      ]
+    },
+    "components": {
+      "observations": [
+        "虚线只出现在行带外框",
+        "卡片圆角约为高度的0.15倍",
+        "浅灰实心底板把2–3张卡片收成一组"
+      ],
+      "transfer_rules": [
+        "最多三层嵌套，超过则拆行带"
+      ]
+    },
+    "connectors": {
+      "observations": [
+        "箭头为黑色小三角，长度约节点高0.2倍",
+        "一对多分支为直角折线"
+      ],
+      "transfer_rules": [
+        "关系明确时才画线，无关系不连线"
+      ]
+    },
+    "palette": {
+      "observations": [
+        "画布背景 #FFFFFF，分组底板 #F2F2F2，行带虚线外框 #C9CDD4，标题带描边 #D0D0D0",
+        "主文字与全部箭头 #1A1A1A，次级说明文字 #333333",
+        "强调色A蓝 填充 #C5D9F1 / 描边 #4A78B8；强调色B紫 填充 #E6D8F0 / 描边 #9070AE",
+        "强调色C琥珀 填充 #FDE9C4 / 描边 #DFA33C；强调色D绿 填充 #CFE3B8 / 描边 #6E9E4E",
+        "强调色E砖红（仅结论框）填充 #F5C9C5 / 描边 #C0504D；中性灰 填充 #F2F2F2 / 描边 #A6A6A6",
+        "白与浅灰面积占六成以上，浅彩填充约三成，深色只在文字描边箭头不足5%"
+      ],
+      "transfer_rules": [
+        "强调色按新内容分组重新分配，不固化语义"
+      ]
+    },
+    "typography": {
+      "observations": [
+        "单一中文黑体家族，全部居中"
+      ],
+      "transfer_rules": [
+        "同层级字号统一"
+      ]
+    },
+    "iconography": {
+      "observations": [
+        "全图无图标，信息由容器与文字承担"
+      ],
+      "transfer_rules": [
+        "默认不加图标，需要时用单色线性图标，题材由新内容派生"
+      ]
+    },
+    "surface": {
+      "observations": [
+        "纯平面，无阴影渐变"
+      ],
+      "transfer_rules": [
+        "默认平面处理"
+      ]
+    },
+    "density": {
+      "observations": [
+        "单行带节点3–9个，节点文字4–12字，说明文字12–36字"
+      ],
+      "transfer_rules": [
+        "超出预算先拆行带"
+      ]
+    }
+  },
+  "transfer_boundary": {
+    "layout_policy": "preserve-visual-rhythm-adapt-to-new-topology",
+    "icon_subject_policy": "derive-from-new-content",
+    "color_role_policy": "assign-by-new-content-hierarchy",
+    "supporting_asset_policy": "allow-user-provided-or-content-required",
+    "hard_constraints": [
+      "preserve user-provided meaning and relationships",
+      "keep all required text legible and accurate",
+      "exclude source-specific content from new figures"
+    ],
+    "style_defaults": [
+      "默认沿用左窄标签块配右通栏内容区的行带骨架、浅彩描边卡片与无阴影平面语言；节点数量、色相和行带高度可按新内容调整"
+    ]
+  },
+  "conditional_rules": [],
+  "anti_generic": [
+    "不要退化为等宽白色卡片阵列；必须保留左窄标签块与右通栏内容区组成的行带骨架",
+    "不要使用自由曲线或粗发光箭头；保持黑色细直角箭头与浅灰虚线分组框的层级对比"
+  ],
+  "source_exclusions": []
+}

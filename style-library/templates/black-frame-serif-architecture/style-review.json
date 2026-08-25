@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "generated_image": "output/final.png",
+  "review_basis": "visible-generated-image",
+  "anchor_scores": [
+    {
+      "anchor_id": "framed-asymmetric-panels",
+      "score": 4,
+      "visible_evidence": "成图使用粗黑外框形成左侧技术栏、中央主区和右侧治理栏，中央主区又明确分成建设路径与差异化应用上下两层，边界严格对齐。",
+      "mismatch": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "header-band-nested-containers",
+      "score": 4,
+      "visible_evidence": "四个宏观内容区均有浅灰标题带；白色主面板内部同时出现橙色虚线阶段框、酒红圆角治理框和青蓝应用框，三级容器可见。",
+      "mismatch": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "solid-flow-dashed-feedback",
+      "score": 4,
+      "visible_evidence": "左栏纵向与中央短期到长期使用粗黑实线箭头，三类应用向上反馈及治理跨区约束使用酒红虚线，主次关系清楚。",
+      "mismatch": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "semantic-triad-palette",
+      "score": 4,
+      "visible_evidence": "黑白灰承担宏观结构；橙黄用于空间认知输入、短期阶段和四要素闭环；青蓝用于行业大模型、数据闭环和应用对象；酒红用于长期底座、反馈及治理。",
+      "mismatch": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "academic-type-contrast",
+      "score": 4,
+      "visible_evidence": "总标题和四个分区标题采用大号粗衬线中文，节点与说明使用粗体或常规无衬线中文，标题层级与正文反差明显。",
+      "mismatch": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "flat-line-icons-with-accents",
+      "score": 4,
+      "visible_evidence": "网络、时钟、多模态、代码、数据库、盾牌、地图、矿石、海浪、法规和协同主体均以统一正视角线稿呈现，只使用少量功能色填充。",
+      "mismatch": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "dense-grid-clear-hierarchy",
+      "score": 4,
+      "visible_evidence": "左栏两组紧凑能力列表、中央阶段与闭环、下部三张等宽应用卡和右栏两条治理轨道均保持统一网格、短标签与均匀内边距。",
+      "mismatch": "",
+      "next_action": ""
+    }
+  ],
+  "weighted_score": 100,
+  "dimension_passes": ["layout", "components", "connectors", "palette", "typography", "iconography", "density"],
+  "verdict": "pass"
+}

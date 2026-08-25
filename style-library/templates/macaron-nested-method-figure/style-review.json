@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "renders_reviewed": [
+    "port-macaron/output/final.png"
+  ],
+  "anchor_scores": [
+    {
+      "anchor_id": "four-level-nesting",
+      "dimension": "components",
+      "weight": 20,
+      "score": 4,
+      "visible_evidence": "a/b/c/d 四条浅灰圆角标题条独立于内容之上；每列一个灰色虚线圆角宏观框；框内淡蓝/淡绿/淡紫/淡黄实心内卡；内卡中嵌白色微卡（书堆、扳手、芯片、骰子等），四级描边与填充语言各不相同",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "hue-coded-pastel-zones",
+      "dimension": "palette",
+      "weight": 18,
+      "score": 4,
+      "visible_evidence": "a 列统一冷蓝、b 列统一草绿、c 列统一淡紫、d 列统一暖黄，模块内只做深浅变化，跨模块才换色相；淡彩填充明度高、饱和低，高饱和只出现在图标内部与黄色序号徽章、绿色勾号上",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "single-black-arrow-language",
+      "dimension": "connectors",
+      "weight": 16,
+      "score": 4,
+      "visible_evidence": "a 列三段与 b 列输入→大模型→输出全部为纯黑细实线加实心三角箭头，直角走线、边缘起止、无交叉；虚线只用于宏观框包裹；模块之间用三处淡桃色实心三角作无文字方向暗示",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "flat-cartoon-and-geometry-same-weight",
+      "dimension": "iconography",
+      "weight": 14,
+      "score": 4,
+      "visible_evidence": "书堆、扳手、大拇指、对话气泡、积木、芯片、卷轴、骰子、文稿、代码窗口、图片、放大镜文件夹、流程节点工具箱、警示牌、盾牌、靶心均为 3-5 色块扁平无阴影画法，视觉重量一致，全部嵌在白色微卡中央",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "loose-outside-tight-inside",
+      "dimension": "density",
+      "weight": 12,
+      "score": 4,
+      "visible_evidence": "四列之间留出明显白色沟槽，列内卡片紧密排列；白底可见面积约占三分之一以上；每个主模块 3-4 张内卡，未超预算",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "bold-black-title-color-subtitle",
+      "dimension": "typography",
+      "weight": 11,
+      "score": 4,
+      "visible_evidence": "a./b./c./d. 主模块标题为粗体纯黑居中；内卡标题（预训练、直接对话、会出现幻觉）取所属色系深色；微卡短标签退回深灰，形成三层文字编码",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "micro-marker-checklist",
+      "dimension": "components",
+      "weight": 9,
+      "score": 3,
+      "visible_evidence": "c 列三个阶段的黄色实心序号徽章①②③压在卡片左上角；d 列四项均带绿色实心勾号且文字加下划线——但「会出现幻觉」是风险提示而非被校验项，不应带勾号，属语义误用",
+      "deviation": "「会出现幻觉」误加勾号与下划线",
+      "next_action": "下一轮把该项改为纯风险标记，勾号只留给三条核对动作"
+    }
+  ],
+  "weighted_score": 97.8,
+  "max_score": 100,
+  "dimension_passes": [
+    "components",
+    "connectors",
+    "density",
+    "iconography",
+    "palette",
+    "typography"
+  ],
+  "verdict": "pass",
+  "notes": "以「什么是大模型」科普内容成图，四级嵌套、淡彩分区、单一黑箭头、扁平插画四项同时到位。"
+}

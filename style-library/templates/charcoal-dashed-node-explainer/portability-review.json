@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "distinct_topic": true,
+  "content_summary": "AI 科普图「什么是大模型」：工作原理中心辐射 + 训练三步链条 + 三种用法清单，与建档所用的城市建成环境课题技术路线完全不同主题。",
+  "checks": {
+    "topology_replanned": true,
+    "icon_subjects_derived_from_new_content": true,
+    "color_roles_reassigned": true,
+    "no_source_content_carryover": true
+  },
+  "style_anchor_score": 94,
+  "visible_evidence": "分区由四层通栏改为 1 大 2 小并保留顶边缺口标题；图标全部换成芯片、对话气泡、积木、骰子、卷轴、警示牌、书堆、扳手、大拇指等新题材；强调色重映射为红=能力子面板、紫=三种用法、绿=训练三步框、蓝=标题高亮；参考图的英文文字、机器人与人脑题材、Tools/Agent 等源内容均未出现；幻觉一条改用更细更疏点线体现弱关联。",
+  "reviewed_render": "figstyle-llm/output/final.png"
+}

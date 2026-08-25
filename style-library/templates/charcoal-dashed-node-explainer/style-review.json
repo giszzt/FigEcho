@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0.0",
+  "renders_reviewed": [
+    "figstyle-ktlx/output/final.png",
+    "figstyle-llm/output/final.png"
+  ],
+  "items": [
+    {
+      "anchor_id": "anchor-1",
+      "dimension": "layout",
+      "evidence": "四个通栏圆角面板+标题骑顶边缺口（课题3图）；1大2小分区+标题嵌缺口（大模型图）",
+      "score": 4,
+      "weight": 22,
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "anchor-2",
+      "dimension": "components",
+      "evidence": "薄荷绿空心框贯穿两图；绿/蓝/红/紫四色实心胶囊（课题3）、红+紫胶囊与次级子面板（大模型）",
+      "score": 4,
+      "weight": 22,
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "anchor-3",
+      "dimension": "connectors",
+      "evidence": "全部关系均为白色虚线细箭头；大模型图中幻觉关系用更细更疏点线，方向语义正确",
+      "score": 4,
+      "weight": 20,
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "anchor-4",
+      "dimension": "palette",
+      "evidence": "实测底色偏暗（#101010 对 #1F1F1F），面板/白字/次级灰/四强调色均按语义重映射到位",
+      "score": 3,
+      "weight": 18,
+      "deviation": "底色比规划更黑，面板与底的明度差偏小",
+      "next_action": "下一轮把面板底提亮一档"
+    },
+    {
+      "anchor_id": "anchor-5",
+      "dimension": "icons",
+      "evidence": "彩色扁平贴纸图标直接落深底+下置短标签；题材全部由新内容派生，无源图题材残留",
+      "score": 4,
+      "weight": 10,
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "anchor-6",
+      "dimension": "typography",
+      "evidence": "几何无衬线粗体+左侧亮绿竖条+蓝底反白关键词块，两图均可见",
+      "score": 4,
+      "weight": 8,
+      "deviation": "",
+      "next_action": ""
+    }
+  ],
+  "weighted_score": 95.5,
+  "max_score": 100,
+  "dimensions_covered": [
+    "components",
+    "connectors",
+    "icons",
+    "layout",
+    "palette",
+    "typography"
+  ],
+  "dimension_count": 6,
+  "verdict": "pass",
+  "notes": "两次不同主题（课题技术路线 / AI科普）均落地，四个以上维度可见，构成 portability 的初步证据。",
+  "dimension_passes": [
+    "layout",
+    "components",
+    "connectors",
+    "palette",
+    "icons",
+    "typography"
+  ],
+  "anchor_scores": [
+    {
+      "anchor_id": "anchor-1",
+      "dimension": "layout",
+      "score": 4,
+      "weight": 22,
+      "visible_evidence": "四个通栏圆角面板+标题骑顶边缺口（课题3图）；1大2小分区+标题嵌缺口（大模型图）",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "anchor-2",
+      "dimension": "components",
+      "score": 4,
+      "weight": 22,
+      "visible_evidence": "薄荷绿空心框贯穿两图；绿/蓝/红/紫四色实心胶囊（课题3）、红+紫胶囊与次级子面板（大模型）",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "anchor-3",
+      "dimension": "connectors",
+      "score": 4,
+      "weight": 20,
+      "visible_evidence": "全部关系均为白色虚线细箭头；大模型图中幻觉关系用更细更疏点线，方向语义正确",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "anchor-4",
+      "dimension": "palette",
+      "score": 3,
+      "weight": 18,
+      "visible_evidence": "实测底色偏暗（#101010 对 #1F1F1F），面板/白字/次级灰/四强调色均按语义重映射到位",
+      "deviation": "底色比规划更黑，面板与底的明度差偏小",
+      "next_action": "下一轮把面板底提亮一档"
+    },
+    {
+      "anchor_id": "anchor-5",
+      "dimension": "icons",
+      "score": 4,
+      "weight": 10,
+      "visible_evidence": "彩色扁平贴纸图标直接落深底+下置短标签；题材全部由新内容派生，无源图题材残留",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "anchor-6",
+      "dimension": "typography",
+      "score": 4,
+      "weight": 8,
+      "visible_evidence": "几何无衬线粗体+左侧亮绿竖条+蓝底反白关键词块，两图均可见",
+      "deviation": "",
+      "next_action": ""
+    }
+  ]
+}

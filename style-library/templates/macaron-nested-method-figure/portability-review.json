@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "distinct_topic": true,
+  "content_summary": "AI 科普图「什么是大模型」：训练三步、工作原理输入-处理-输出、三种用法、使用前提醒；与建档参考图的语音数据集构建流程完全不同主题。",
+  "checks": {
+    "topology_replanned": true,
+    "icon_subjects_derived_from_new_content": true,
+    "color_roles_reassigned": true,
+    "no_source_content_carryover": true
+  },
+  "style_anchor_score": 97.8,
+  "visible_evidence": "栅格由源图的 2+1+1 改为 1+1+1+1 四列且中列最宽；图标全部换成书堆、扳手、芯片、积木、骰子等新题材，源图的语音波形、说话人头像、字幕框均未出现；色相重新映射为蓝=训练、绿=原理、紫=用法、黄=提醒；序号徽章从数据精修流程移到三种用法上。",
+  "reviewed_render": "port-macaron/output/final.png"
+}

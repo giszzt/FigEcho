@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "slug": "playful-cartoon-schematic",
+  "name": "俏皮卡通手绘示意图",
+  "aliases": [
+    "playful cartoon schematic",
+    "俏皮卡通示意图",
+    "卡通图标示意图",
+    "手写体技术示意图",
+    "漫画体方法图",
+    "马卡龙嵌套双轨图"
+  ],
+  "description": "极淡马卡龙色底铺大面积分区，内嵌黑色细虚线归组框与实线描边小卡片；彩色扁平轮廓卡通图标配粗黑短标签排成紧凑网格；主链路用按链路上色的粗直角折线，反馈降级为深灰细虚线。",
+  "status": "validated",
+  "portability_status": "untested",
+  "tags": [
+    "dashed-group-frames",
+    "elbow-arrows",
+    "flat-cartoon-icons",
+    "nested-panels",
+    "pastel",
+    "technical-schematic"
+  ],
+  "best_for": [
+    "论文方法总览与项目汇报插图",
+    "面向非专业读者的科普机制图",
+    "高密度技术流程与方法总览图"
+  ],
+  "not_for": [
+    "大留白的商务简报页与海报",
+    "带坐标轴的定量数据图表"
+  ],
+  "created_at": "2026-08-24",
+  "updated_at": "2026-08-25",
+  "rights_scope": "personal-local",
+  "reference_policy": "original-reference-images",
+  "style_prompt": "style-prompt.md",
+  "style_spec": "style-spec.json",
+  "prompt_sha256": "1bb9ebaac4a2abffe99a5eebb7b65573ca44022577f8572be187435d6def4bae",
+  "fingerprint_sha256": "aa7ad7b12e161f5fe5d7fd439d02241ef11c4fab9ae27b2a82919f1c89ad9aef",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "original_name": "ref-macaron-dualtrack.png",
+      "sha256": "16d3c80e8642a466b547a31bcfd36d6ee220d6c8385705fad62e6e1996f7d7f2"
+    }
+  ],
+  "validation": {
+    "style_review": "style-review.json",
+    "preview": "preview.png",
+    "weighted_score": 100.0,
+    "dimension_passes": [
+      "components",
+      "layout",
+      "connectors",
+      "iconography",
+      "palette",
+      "typography"
+    ]
+  }
+}

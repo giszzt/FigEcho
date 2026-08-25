@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://figecho.example/schemas/style-spec.schema.json",
+  "title": "FigEcho Style Spec 3.0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "references",
+    "evidence_scope",
+    "style_summary",
+    "signature_anchors",
+    "visual_system",
+    "transfer_boundary",
+    "conditional_rules",
+    "anti_generic",
+    "source_exclusions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "references": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "role"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "const": "style_reference"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "evidence_scope": {
+      "type": "object",
+      "required": [
+        "reference_count",
+        "generalization"
+      ],
+      "properties": {
+        "reference_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "generalization": {
+          "enum": [
+            "single-reference-hypothesis",
+            "multi-reference-shared-patterns",
+            "original-style-no-reference"
+          ]
+        }
+      }
+    },
+    "style_summary": {
+      "type": "string",
+      "minLength": 20
+    },
+    "signature_anchors": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "dimension",
+          "rule",
+          "evidence",
+          "weight",
+          "confidence",
+          "prompt_token"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "dimension": {
+            "enum": [
+              "layout",
+              "components",
+              "connectors",
+              "palette",
+              "typography",
+              "iconography",
+              "surface",
+              "density"
+            ]
+          },
+          "rule": {
+            "type": "string",
+            "minLength": 12
+          },
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 4
+            }
+          },
+          "weight": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          },
+          "confidence": {
+            "enum": [
+              "low",
+              "medium",
+              "medium-high",
+              "high"
+            ]
+          },
+          "prompt_token": {
+            "type": "string",
+            "minLength": 12
+          }
+        }
+      }
+    },
+    "visual_system": {
+      "type": "object",
+      "required": [
+        "layout",
+        "components",
+        "connectors",
+        "palette",
+        "typography",
+        "iconography",
+        "surface",
+        "density"
+      ],
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "transfer_boundary": {
+      "type": "object",
+      "required": [
+        "layout_policy",
+        "icon_subject_policy",
+        "color_role_policy",
+        "supporting_asset_policy",
+        "hard_constraints",
+        "style_defaults"
+      ],
+      "properties": {
+        "layout_policy": {
+          "const": "preserve-visual-rhythm-adapt-to-new-topology"
+        },
+        "icon_subject_policy": {
+          "const": "derive-from-new-content"
+        },
+        "color_role_policy": {
+          "const": "assign-by-new-content-hierarchy"
+        },
+        "supporting_asset_policy": {
+          "const": "allow-user-provided-or-content-required"
+        },
+        "hard_constraints": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "string",
+            "minLength": 8
+          }
+        },
+        "style_defaults": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 8
+          }
+        }
+      }
+    },
+    "conditional_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "anti_generic": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string",
+        "minLength": 8
+      }
+    },
+    "source_exclusions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

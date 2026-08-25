@@ -1,0 +1,153 @@
+{
+  "schema_version": "4.0.0",
+  "evidence_status": "behavior-specification-and-recorded-fixtures",
+  "cases": [
+    {
+      "id": "prompt_only_delivery",
+      "prompt": "抽取这张技术路线图的风格，给我可复用提示词。",
+      "input_files": ["fixtures/reference-technical-roadmap.png"],
+      "baseline_output": "A prompt that says the reference image supplies visual language and names source-specific content.",
+      "with_skill_output": ["one complete modular prompt pasted in the final response"],
+      "assertions": [
+        "delivery mode is prompt-only",
+        "the final response does not list internal reports, JSON specs or quality files",
+        "the prompt contains all eleven required Chinese modules",
+        "style prompt contains every signature anchor prompt token",
+        "style prompt contains a reusable content slot",
+        "style prompt contains no reference-image role language",
+        "style prompt contains no source_exclusions literal"
+      ],
+      "human_notes": "Judge whether the user can copy the prompt directly, and whether it remains complete after all conversation context and reference images are removed."
+    },
+    {
+      "id": "specific_style_fingerprint",
+      "prompt": "提取这张科研示意图真正有辨识度的风格，不要只说科技感、扁平化和马卡龙。",
+      "input_files": ["fixtures/reference-scientific.png"],
+      "baseline_output": "A list of generic aesthetic adjectives.",
+      "with_skill_output": ["complete modular style prompt"],
+      "assertions": [
+        "five to seven signature anchors cover at least four dimensions",
+        "anchor weights sum to 100",
+        "each anchor has evidence, transfer rule and prompt token",
+        "all eight visual-system dimensions contain observations and transfer rules",
+        "anti_generic names concrete template failures and positive alternatives"
+      ],
+      "human_notes": "Judge the delivered prompt; internal fingerprint artifacts are evidence, not default user-facing content."
+    },
+    {
+      "id": "section_level_prompt_completeness",
+      "prompt": "提取这张技术图的完整风格提示词，每个模块都要能直接约束生成。",
+      "input_files": ["fixtures/reference-scientific.png"],
+      "baseline_output": "A modular prompt whose palette says only pale yellow and deep blue, while other sections contain generic adjectives.",
+      "with_skill_output": ["complete modular style prompt"],
+      "assertions": [
+        "layout contains an aspect ratio, reading path, grid, spacing and density",
+        "components contain shape, stroke, fill and padding",
+        "connectors contain line type, arrow, width, color and routing",
+        "icon style contains family, outline, view and detail level",
+        "palette provides at least three concrete #RRGGBB values, keeps stable structural roles separate from neutral accent slots, and remaps accent semantics from new content",
+        "typography covers main title, module title and body with hierarchy parameters",
+        "signature style section contains five to seven numbered features"
+      ],
+      "human_notes": "Judge whether every section is operational rather than merely present."
+    },
+    {
+      "id": "cross_topic_prompt_portability",
+      "prompt": "把这张空间智能架构图的风格保存成模板，以后也要能画供应链、医学和教育主题。",
+      "input_files": ["fixtures/reference-scientific.png"],
+      "baseline_output": "A reusable prompt that still lists source-topic icons, fixes colors to source business roles, and bans optional media globally.",
+      "with_skill_output": ["named Style Pack with portability_status"],
+      "assertions": [
+        "layout preserves visual rhythm but explicitly replans zones and reading path from new-content topology",
+        "icon section specifies visual treatment and derives concrete subjects from new content without source-topic example lists",
+        "palette preserves concrete hex values but uses neutral accent slots whose semantics are reassigned from new-content hierarchy",
+        "Logo, photos, 3D, gradients, glow, glass and shadows are defaults or conditional rules rather than universal hard bans",
+        "hard constraints are limited to accuracy, topology, non-fabrication, source separation, legibility and clipping safety",
+        "same-topic rendered validation leaves portability_status untested",
+        "portability_status becomes passed only after a distinct-topic review verifies replanning, subject derivation, color remapping and no source-content carryover"
+      ],
+      "human_notes": "Judge portability by swapping to an unrelated topic. The visual grammar should survive while source objects, business semantics and topology do not."
+    },
+    {
+      "id": "plain_text_visual_planning",
+      "prompt": "参考这张技术路线图的风格，把这段朴素的七阶段研究说明画成图；请先想清楚怎么图示化。",
+      "input_files": ["fixtures/reference-roadmap.png", "fixtures/plain-research-text.txt"],
+      "baseline_output": "Seven equal columns copied from the paragraph order with long text packed into cards.",
+      "with_skill_output": ["output/final.png", "prompt.md"],
+      "assertions": [
+        "visual plan states audience, communication goal, core narrative and primary takeaway",
+        "chosen archetype is justified by new-content relations",
+        "at least one near alternative is rejected with a reason",
+        "each primary node has a visual role and zone",
+        "each required relation has a connector encoding",
+        "each signature anchor has a placement or adaptation",
+        "compression decisions distinguish verbatim, concise, annotation and omitted content"
+      ],
+      "human_notes": "Judge whether the result communicates a designed narrative rather than mechanically converting paragraphs into equal cards."
+    },
+    {
+      "id": "image_and_prompt_generation",
+      "prompt": "基于参考图风格和我的内容直接出图，只要纯图片。",
+      "input_files": ["fixtures/reference-handdrawn.png", "fixtures/new-content.txt"],
+      "baseline_output": "A renderer decision that may fall back to vector or hybrid output.",
+      "with_skill_output": ["output/final.png", "prompt.md"],
+      "assertions": [
+        "mode is generate and renderer is imagegen",
+        "planning_status is complete before generation",
+        "generation prompt keeps all eleven modular sections and every style anchor",
+        "the reference image is bound through referenced_image_paths or num_last_images_to_include",
+        "generation record matches the exact prompt and bound reference image",
+        "final raster is saved in the job output directory",
+        "the final response includes both the image and the exact complete prompt",
+        "the final response does not expose internal planning or validation files"
+      ],
+      "human_notes": "Judge style fidelity across layout, components, linework, typography or iconography, not palette alone."
+    },
+    {
+      "id": "non_copying_guard",
+      "prompt": "借鉴这张图的风格，但替换成我的内容，不要原图 Logo 和数据。",
+      "input_files": ["fixtures/reference-with-logo-and-data.png", "fixtures/new-content.txt"],
+      "baseline_output": "A visually similar output that accidentally retains source labels or brand elements.",
+      "with_skill_output": ["requested final deliverable only"],
+      "assertions": [
+        "source logo and data literals are in source_exclusions",
+        "portable style module does not repeat source literals",
+        "generation prompt explicitly excludes source literals",
+        "content graph contains only user-provided meaning",
+        "quality report checks source leakage"
+      ],
+      "human_notes": "Judge that similarity comes from visual grammar, not copied content or exact composition."
+    },
+    {
+      "id": "style_pack_persistence",
+      "prompt": "把刚提取的风格保存为‘马卡龙三级科研框架’。",
+      "input_files": ["fixtures/reference-roadmap.png"],
+      "baseline_output": "A renamed prompt file without the original visual reference, metadata, lifecycle or integrity evidence.",
+      "with_skill_output": ["named candidate Style Pack"],
+      "assertions": [
+        "pack contains style-prompt.md and style-spec.json",
+        "pack contains a byte-preserved copy of every original reference image",
+        "pack manifest stores original filename and hash but not absolute source path",
+        "pack rights_scope is personal-local",
+        "duplicate active visual fingerprints are rejected",
+        "catalog entry is created without loading prompt bodies into catalog.json"
+      ],
+      "human_notes": "Judge whether the saved asset can reproduce the style later without relying on the old conversation."
+    },
+    {
+      "id": "style_pack_reuse",
+      "prompt": "用‘马卡龙三级科研框架’模板把下面的新内容画成图。",
+      "input_files": ["fixtures/plain-research-text.txt"],
+      "baseline_output": "Generation uses a short named-style phrase or preview image only.",
+      "with_skill_output": ["output/final.png", "prompt.md"],
+      "assertions": [
+        "named pack resolves to its complete style prompt and style spec",
+        "original stored reference images are used as style references",
+        "preview image is not used as the default style anchor",
+        "new content still receives a fresh content graph and visual plan",
+        "final response includes the generated image and exact full prompt"
+      ],
+      "human_notes": "Judge whether the original reference plus canonical prompt materially anchors reuse."
+    }
+  ]
+}

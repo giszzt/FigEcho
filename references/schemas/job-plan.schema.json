@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://figecho.example/schemas/job-plan.schema.json",
+  "title": "FigEcho Job Plan",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "mode",
+    "delivery_mode",
+    "prompt_language",
+    "prompt_kind",
+    "renderer",
+    "style_prompt_file",
+    "prompt_file",
+    "reference_binding",
+    "outputs",
+    "internal_artifacts",
+    "quality_gates"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "3.0.0"
+    },
+    "mode": {
+      "enum": [
+        "extract",
+        "generate"
+      ]
+    },
+    "delivery_mode": {
+      "enum": [
+        "prompt-only",
+        "analysis-and-prompt",
+        "image-and-prompt"
+      ]
+    },
+    "prompt_language": {
+      "enum": [
+        "zh-CN",
+        "en"
+      ]
+    },
+    "prompt_kind": {
+      "enum": [
+        "portable-style",
+        "reference-conditioned-generation"
+      ]
+    },
+    "renderer": {
+      "enum": [
+        "none",
+        "imagegen"
+      ]
+    },
+    "planning_status": {
+      "enum": [
+        "not-applicable",
+        "pending",
+        "complete"
+      ]
+    },
+    "style_prompt_file": {
+      "const": "style-prompt.md"
+    },
+    "prompt_file": {
+      "enum": [
+        "style-prompt.md",
+        "prompt.md"
+      ]
+    },
+    "reference_binding": {
+      "type": "object",
+      "required": [
+        "status",
+        "mechanism",
+        "images"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "not-applicable",
+            "pending",
+            "bound"
+          ]
+        },
+        "mechanism": {
+          "enum": [
+            "none",
+            "referenced_image_paths",
+            "num_last_images_to_include",
+            "reference_images_payload"
+          ]
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "source",
+              "role"
+            ],
+            "properties": {
+              "source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "role": {
+                "enum": [
+                  "style_reference",
+                  "supporting_insert",
+                  "edit_target"
+                ]
+              },
+              "tool_slot": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "canvas": {
+      "type": "object",
+      "properties": {
+        "aspect_ratio": {
+          "type": "string"
+        },
+        "intended_use": {
+          "type": "string"
+        },
+        "width": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "height": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "role",
+          "required"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "style-spec",
+              "style-report",
+              "portable-prompt",
+              "content-graph",
+              "visual-plan",
+              "generation-prompt",
+              "final-raster",
+              "generation-record",
+              "style-review",
+              "quality-report"
+            ]
+          },
+          "required": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "internal_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "quality_gates": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "string"
+      }
+    },
+    "style_source": {
+      "type": "object",
+      "description": "Where the style came from. Required in generate mode.",
+      "required": [
+        "origin"
+      ],
+      "properties": {
+        "origin": {
+          "enum": [
+            "reference-image",
+            "style-library",
+            "original"
+          ]
+        },
+        "library_search": {
+          "type": "object",
+          "required": [
+            "performed",
+            "queries",
+            "candidates"
+          ],
+          "properties": {
+            "performed": {
+              "type": "boolean"
+            },
+            "queries": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "candidates": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "template_slug": {
+          "type": "string"
+        },
+        "user_confirmation": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

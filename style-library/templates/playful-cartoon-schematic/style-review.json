@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "generated_image": "output/final.png",
+  "review_basis": "visible-generated-image",
+  "anchor_scores": [
+    {
+      "anchor_id": "macaron-panel-dashed-nest",
+      "score": 4,
+      "visible_evidence": "四块无描边大圆角淡色宏面板各自包住黑色细虚线圆角归组框：淡黄面板内两个，淡粉面板内两个，淡绿面板内三张绿色实线描边卡片与一张橙色实线外框的曲线图；三层圆角依次减小，层间内边距明显",
+      "mismatch": "淡绿面板的四步图标行没有再套一层虚线归组框，只有『猜下一个词』与『逐词生成』各有一个橙色实线焦点框",
+      "next_action": "可接受，终点区少一层归组反而让阅读路径收束"
+    },
+    {
+      "anchor_id": "side-rail-plus-stacked-tracks-plus-result-panel",
+      "score": 4,
+      "visible_evidence": "最左是通高浅灰虚线窄栏，栏名『数据来源』写在最下方；中部淡黄与淡粉两块面板上下堆叠，标题居中写在各自顶部；右侧淡绿整块面板收尾，宽度比约 1:5:3",
+      "mismatch": "无",
+      "next_action": "无"
+    },
+    {
+      "anchor_id": "track-coded-thick-elbow-arrows",
+      "score": 3,
+      "visible_evidence": "预训练链路橄榄绿，对齐与使用链路品红，均为粗直角折线加实心三角箭头；「基座模型 → 示范数据」的转接线走两块面板之间的空白通道，三段直角、箭头落在示范数据上缘；「用户反馈」为深灰细虚线，线宽明显小于主线",
+      "mismatch": "「人工标注 → 示范数据」这一段本应按对齐链路配品红，实际出图为橄榄绿，导致示范数据上有两条不同来源的橄榄绿箭头",
+      "next_action": "接受。曾用一次定向编辑改色，结果连带把「基座模型 → 示范数据」的折线打断，回退到本版；关系方向与类型正确，仅色彩编码有一处串色"
+    },
+    {
+      "anchor_id": "flat-outlined-icons-with-bold-caption",
+      "score": 4,
+      "visible_evidence": "全部图标为扁平多色带轮廓、正视角、无阴影无渐变，尺寸彼此接近；左栏六个图标与海量文本、示范数据等节点图标背后均垫有浅灰圆形底盘，与参考图一致",
+      "mismatch": "无",
+      "next_action": "无"
+    },
+    {
+      "anchor_id": "pale-fields-carry-saturated-accents",
+      "score": 4,
+      "visible_evidence": "render-check 实测 style-spec 的 10 个色值命中，背景占比 85.3%；四块淡色底铺满主体面积，橄榄绿与品红只出现在箭头上，橙色只出现在曲线图与「会说错」",
+      "mismatch": "『会说错』三个字用了橙色，违反『文字一律纯黑』的默认",
+      "next_action": "保留。它是全图唯一的风险提示，彩色在此处承担语义而非装饰"
+    },
+    {
+      "anchor_id": "handwritten-comic-three-tier-type",
+      "score": 4,
+      "visible_evidence": "全图中文为手写感圆头字体，笔画粗细不匀、转角圆润，与 Helvetica 类几何无衬线明显不同；三个阶段标题、节点标签、卡片文字恰好三档；标签均一行居中，无斜体",
+      "mismatch": "中文用的是圆体而非严格的漫画手写体，手写起伏感弱于参考图的英文 Comic 字形；这是中文字体在该类模型下的可得性限制",
+      "next_action": "接受。中文缺少与 Comic Sans 完全对位的字体，圆头手写感已是最接近的落点"
+    }
+  ],
+  "weighted_score": 95.5,
+  "dimension_passes": [
+    "components",
+    "layout",
+    "connectors",
+    "iconography",
+    "palette",
+    "typography"
+  ],
+  "verdict": "pass"
+}

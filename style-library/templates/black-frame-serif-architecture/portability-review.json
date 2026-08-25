@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0.0",
+  "distinct_topic": true,
+  "content_summary": "AI 科普图「什么是大模型」：训练三步、工作原理输入-处理-输出、三种用法、使用前提醒；与建档参考图的研究框架主题完全不同。",
+  "checks": {
+    "topology_replanned": true,
+    "icon_subjects_derived_from_new_content": true,
+    "color_roles_reassigned": true,
+    "no_source_content_carryover": true
+  },
+  "style_anchor_score": 98.0,
+  "visible_evidence": "主区数量与宽度按新内容重排为 1:3:1:1；图标题材全部由大模型科普内容派生；青/橙/酒红三色重新映射为输入输出、约束提醒、用法反馈；参考图的原有文字、对象与业务映射均未带入；反馈关系用酒红虚线曲线单独编码。",
+  "reviewed_render": "port-blackframe/output/final.png",
+  "anchor_scores": [
+    {
+      "anchor_id": "framed-asymmetric-panels",
+      "dimension": "layout",
+      "weight": 24,
+      "score": 4,
+      "visible_evidence": "四个粗黑直角外框横向排列，宽度节奏 1:3:1:1，中列「怎么工作的」占主导，最右「用之前要知道」最窄；主阅读方向单一向右，局部自上而下展开",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "header-band-nested-containers",
+      "dimension": "components",
+      "weight": 18,
+      "score": 4,
+      "visible_evidence": "每个外框顶部一条浅灰标题带（怎么练出来的／怎么工作的／三种用法／用之前要知道）；白色主面板内嵌青色、橙色、酒红圆角机制框；预测下一个词与上下文窗口用橙色虚线子框，构成三级容器；右列三条梯形便签承担次级标签",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "solid-flow-dashed-feedback",
+      "dimension": "connectors",
+      "weight": 16,
+      "score": 4,
+      "visible_evidence": "主流程为粗黑实线加白心三角箭头（三段训练链、提问→大模型→输出）；反馈用酒红虚线曲线自输出侧绕回输入侧并标注多轮追问，与主线在颜色和线型上完全区分",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "reassignable-triad-palette",
+      "dimension": "palette",
+      "weight": 14,
+      "score": 4,
+      "visible_evidence": "黑白灰承担骨架，三组强调色重新映射语义：青蓝=输入与输出对象、橙黄=约束与提醒、酒红=用法与反馈；未沿用参考图的原有业务色义，彩色面积约两成",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "academic-type-contrast",
+      "dimension": "typography",
+      "weight": 12,
+      "score": 4,
+      "visible_evidence": "总标题「什么是大模型」为大号粗衬线；分区标题衬线中号；节点标题粗黑无衬线；注释为常规无衬线两行内左对齐，形成学术型层级反差",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "flat-line-icons-with-accents",
+      "dimension": "iconography",
+      "weight": 8,
+      "score": 4,
+      "visible_evidence": "书堆、扳手、大拇指、对话气泡、积木、芯片、骰子、卷轴、文稿、代码窗口、图片、放大镜文件夹、流程节点工具箱、警示牌全部为正视角扁平线稿，2px 深色轮廓加一到两种功能色，抽象度与细节一致",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "dense-grid-clear-hierarchy",
+      "dimension": "density",
+      "weight": 8,
+      "score": 3,
+      "visible_evidence": "卡片等高对齐、短标签、安全距均匀；但最右列在三条梯形便签下方留白偏多，密度节奏与其余三列略不齐",
+      "deviation": "最右列底部空白偏大",
+      "next_action": "下一轮把该列的机制框与便签整体下沉或补一条注释"
+    }
+  ],
+  "weighted_score": 98.0,
+  "dimension_passes": [
+    "components",
+    "connectors",
+    "density",
+    "iconography",
+    "layout",
+    "palette",
+    "typography"
+  ],
+  "verdict": "pass"
+}

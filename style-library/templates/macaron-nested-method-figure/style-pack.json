@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "slug": "macaron-nested-method-figure",
+  "name": "马卡龙套盒方法图",
+  "description": "浅底马卡龙色系论文方法总览图，多面板套盒嵌套，纯黑箭头作唯一连接语汇，扁平矢量图标配短标签，高密度但栅格严整。",
+  "status": "validated",
+  "portability_status": "passed",
+  "tags": [
+    "black-arrow-only",
+    "flat-vector-icons",
+    "method-overview",
+    "nested-panels",
+    "pastel"
+  ],
+  "best_for": [
+    "论文方法总览图、多阶段 pipeline、数据集构建流程、系统框架图"
+  ],
+  "not_for": [
+    "深色科技海报、数据图表、写实渲染图"
+  ],
+  "created_at": "2026-08-21",
+  "updated_at": "2026-08-25",
+  "rights_scope": "personal-local",
+  "reference_policy": "original-reference-images",
+  "style_prompt": "style-prompt.md",
+  "style_spec": "style-spec.json",
+  "prompt_sha256": "2d8dc4d6948993cfc22270c541160c898db40bdc10a6646f1f47f44b8fb56a9f",
+  "fingerprint_sha256": "25ad6060b52ca6c66bdaccfc02e30a657fb4709b666719fcf5e511812b532559",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "original_name": "字节语音模型路线.png",
+      "sha256": "57078cfe74ff1f57430a327749431d8e3010196ad0140055b81e6c86d2fda2a6"
+    }
+  ],
+  "validation": {
+    "style_review": "style-review.json",
+    "preview": "preview.png",
+    "weighted_score": 97.8,
+    "dimension_passes": [
+      "components",
+      "connectors",
+      "density",
+      "iconography",
+      "palette",
+      "typography"
+    ],
+    "portability_review": "portability-review.json",
+    "portability_score": 97.8
+  },
+  "aliases": [
+    "macaron nested method figure",
+    "多面板方法图",
+    "淡彩嵌套方法图",
+    "论文方法总览图",
+    "马卡龙套盒图",
+    "马卡龙方法图"
+  ]
+}

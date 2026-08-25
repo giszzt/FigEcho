@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "slug": "research-proposal-roadmap",
+  "name": "科研申报总体路线图",
+  "aliases": [
+    "总体技术路线图",
+    "申报书路线图",
+    "竖版技术路线图",
+    "虚线行带路线图",
+    "行带路线图",
+    "课题总体路线图"
+  ],
+  "description": "竖版行带式技术路线图，左侧竖排标签块加右侧虚线内容区，三层嵌套容器，卡片等高等圆角，行带高度随内容层数变化形成疏密节奏。",
+  "status": "validated",
+  "portability_status": "passed",
+  "tags": [
+    "banded-rows",
+    "nested-panels",
+    "portrait-canvas",
+    "research-roadmap",
+    "vertical-flow"
+  ],
+  "best_for": [
+    "课题申报书总体技术路线图、研究内容框架图、分阶段研究方案图"
+  ],
+  "not_for": [
+    "横构图汇报页、带坐标轴的数据图表、图片主导的宣传物料"
+  ],
+  "created_at": "2026-08-23",
+  "updated_at": "2026-08-25",
+  "rights_scope": "personal-local",
+  "reference_policy": "original-reference-images",
+  "style_prompt": "style-prompt.md",
+  "style_spec": "style-spec.json",
+  "prompt_sha256": "9443b105c8b3d82e014b9dd4dd3eb6f9a77f7d16449999456b8578cf84451d67",
+  "fingerprint_sha256": "4eae611e0dfd0b24c7f71e780b94effd96a16d52b182cf878d8002b515390df5",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "original_name": "reference.png",
+      "sha256": "e68a5ed1de841d7b3813f7af9b282dbdd52c45f55e7a6ebeb84a2c03ebc45609"
+    }
+  ],
+  "validation": {
+    "style_review": "style-review.json",
+    "preview": "preview.png",
+    "weighted_score": 100.0,
+    "dimension_passes": [
+      "layout",
+      "components",
+      "connectors",
+      "palette",
+      "typography",
+      "surface"
+    ],
+    "portability_review": "portability-review.json",
+    "portability_score": 100
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-08-25",
+  "reference_policy": "original-reference-images",
+  "templates": [
+    {
+      "slug": "black-frame-serif-architecture",
+      "name": "黑框衬线架构图",
+      "aliases": [
+        "black frame serif architecture",
+        "学术架构图",
+        "粗黑框技术图",
+        "衬线标题架构图",
+        "黑框架构图",
+        "黑白框流程图"
+      ],
+      "status": "validated",
+      "portability_status": "passed",
+      "tags": [
+        "academic-diagram",
+        "asymmetric-panels",
+        "burgundy-orange-cyan",
+        "feedback-loop",
+        "line-icons",
+        "technical-architecture"
+      ],
+      "best_for": [
+        "Dense research frameworks, technical architectures, staged pathways, and governance diagrams."
+      ],
+      "not_for": [
+        "Image-dominant photorealistic storytelling, minimalist one-node diagrams, dashboards, or decorative marketing graphics. Supporting photos and logos remain allowed when content requires them."
+      ],
+      "path": "templates/black-frame-serif-architecture/style-pack.json",
+      "fingerprint_sha256": "c822b94c074c510622dc40e407f7a55525488fe9aacb7b024d286854886205aa",
+      "reference_count": 1,
+      "updated_at": "2026-08-25"
+    },
+    {
+      "slug": "charcoal-dashed-node-explainer",
+      "name": "炭黑虚线节点科普图",
+      "aliases": [
+        "ByteByteGo 风格图",
+        "暗底科普信息图",
+        "深色虚线节点图",
+        "虚线箭头技术图",
+        "霓虹胶囊技术图",
+        "黑底贴纸图标图"
+      ],
+      "status": "validated",
+      "portability_status": "passed",
+      "tags": [
+        "dark-charcoal",
+        "dashed-arrow-connectors",
+        "mint-outline-capsule-labels",
+        "notched-panel-title",
+        "sticker-icons",
+        "tech-explainer"
+      ],
+      "best_for": [
+        "技术路线图、系统机制科普图、分层递进的研究内容图、面向非专业读者的暗底信息图"
+      ],
+      "not_for": [
+        "浅底学术论文插图、需要坐标轴的数据图表、正式公文与申报书正文排版"
+      ],
+      "path": "templates/charcoal-dashed-node-explainer/style-pack.json",
+      "fingerprint_sha256": "6061d490dfd2a8513d5b1d46fc6c1fc26c654c46f3b2a6468082531f0d60fc40",
+      "reference_count": 1,
+      "updated_at": "2026-08-25"
+    },
+    {
+      "slug": "gray-column-layered-architecture",
+      "name": "层带灰名列架构图",
+      "aliases": [
+        "gray column layered architecture",
+        "分层白皮书架构图",
+        "层带架构图",
+        "无连线分层架构图",
+        "浅蓝层带技术架构图",
+        "灰名列架构图"
+      ],
+      "status": "validated",
+      "portability_status": "untested",
+      "tags": [
+        "cyan-blue-green",
+        "gray-layer-column",
+        "hairline-outline-boxes",
+        "layered-stack",
+        "no-connectors",
+        "spanning-sidebar",
+        "technical-architecture"
+      ],
+      "best_for": [
+        "分层技术架构、平台能力总览、体系框架图，尤其是层级明确且每层条目较多的中文技术图"
+      ],
+      "not_for": [
+        "需要用箭头表达时序或因果的流程图、单节点极简图、以图像或照片为主体的叙事图；内容确实需要时仍可嵌入 Logo 与照片"
+      ],
+      "path": "templates/gray-column-layered-architecture/style-pack.json",
+      "fingerprint_sha256": "959d9ea35b1d1d786c37b3a46cdc2e3c2685a126b74be46f71e2bfb472b1818c",
+      "reference_count": 1,
+      "updated_at": "2026-08-25"
+    },
+    {
+      "slug": "macaron-nested-method-figure",
+      "name": "马卡龙套盒方法图",
+      "aliases": [
+        "macaron nested method figure",
+        "多面板方法图",
+        "淡彩嵌套方法图",
+        "论文方法总览图",
+        "马卡龙套盒图",
+        "马卡龙方法图"
+      ],
+      "status": "validated",
+      "portability_status": "passed",
+      "tags": [
+        "black-arrow-only",
+        "flat-vector-icons",
+        "method-overview",
+        "nested-panels",
+        "pastel"
+      ],
+      "best_for": [
+        "论文方法总览图、多阶段 pipeline、数据集构建流程、系统框架图"
+      ],
+      "not_for": [
+        "深色科技海报、数据图表、写实渲染图"
+      ],
+      "path": "templates/macaron-nested-method-figure/style-pack.json",
+      "fingerprint_sha256": "25ad6060b52ca6c66bdaccfc02e30a657fb4709b666719fcf5e511812b532559",
+      "reference_count": 1,
+      "updated_at": "2026-08-25"
+    },
+    {
+      "slug": "playful-cartoon-schematic",
+      "name": "俏皮卡通手绘示意图",
+      "aliases": [
+        "playful cartoon schematic",
+        "俏皮卡通示意图",
+        "卡通图标示意图",
+        "手写体技术示意图",
+        "漫画体方法图",
+        "马卡龙嵌套双轨图"
+      ],
+      "status": "validated",
+      "portability_status": "untested",
+      "tags": [
+        "dashed-group-frames",
+        "elbow-arrows",
+        "flat-cartoon-icons",
+        "nested-panels",
+        "pastel",
+        "technical-schematic"
+      ],
+      "best_for": [
+        "论文方法总览与项目汇报插图",
+        "面向非专业读者的科普机制图",
+        "高密度技术流程与方法总览图"
+      ],
+      "not_for": [
+        "大留白的商务简报页与海报",
+        "带坐标轴的定量数据图表"
+      ],
+      "path": "templates/playful-cartoon-schematic/style-pack.json",
+      "fingerprint_sha256": "aa7ad7b12e161f5fe5d7fd439d02241ef11c4fab9ae27b2a82919f1c89ad9aef",
+      "reference_count": 1,
+      "updated_at": "2026-08-25"
+    },
+    {
+      "slug": "research-proposal-roadmap",
+      "name": "科研申报总体路线图",
+      "aliases": [
+        "总体技术路线图",
+        "申报书路线图",
+        "竖版技术路线图",
+        "虚线行带路线图",
+        "行带路线图",
+        "课题总体路线图"
+      ],
+      "status": "validated",
+      "portability_status": "passed",
+      "tags": [
+        "banded-rows",
+        "nested-panels",
+        "portrait-canvas",
+        "research-roadmap",
+        "vertical-flow"
+      ],
+      "best_for": [
+        "课题申报书总体技术路线图、研究内容框架图、分阶段研究方案图"
+      ],
+      "not_for": [
+        "横构图汇报页、带坐标轴的数据图表、图片主导的宣传物料"
+      ],
+      "path": "templates/research-proposal-roadmap/style-pack.json",
+      "fingerprint_sha256": "4eae611e0dfd0b24c7f71e780b94effd96a16d52b182cf878d8002b515390df5",
+      "reference_count": 1,
+      "updated_at": "2026-08-25"
+    }
+  ]
+}

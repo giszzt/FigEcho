@@ -1,0 +1,10 @@
+interface:
+  display_name: "FigEcho"
+  short_description: "提取并复用技术图视觉系统，生成同风格新图"
+  icon_small: "./assets/figecho-mark.png"
+  icon_large: "./assets/figecho-hero.png"
+  brand_color: "#B06846"
+  default_prompt: "Use $figecho to extract the visual system from my reference technical figure and return a reusable modular prompt."
+
+policy:
+  allow_implicit_invocation: true
