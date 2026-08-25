@@ -195,6 +195,10 @@ FigEcho 迁移的是布局语法、组件规则、色彩关系、字体类别、
 - OpenAI bundled imagegen：图像生成、参考图角色与定向迭代方法。
 - [OpenClaw diagram-maker](https://github.com/openclaw/openclaw/tree/main/skills/diagram-maker)：内容节点、分组与关系的结构化方法。
 
+## Author
+
+[giszzt](https://github.com/giszzt) · Jisai / 极思狂想
+
 ## License
 
-MIT。Copyright (c) 2026 Jisai / 极思狂想。详见 [LICENSE](./LICENSE)。
+MIT。Copyright (c) 2026 giszzt / Jisai / 极思狂想。详见 [LICENSE](./LICENSE)。

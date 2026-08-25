@@ -3,7 +3,7 @@
   "display_name": "FigEcho",
   "description": "Extract reusable visual systems from reference technical diagrams, create complete prompts and PNG figures, and accumulate named Style Packs with original reference images for later reuse.",
   "version": "0.1.0",
-  "owner": "Jisai / 极思狂想",
+  "owner": "giszzt / Jisai / 极思狂想",
   "updated_at": "2026-08-25",
   "status": "active",
   "maturity_tier": "production",
@@ -20,7 +20,7 @@
   "reference_skills": ["OpenAI bundled imagegen", "openclaw/openclaw:diagram-maker", "freestylefly/awesome-gpt-image-2:gpt-image-2-style-library", "heygen-com/skills:visual-style", "heygen-com/hyperframes:talking-head-recut"],
   "target_platforms": ["openai", "claude", "generic", "agent-skills-compatible"],
   "license": "MIT",
-  "copyright": "Copyright (c) 2026 Jisai / 极思狂想",
+  "copyright": "Copyright (c) 2026 giszzt / Jisai / 极思狂想",
   "release_gates": [
     "mode_isolation",
     "style_fingerprint",

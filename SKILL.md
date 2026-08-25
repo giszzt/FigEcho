@@ -2,7 +2,7 @@
 name: figecho
 description: "Extract reusable visual systems from reference technical diagrams, architecture diagrams, scientific schematics, roadmaps, workflows, frameworks, and technical infographics. Create complete modular prompts, generate style-consistent PNG figures from new content, and save, search, name, validate, or reuse Style Packs with their original reference images. Use for 参考图风格抽取、技术图视觉语法、同风格技术图、技术路线图、架构图、科研示意图、方法框架图、风格模板库、保存或复用图片风格."
 metadata:
-  author: "Jisai / 极思狂想"
+  author: "giszzt / Jisai / 极思狂想"
   version: "0.1.0"
 ---
 
