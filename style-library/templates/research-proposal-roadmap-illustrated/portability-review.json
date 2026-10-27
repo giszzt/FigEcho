@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "distinct_topic": true,
+  "content_summary": "三阶段雨水处理概念流程：分流、剖面过滤、分支回用与传感监测；不是实际工程验证。",
+  "checks": {
+    "topology_replanned": true,
+    "icon_subjects_derived_from_new_content": true,
+    "color_roles_reassigned": true,
+    "no_source_content_carryover": true
+  },
+  "style_anchor_score": 94.5,
+  "visible_evidence": "四行古建变为三行雨水机制；插图改为管道/储水装置/滤床与传感器；颜色映射更改；无源图专名与数据。最终校正图例与无依据标签。",
+  "evidence_boundary": "单主题迁移和模型视觉自评；不代表全部主题均已验证。"
+}

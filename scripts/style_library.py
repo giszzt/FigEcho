@@ -25,6 +25,65 @@ VALID_PORTABILITY_STATUSES = {"untested", "passed"}
 VALID_IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 HEX_COLOR_RE = re.compile(r"#[0-9A-Fa-f]{6}\b")
+FACETS = {
+    "use_cases": {"research-proposal": "科研申报", "paper": "论文", "technical-report": "技术汇报", "education": "科普"},
+    "archetypes": {"roadmap": "阶段路线", "architecture": "分层架构", "pipeline": "流程", "feedback": "反馈循环", "comparison": "对比", "mechanism": "机制"},
+    "expressions": {"text-framework": "文字框架", "illustrated-mechanism": "图示机制", "evidence-images": "证据图片", "mixed": "混合表达"},
+}
+
+
+def organization(pack: dict[str, Any]) -> dict[str, Any]:
+    """Legacy packs form a singleton family without changing their stored assets."""
+    return pack.get("organization") or {
+        "family_id": pack["slug"], "family_name": pack["name"],
+        "variant_id": "default", "variant_name": "默认版",
+        "facets": {key: [] for key in FACETS},
+    }
+
+
+def validate_organization(value: dict[str, Any]) -> None:
+    if not isinstance(value, dict):
+        raise ValueError("organization must be an object")
+    for key in ("family_id", "variant_id"):
+        if not SLUG_RE.fullmatch(str(value.get(key, ""))):
+            raise ValueError(f"organization {key} must be a semantic slug")
+    for key in ("family_name", "variant_name"):
+        if not isinstance(value.get(key), str) or not value[key].strip():
+            raise ValueError(f"organization {key} is required")
+    facets = value.get("facets", {})
+    if not isinstance(facets, dict) or set(facets) - set(FACETS):
+        raise ValueError("unknown classification dimension")
+    for key, vocabulary in FACETS.items():
+        values = facets.get(key, [])
+        if not isinstance(values, list) or any(not isinstance(v, str) or v not in vocabulary for v in values):
+            raise ValueError(f"invalid values for classification {key}")
+
+
+def classify_pack(args: argparse.Namespace) -> dict[str, Any]:
+    root = args.library.resolve()
+    pack_dir, pack = get_pack(root, args.slug)
+    value = json.loads(json.dumps(organization(pack)))
+    for key in ("family_id", "family_name", "variant_id", "variant_name"):
+        if getattr(args, key, None) is not None:
+            value[key] = getattr(args, key)
+    for key in FACETS:
+        if getattr(args, key, None) is not None:
+            value.setdefault("facets", {})[key] = sorted(set(getattr(args, key)))
+    validate_organization(value)
+    for entry in ensure_library(root).get("templates", []):
+        if entry["slug"] == args.slug:
+            continue
+        other = organization(entry)
+        if other["family_id"] == value["family_id"]:
+            if other["family_name"] != value["family_name"]:
+                raise ValueError("family_name must agree with existing family members")
+            if other["variant_id"] == value["variant_id"]:
+                raise ValueError("variant_id must be unique within a family")
+    pack["organization"] = value
+    pack["updated_at"] = today()
+    atomic_json(pack_dir / PACK_NAME, pack)
+    update_catalog(root, pack)
+    return {"ok": True, "action": "classify", "slug": args.slug, "organization": value}
 ICON_EXAMPLE_ENUMERATION_RE = re.compile(
     r"(例如|可使用|包括|比如|such as|for example|including)[^。\n]{0,240}(、|,)[^。\n]{0,240}(、|,)",
     re.IGNORECASE,
@@ -248,6 +307,7 @@ def validate_prompt_asset(prompt: str, style: dict[str, Any]) -> None:
 
 def compact_entry(pack: dict[str, Any]) -> dict[str, Any]:
     return {
+        **({"organization": pack["organization"]} if "organization" in pack else {}),
         "slug": pack["slug"],
         "name": pack["name"],
         "aliases": pack.get("aliases", []),
@@ -631,7 +691,17 @@ def score_entry(entry: dict[str, Any], query: str) -> int:
     tags = [str(value).casefold() for value in entry.get("tags", [])]
     best_for = [str(value).casefold() for value in entry.get("best_for", [])]
     labels = [name, slug, *aliases]
+    org = organization(entry)
+    facets = org.get("facets", {})
+    classification_labels = [org["family_name"], org["family_id"], org["variant_name"], org["variant_id"]]
+    classification_labels += [label for key, values in facets.items() for v in values for label in (v, FACETS.get(key, {}).get(v, v))]
     score = 0
+    # Shared family words aid recall; explicit expression preference outranks fuzzy overlap.
+    score += 12 * sum(1 for label in classification_labels if label and label in needle)
+    for value in facets.get("expressions", []):
+        hints = {"illustrated-mechanism": ("图示", "插图", "带图"), "text-framework": ("纯文字", "文字框架"), "evidence-images": ("证据", "实拍"), "mixed": ("混合",)}[value]
+        if any(hint in needle for hint in hints):
+            score += 70
     if any(needle == value for value in labels):
         score += 100
     if any(needle in value for value in labels):
@@ -662,6 +732,11 @@ def search_catalog(args: argparse.Namespace) -> dict[str, Any]:
             continue
         if not args.include_archived and entry.get("status") == "archived":
             continue
+        org = organization(entry)
+        if getattr(args, "family", None) and org["family_id"] != args.family:
+            continue
+        if any(getattr(args, key, None) and not set(getattr(args, key)).issubset(org.get("facets", {}).get(key, [])) for key in FACETS):
+            continue
         score = score_entry(entry, args.query)
         if score > 0:
             results.append({**entry, "score": score})
@@ -673,12 +748,21 @@ def search_catalog(args: argparse.Namespace) -> dict[str, Any]:
             str(item.get("slug", "")),
         )
     )
+    groups: dict[str, dict[str, Any]] = {}
+    for entry in results:
+        org = organization(entry)
+        group = groups.setdefault(org["family_id"], {"family_id": org["family_id"], "family_name": org["family_name"], "recommended_slug": entry["slug"], "variants": []})
+        group["variants"].append({**entry, "variant_id": org["variant_id"], "variant_name": org["variant_name"]})
+    selected_groups = list(groups.values())[:args.limit]
     return {
         "ok": True,
         "action": "search",
         "query": args.query,
         "count": len(results[: args.limit]),
         "results": results[: args.limit],
+        "family_count": len(selected_groups),
+        "groups": selected_groups,
+        "total_matches": len(results),
     }
 
 
@@ -719,6 +803,8 @@ def validate_library(root: Path) -> dict[str, Any]:
         templates = []
     slugs: set[str] = set()
     fingerprints: dict[str, str] = {}
+    family_names: dict[str, str] = {}
+    variants: set[tuple[str, str]] = set()
     for entry in templates:
         if not isinstance(entry, dict):
             failures.append("catalog entry must be an object")
@@ -734,6 +820,19 @@ def validate_library(root: Path) -> dict[str, Any]:
             continue
         if pack.get("slug") != slug:
             failures.append(f"pack slug mismatch: {slug}")
+        try:
+            org = organization(pack)
+            validate_organization(org)
+            family_id = org["family_id"]
+            if family_id in family_names and family_names[family_id] != org["family_name"]:
+                failures.append(f"inconsistent family name: {family_id}")
+            family_names[family_id] = org["family_name"]
+            pair = (family_id, org["variant_id"])
+            if pair in variants:
+                failures.append(f"duplicate variant in family: {pair}")
+            variants.add(pair)
+        except ValueError as exc:
+            failures.append(f"pack {slug}: {exc}")
         if pack.get("status") not in VALID_STATUSES:
             failures.append(f"pack {slug} has invalid status")
         portability_status = pack.get("portability_status", "untested")
@@ -806,13 +905,66 @@ def validate_library(root: Path) -> dict[str, Any]:
                     failures.append(f"portable pack {slug} has invalid portability review: {exc}")
         elif pack.get("status") != "archived":
             warnings.append(f"pack has not passed a distinct-topic portability review: {slug}")
+    try:
+        status = gallery_module().gallery_status(root)
+    except Exception as exc:
+        status = {"built": False, "stale": True, "reason": f"gallery builder unavailable ({exc})"}
+    if status.get("stale"):
+        warnings.append(
+            "browsable gallery is out of date: " + str(status.get("reason", "rebuild with gallery"))
+        )
     return {
         "ok": not failures,
         "library": str(root),
         "template_count": len(templates),
         "failures": failures,
         "warnings": warnings,
+        "gallery": status,
     }
+
+
+MUTATING_COMMANDS = {"add", "promote", "certify", "archive", "rename", "refresh", "classify"}
+
+
+def gallery_module():
+    """Import the page builder lazily so library commands never depend on it."""
+    scripts_dir = str(Path(__file__).resolve().parent)
+    if scripts_dir not in sys.path:
+        sys.path.insert(0, scripts_dir)
+    import gallery
+
+    return gallery
+
+
+def rebuild_gallery(root: Path) -> dict[str, Any]:
+    """Every write goes through this module, so the page can never drift."""
+    if os.environ.get("FIGECHO_GALLERY_AUTOBUILD", "1") == "0":
+        return {"ok": True, "skipped": "FIGECHO_GALLERY_AUTOBUILD=0"}
+    try:
+        result = gallery_module().build_gallery(root)
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+    return {
+        "ok": True,
+        "path": result["path"],
+        "style_count": result["style_count"],
+        "family_count": result["family_count"],
+    }
+
+
+def gallery_command(args: argparse.Namespace) -> dict[str, Any]:
+    root = args.library.resolve()
+    module = gallery_module()
+    if args.status:
+        return {"ok": True, "action": "gallery-status", **module.gallery_status(root)}
+    result = module.build_gallery(
+        root, out=args.out, thumbs=not args.no_thumbnails, exclude=args.exclude
+    )
+    if args.open:
+        import webbrowser
+
+        webbrowser.open(Path(result["path"]).as_uri())
+    return result
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -873,6 +1025,17 @@ def build_parser() -> argparse.ArgumentParser:
     refresh_parser.add_argument("slug")
     refresh_parser.set_defaults(handler=refresh_pack)
 
+    classify_parser = subparsers.add_parser("classify")
+    classify_parser.add_argument("slug")
+    for field in ("family-id", "family-name", "variant-id", "variant-name"):
+        classify_parser.add_argument("--" + field)
+    for field, vocabulary in FACETS.items():
+        classify_parser.add_argument("--" + field.replace("_", "-"), action="append", choices=list(vocabulary))
+    classify_parser.set_defaults(handler=classify_pack)
+
+    taxonomy_parser = subparsers.add_parser("taxonomy")
+    taxonomy_parser.set_defaults(handler=lambda args: {"ok": True, "action": "taxonomy", "facets": FACETS, "visual_family": "organization.family_id; dynamically grouped from catalog"})
+
     search_parser = subparsers.add_parser("search")
     search_parser.add_argument("query")
     search_parser.add_argument("--limit", type=int, default=10)
@@ -883,10 +1046,22 @@ def build_parser() -> argparse.ArgumentParser:
     list_parser.add_argument("--limit", type=int, default=100)
     list_parser.add_argument("--include-archived", action="store_true")
     list_parser.set_defaults(handler=list_catalog)
+    for filtered_parser in (search_parser, list_parser):
+        filtered_parser.add_argument("--family")
+        for field, vocabulary in FACETS.items():
+            filtered_parser.add_argument("--" + field.replace("_", "-"), action="append", choices=list(vocabulary))
 
     show_parser = subparsers.add_parser("show")
     show_parser.add_argument("slug")
     show_parser.set_defaults(handler=show_pack)
+
+    gallery_parser = subparsers.add_parser("gallery")
+    gallery_parser.add_argument("--out", type=Path)
+    gallery_parser.add_argument("--no-thumbnails", action="store_true")
+    gallery_parser.add_argument("--exclude", action="append", default=[])
+    gallery_parser.add_argument("--open", action="store_true")
+    gallery_parser.add_argument("--status", action="store_true")
+    gallery_parser.set_defaults(handler=gallery_command)
 
     validate_parser = subparsers.add_parser("validate")
     validate_parser.set_defaults(
@@ -901,6 +1076,8 @@ def main() -> None:
     args = parser.parse_args()
     try:
         result = args.handler(args)
+        if args.command in MUTATING_COMMANDS and result.get("ok"):
+            result["gallery"] = rebuild_gallery(args.library.resolve())
     except Exception as exc:
         result = {
             "ok": False,

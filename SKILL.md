@@ -3,7 +3,7 @@ name: figecho
 description: "Extract reusable visual systems from reference technical diagrams, architecture diagrams, scientific schematics, roadmaps, workflows, frameworks, and technical infographics. Create complete modular prompts, generate style-consistent PNG figures from new content, and save, search, name, validate, or reuse Style Packs with their original reference images. Use for 参考图风格抽取、技术图视觉语法、同风格技术图、技术路线图、架构图、科研示意图、方法框架图、风格模板库、保存或复用图片风格."
 metadata:
   author: "giszzt / Jisai / 极思狂想"
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # FigEcho
@@ -12,11 +12,14 @@ metadata:
 
 ## 风格来源
 
+模板按“风格家族 → 表达变体”组织。查看库时优先呈现 search/list 的 groups，每个家族列出推荐变体，避免相近模板挤占候选。用途、关系图型与表达方式是可交叉筛选的分类；标题、页脚、阶段数及画幅仍是本次任务选项。点名图示版时选择独立图示变体，不能仅向纯文字提示词追加“允许插图”。
+
 任何任务在做风格判断之前，先确定这次的风格从哪里来。这一步必须发生在形成任何风格想法之前，一旦开始构想视觉语法就已经晚了。
 
 - 用户点名模板时，从 [Style Library](references/style-library.md)精确解析 slug 或 name。
 - 用户本轮给了参考图时，以参考图为风格来源。
-- 用户既没给参考图也没点名模板时，先执行 `python scripts/style_library.py search "<图类型与内容关键词>"`，再执行一次 `list` 确认没有漏掉的候选，然后把命中结果按 name、适用场景和状态列给用户挑选，说明推荐哪一个以及理由。
+- 用户既没给参考图也没点名模板时，先执行 `python scripts/style_library.py search "<图类型与内容关键词>"`，再执行一次 `list` 确认没有漏掉的候选，然后把命中结果按 name、适用场景和状态列给用户挑选，说明推荐哪一个以及理由。同一轮把可视画廊的路径一并给出，让用户能直接看到各风格的成图与原始参考图再定；画廊路径与同步机制见 [Style Library](references/style-library.md)。
+- 已点名风格、选定变体或给了参考图时不提画廊，画廊只是选不出来时的补充入口。
 - 检索确实没有可用模板时，向用户说明库里没有匹配风格，并询问是走原创新风格，还是由用户补一张参考图。得到明确答复前不进入原创风格。
 - 用户明确说“不用库里的”“重新做一个风格”时，才走原创风格分支。此时 style-spec.json 的风格锚点来自主动设计而非参考图证据，必须在交付里说明这是原创风格，不声称与任何已有风格同族。
 
@@ -72,13 +75,14 @@ metadata:
 
 - Style Pack 的视觉锚点使用原始参考图，不以合成样板或预览图替代。
 - 模板 name 默认取 4–8 字的中文名，按「特征词 + 图类型」组合，特征词必须是该风格独有的可观察特征（如“马卡龙套盒方法图”）；禁止“科技风”“简约风”一类通用形容词和无信息编号，slug 用语义对应的英文短横线写法。保存前先把候选名说给用户确认。
-- 入库必须同时写 aliases，覆盖用户可能的 4–6 种中文叫法；检索只认 catalog 的 name、slug、aliases、tags、best_for，文件夹名和提示词正文都不参与匹配。用户说出未收录的叫法时用 `rename --add-alias` 补进库。
+- 入库必须同时写 aliases，覆盖用户可能的 4–6 种中文叫法；检索匹配 catalog 的名称、别名、标签、用途及家族/变体分类，文件夹名和提示词正文不参与匹配。用户说出未收录的叫法时用 `rename --add-alias` 补进库。
 - 用户点名某个风格却搜不到时，先确认当前 skill 安装读的是哪个 style-library，再判断是模板缺失还是别名缺失，不要直接凭记忆重建风格。
 - 模板默认状态为 candidate；通过实际成图的逐锚点评分后才能成为 validated。
 - rendered validation 与 portability validation 分开；只有完成不同主题迁移测试并通过四项适配检查后，portability_status 才能从 untested 变为 passed。
 - 复用模板时，原始参考图与完整模板 Prompt 必须共同进入生成调用。
 - 风格指纹相同的模板不重复入库；差异不足以形成新视觉家族时更新或归档已有模板。
 - 只有用户明确要求保存时才持久化参考图。随包发布的是 style-library/templates 里的示例模板，用户新建的模板属于本地个人资产，不自动进入任何发布包。
+- 可视画廊由写库命令自动重建，不手工维护页面；画廊产物内嵌个人参考图的缩略图，属于本地资产，不进发布包也不外传。
 
 ## 用户呈现
 
@@ -130,5 +134,6 @@ image-and-prompt：
     python scripts/style_library.py add --job-dir ./figecho-job --name "马卡龙套盒方法图" --slug macaron-nested-method-figure --alias "马卡龙方法图" --alias "淡彩嵌套方法图"
     python scripts/style_library.py rename macaron-nested-method-figure --add-alias "奶油色方法图"
     python scripts/style_library.py search "马卡龙方法图"
+    python scripts/style_library.py gallery --open
 
 权限、隐私和失败处理见 [运行边界](references/trust-boundary.md)。

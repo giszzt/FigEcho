@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "generated_image": "output/final.png",
+  "review_basis": "visible-generated-image",
+  "anchor_scores": [
+    {
+      "anchor_id": "three-tier-bridged-bands",
+      "score": 4,
+      "visible_evidence": "入口三卡、浅灰大区域、底部四卡，层间各两条垂直双向箭头加斜体说明，每层左上粗体层标题",
+      "mismatch": "无",
+      "next_action": "保持"
+    },
+    {
+      "anchor_id": "two-tone-cards-with-pills",
+      "score": 4,
+      "visible_evidence": "淡蓝填充蓝描边卡与白底灰描边卡并存，卡内标题、斜体说明、无描边胶囊顺序一致",
+      "mismatch": "无",
+      "next_action": "保持"
+    },
+    {
+      "anchor_id": "dashed-trust-frame",
+      "score": 3,
+      "visible_evidence": "主体区内粗虚线圆角边界，上沿缺口托住标签，右缘细虚线折线从底层回到入口层",
+      "mismatch": "粗虚线比参考略细，折线箭头略小",
+      "next_action": "可接受"
+    },
+    {
+      "anchor_id": "handset-bold-italic-captions",
+      "score": 3,
+      "visible_evidence": "粗体标题加灰色与蓝色斜体说明，胶囊常规字重，标签小写短语",
+      "mismatch": "字体更偏等宽几何，手写感弱于参考",
+      "next_action": "可接受"
+    },
+    {
+      "anchor_id": "tiny-color-icons-plus-dark-glyphs",
+      "score": 4,
+      "visible_evidence": "入口层深色线稿笔记本、手机、汽车，其余卡片标题左侧全彩扁平小图标",
+      "mismatch": "无",
+      "next_action": "保持"
+    },
+    {
+      "anchor_id": "cool-gray-single-blue",
+      "score": 4,
+      "visible_evidence": "冷灰近白底，只有蓝色一个彩色家族三档，彩色仅在小图标",
+      "mismatch": "无",
+      "next_action": "保持"
+    }
+  ],
+  "weighted_score": 92.5,
+  "dimension_passes": [
+    "layout",
+    "components",
+    "connectors",
+    "typography",
+    "iconography",
+    "palette"
+  ],
+  "verdict": "pass"
+}

@@ -1,0 +1,223 @@
+{
+  "schema_version": "3.0.0",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "notes": "original reference retained in this Style Pack"
+    },
+    {
+      "path": "references/reference-02.png",
+      "role": "style_reference",
+      "notes": "original reference retained in this Style Pack"
+    }
+  ],
+  "evidence_scope": {
+    "reference_count": 2,
+    "generalization": "multi-reference-shared-patterns"
+  },
+  "style_summary": "冷灰近白画布上，蓝色是唯一的彩色家族，由淡蓝填充圆角卡片加饱和蓝描边承担核心主体，白底灰描边卡片承担辅助部分，卡片内用无描边淡色胶囊排列短词。整图是三层横向分区，层与层之间用带斜体说明的细双向箭头连接，主体区域外圈是粗虚线圆角边界，边界上沿留缺口放标签。标题用粗体手写感无衬线，说明用灰色斜体，卡片标题左侧缀一枚全彩扁平小图标。这些规则合在一起读起来像一页编辑过的系统说明书，不像演示文稿模板。",
+  "signature_anchors": [
+    {
+      "id": "three-tier-bridged-bands",
+      "dimension": "layout",
+      "rule": "整图按纵向三层展开，顶层是一排等宽入口卡片，中层是占画面一半以上高度的大圆角区域，底层是一排等宽卡片，层与层之间只靠垂直双向箭头和斜体说明衔接，每层左上角有一行粗体层标题",
+      "evidence": [
+        "reference-1 的 surfaces / cloud / host services 三层",
+        "reference-2 的 devices / relay / model 三层"
+      ],
+      "weight": 22,
+      "confidence": "high",
+      "prompt_token": "三层横向分区：顶部一排等宽卡片、中部一个套着粗虚线边界的大型圆角区域、底部一排等宽卡片，层间用带斜体说明的垂直双向箭头连接，每层左上角放粗体层标题"
+    },
+    {
+      "id": "two-tone-cards-with-pills",
+      "dimension": "components",
+      "rule": "容器分两种：淡蓝填充加饱和蓝描边的圆角卡片表示核心主体，白底加灰描边的圆角卡片表示辅助或复用部分；卡片内部先是粗体标题，再是斜体灰色说明，再是一排无描边的淡色胶囊标签",
+      "evidence": [
+        "reference-1 的 the agent / the home directory / background jobs 与 Chromium 卡片的对照",
+        "reference-2 的 nanoMuse Cloud 与 sign-in 等白底卡片"
+      ],
+      "weight": 22,
+      "confidence": "high",
+      "prompt_token": "两种圆角卡片并存：淡蓝填充加饱和蓝描边的卡片表示核心主体，白底加灰描边的卡片表示辅助部分，卡片内按粗体标题、斜体灰色说明、无描边淡色胶囊标签的顺序排列"
+    },
+    {
+      "id": "dashed-trust-frame",
+      "dimension": "connectors",
+      "rule": "主体区域外圈是粗虚线圆角边界，边界上沿断开一段，用画布底色小块托住一行灰色边界标签；层间连接是细实线双向箭头，旁边配斜体蓝色或灰色说明；跨层回路用细虚线折线沿画布右侧边缘闭合",
+      "evidence": [
+        "reference-1 的 container boundary 虚线框与右侧 approval card 折线",
+        "reference-2 的 relay 虚线框与右侧回到模型层的折线"
+      ],
+      "weight": 16,
+      "confidence": "high",
+      "prompt_token": "主体区域外圈用粗虚线圆角边界，边界上沿断开一段托住灰色标签；层间用细实线双向箭头配斜体说明，跨层回路用细虚线折线沿右侧边缘闭合"
+    },
+    {
+      "id": "handset-bold-italic-captions",
+      "dimension": "typography",
+      "rule": "标题与卡片标题用带手写感的粗体无衬线，说明与箭头标注用同一字族的灰色斜体，胶囊内是常规字重短词，所有标签以小写短语为主、句末不加标点",
+      "evidence": [
+        "reference-1 全部卡片标题与斜体说明",
+        "reference-2 的图题与箭头标注"
+      ],
+      "weight": 14,
+      "confidence": "medium",
+      "prompt_token": "粗体手写感无衬线负责层标题与卡片标题，灰色斜体小字负责说明与箭头标注，胶囊内用常规字重短词，标签以小写短语为主"
+    },
+    {
+      "id": "tiny-color-icons-plus-dark-glyphs",
+      "dimension": "iconography",
+      "rule": "卡片标题左侧缀一枚约一个字高的全彩扁平小图标，入口层的设备类对象用深色粗轮廓线稿大图标，图标都直接放在卡片上不套底板",
+      "evidence": [
+        "reference-1 的各卡片标题前小图标与顶部设备图标",
+        "reference-2 的四个设备线稿"
+      ],
+      "weight": 12,
+      "confidence": "high",
+      "prompt_token": "卡片标题左侧缀一枚约一个字高的全彩扁平小图标，入口层对象用深色粗轮廓线稿图标，图标直接放在卡片上不套底板"
+    },
+    {
+      "id": "cool-gray-single-blue",
+      "dimension": "palette",
+      "rule": "冷灰近白画布，唯一的彩色家族是蓝色，分淡蓝填充、胶囊蓝、饱和蓝描边三档，其余是中性灰与近黑文字，彩色只出现在小图标里",
+      "evidence": [
+        "reference-1 与 reference-2 的卡片与箭头配色",
+        "reference-2 的蓝色边框与蓝色箭头"
+      ],
+      "weight": 14,
+      "confidence": "high",
+      "prompt_token": "冷灰近白画布加单一蓝色家族，淡蓝填充、胶囊蓝和饱和蓝描边三档，其余全是中性灰与近黑文字，彩色只留给小图标"
+    }
+  ],
+  "visual_system": {
+    "layout": {
+      "observations": [
+        "两张图都是三层纵向结构，层与层之间留出约一张卡片高度的空白放箭头与说明",
+        "顶层卡片等宽等高成一排，底层卡片同样等宽成一排，中层区域最高",
+        "页边距充足，卡片之间间距约为卡片内边距的一半，不贴边"
+      ],
+      "transfer_rules": [
+        "按新内容的层次和边界重算层数与每层卡片数，保持三层上下节奏与层间留白",
+        "顶底两层卡片等宽等高，中层按内部分组决定行数"
+      ]
+    },
+    "components": {
+      "observations": [
+        "核心主体用淡蓝填充加蓝色描边，辅助部分用白底灰描边",
+        "圆角半径约为卡片高度的八分之一",
+        "胶囊标签无描边，淡灰蓝填充，圆角接近全圆"
+      ],
+      "transfer_rules": [
+        "核心主体与辅助部分用填充和描边两档区分，不新增第三种卡片造型",
+        "胶囊只放短词，每张卡片的胶囊排成一到两行"
+      ]
+    },
+    "connectors": {
+      "observations": [
+        "层间箭头是细实线双向箭头，箭头为实心三角",
+        "主体边界是粗虚线，线宽约为普通描边的三倍",
+        "右侧有一条细虚线折线从底层绕回顶层"
+      ],
+      "transfer_rules": [
+        "箭头只出现在层间与必要回路，层内卡片靠相邻与对齐表达关系",
+        "边界虚线只包住真正处于同一边界内的内容"
+      ]
+    },
+    "palette": {
+      "observations": [
+        "画布冷灰近白约 #F4F5F7，卡片底色白 #FFFFFF 或淡蓝 #EAF2FD",
+        "蓝色描边与箭头色相一致，约 #1566D6，中等饱和度",
+        "文字近黑约 #1A1D21，说明文字中灰约 #4B5563"
+      ],
+      "transfer_rules": [
+        "背景、文字、描边的灰阶角色固定，蓝色三档固定，不引入第二个彩色家族",
+        "按新内容的层级决定哪些卡片用淡蓝填充，其余用白底"
+      ]
+    },
+    "typography": {
+      "observations": [
+        "层标题与卡片标题为粗体，字号约为说明字的一点五倍",
+        "说明与箭头标注是斜体灰色，字号最小",
+        "胶囊内文字常规字重，字号介于标题与说明之间"
+      ],
+      "transfer_rules": [
+        "层标题、卡片标题、胶囊、斜体说明四级字号分明，不再增加级别",
+        "文字全部左对齐，卡片内行高宽松"
+      ]
+    },
+    "iconography": {
+      "observations": [
+        "小图标全彩扁平，约一个字高，位于卡片标题左侧",
+        "入口层设备图标是深色粗轮廓线稿，正视，细节少"
+      ],
+      "transfer_rules": [
+        "图标题材从新内容的实体和动作里派生，再用扁平全彩小图标的画法绘制",
+        "每张卡片至多一枚小图标，胶囊内不放图标"
+      ]
+    },
+    "surface": {
+      "observations": [
+        "纯平面，没有投影、渐变或纹理",
+        "层级只靠填充、描边粗细与虚线区分"
+      ],
+      "transfer_rules": [
+        "默认采用纯平面处理，层级由填充和描边承担",
+        "用户必需的徽标或截图可作为素材插入，并统一到同样的圆角与描边里"
+      ]
+    },
+    "density": {
+      "observations": [
+        "每张卡片最多四到六个胶囊，每个胶囊一到三个词",
+        "整图文字多但每处都很短，留白集中在层间与卡片内边距"
+      ],
+      "transfer_rules": [
+        "宁可删掉次要胶囊也保留卡片内边距和层间留白",
+        "说明文字只放一到两行斜体，不写成段落"
+      ]
+    }
+  },
+  "transfer_boundary": {
+    "layout_policy": "preserve-visual-rhythm-adapt-to-new-topology",
+    "icon_subject_policy": "derive-from-new-content",
+    "color_role_policy": "assign-by-new-content-hierarchy",
+    "supporting_asset_policy": "allow-user-provided-or-content-required",
+    "hard_constraints": [
+      "preserve user-provided meaning and relationships",
+      "keep all required text legible and accurate",
+      "exclude source-specific content from new figures"
+    ],
+    "style_defaults": [
+      "默认采用纯平面处理，层级由填充、描边粗细和虚线承担",
+      "默认只使用蓝色一个彩色家族，彩色图标除外"
+    ]
+  },
+  "conditional_rules": [
+    "底部图例行只在图中同时存在两种以上卡片造型或线型时出现",
+    "跨层回路折线只在内容确有从底层回到顶层的流向时出现"
+  ],
+  "anti_generic": [
+    "不要把三层压成同一种卡片阵列，保留顶层入口行、中层大区域、底层服务行的高度差，并用粗虚线边界托住中层",
+    "不要只复用蓝色，同时复用胶囊标签、斜体说明、缺口虚线边界和全彩小图标，否则会滑向通用蓝色企业模板"
+  ],
+  "source_exclusions": [
+    "literal:Muse",
+    "literal:nanoMuse",
+    "literal:Meta",
+    "literal:Sentinel",
+    "literal:Chromium",
+    "literal:OpenMinis",
+    "literal:DeepSeek",
+    "literal:UI-TARS",
+    "literal:Hands",
+    "literal:Vault",
+    "literal:Wallet",
+    "literal:Feed",
+    "literal:SOUL.md",
+    "literal:AGENTS.md",
+    "literal:MEMORY.md",
+    "literal:IDENTITY.md",
+    "literal:USER.md"
+  ]
+}

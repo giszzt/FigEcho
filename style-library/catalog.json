@@ -1,9 +1,28 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-25",
+  "updated_at": "2026-10-27",
   "reference_policy": "original-reference-images",
   "templates": [
     {
+      "organization": {
+        "family_id": "black-frame-serif-architecture",
+        "family_name": "黑框衬线架构图",
+        "variant_id": "default",
+        "variant_name": "默认版",
+        "facets": {
+          "use_cases": [
+            "paper",
+            "technical-report"
+          ],
+          "archetypes": [
+            "architecture",
+            "feedback"
+          ],
+          "expressions": [
+            "mixed"
+          ]
+        }
+      },
       "slug": "black-frame-serif-architecture",
       "name": "黑框衬线架构图",
       "aliases": [
@@ -25,17 +44,55 @@
         "technical-architecture"
       ],
       "best_for": [
-        "Dense research frameworks, technical architectures, staged pathways, and governance diagrams."
+        "信息密集的研究框架图、技术架构图、分阶段实施路径图、治理体系图"
       ],
       "not_for": [
-        "Image-dominant photorealistic storytelling, minimalist one-node diagrams, dashboards, or decorative marketing graphics. Supporting photos and logos remain allowed when content requires them."
+        "以写实图像为主的叙事图、只有一两个节点的极简图、数据仪表盘、装饰性营销图；内容确实需要时仍可嵌入辅助照片与 Logo"
       ],
       "path": "templates/black-frame-serif-architecture/style-pack.json",
-      "fingerprint_sha256": "c822b94c074c510622dc40e407f7a55525488fe9aacb7b024d286854886205aa",
+      "fingerprint_sha256": "6144d331041c0c190d7355087ad4a73d09c94452350c8b8f1026100639194931",
       "reference_count": 1,
-      "updated_at": "2026-08-25"
+      "updated_at": "2026-09-23"
     },
     {
+      "slug": "blue-gray-pill-architecture-figure",
+      "name": "蓝灰胶囊架构图",
+      "aliases": [
+        "Muse架构图风格",
+        "三层虚线边界图",
+        "斜体说明架构图",
+        "胶囊标签架构图",
+        "蓝灰系统说明图"
+      ],
+      "status": "validated",
+      "portability_status": "untested",
+      "tags": [],
+      "best_for": [],
+      "not_for": [],
+      "path": "templates/blue-gray-pill-architecture-figure/style-pack.json",
+      "fingerprint_sha256": "9c4818cc43d8890b8f955c4d9f1f0892f0b2e632a6f5bf7c84f12b43d9fd13ab",
+      "reference_count": 2,
+      "updated_at": "2026-10-27"
+    },
+    {
+      "organization": {
+        "family_id": "charcoal-dashed-node-explainer",
+        "family_name": "炭黑虚线节点科普图",
+        "variant_id": "default",
+        "variant_name": "默认版",
+        "facets": {
+          "use_cases": [
+            "education"
+          ],
+          "archetypes": [
+            "mechanism",
+            "pipeline"
+          ],
+          "expressions": [
+            "illustrated-mechanism"
+          ]
+        }
+      },
       "slug": "charcoal-dashed-node-explainer",
       "name": "炭黑虚线节点科普图",
       "aliases": [
@@ -65,9 +122,26 @@
       "path": "templates/charcoal-dashed-node-explainer/style-pack.json",
       "fingerprint_sha256": "6061d490dfd2a8513d5b1d46fc6c1fc26c654c46f3b2a6468082531f0d60fc40",
       "reference_count": 1,
-      "updated_at": "2026-08-25"
+      "updated_at": "2026-09-22"
     },
     {
+      "organization": {
+        "family_id": "gray-column-layered-architecture",
+        "family_name": "层带灰名列架构图",
+        "variant_id": "default",
+        "variant_name": "默认版",
+        "facets": {
+          "use_cases": [
+            "technical-report"
+          ],
+          "archetypes": [
+            "architecture"
+          ],
+          "expressions": [
+            "text-framework"
+          ]
+        }
+      },
       "slug": "gray-column-layered-architecture",
       "name": "层带灰名列架构图",
       "aliases": [
@@ -98,9 +172,131 @@
       "path": "templates/gray-column-layered-architecture/style-pack.json",
       "fingerprint_sha256": "959d9ea35b1d1d786c37b3a46cdc2e3c2685a126b74be46f71e2bfb472b1818c",
       "reference_count": 1,
-      "updated_at": "2026-08-25"
+      "updated_at": "2026-09-22"
     },
     {
+      "organization": {
+        "family_id": "handdrawn-storyboard-roadmap",
+        "family_name": "手绘分镜路线图",
+        "variant_id": "illustrated-mechanism",
+        "variant_name": "卡通分镜版",
+        "facets": {
+          "use_cases": [
+            "education",
+            "paper",
+            "technical-report"
+          ],
+          "archetypes": [
+            "comparison",
+            "mechanism",
+            "pipeline",
+            "roadmap"
+          ],
+          "expressions": [
+            "illustrated-mechanism"
+          ]
+        }
+      },
+      "slug": "handdrawn-storyboard-roadmap",
+      "name": "手绘分镜路线图",
+      "aliases": [
+        "handdrawn storyboard roadmap",
+        "卡通技术路线图",
+        "手写体流程图",
+        "手绘科普机制图",
+        "白底分镜图",
+        "科研过程分镜图"
+      ],
+      "status": "validated",
+      "portability_status": "untested",
+      "tags": [
+        "blue-gray-panels",
+        "cartoon-icons",
+        "handwritten-labels",
+        "stage-rows",
+        "two-level-arrows"
+      ],
+      "best_for": [
+        "技术机制科普、分阶段研究路线、实验流程与案例对比"
+      ],
+      "not_for": [
+        "精确数据图表、极简海报或需要大量长段正文的图版"
+      ],
+      "path": "templates/handdrawn-storyboard-roadmap/style-pack.json",
+      "fingerprint_sha256": "39e9e749f528cf4aec81510dac200f26b076ed4ee3cde246f45e1032761a92db",
+      "reference_count": 3,
+      "updated_at": "2026-10-08"
+    },
+    {
+      "organization": {
+        "family_id": "lavender-tonal-architecture",
+        "family_name": "薰衣草淡紫架构图",
+        "variant_id": "default",
+        "variant_name": "默认版",
+        "facets": {
+          "use_cases": [
+            "paper",
+            "technical-report"
+          ],
+          "archetypes": [
+            "architecture",
+            "pipeline",
+            "roadmap"
+          ],
+          "expressions": [
+            "mixed"
+          ]
+        }
+      },
+      "slug": "lavender-tonal-architecture-figure",
+      "name": "薰衣草淡紫架构图",
+      "aliases": [
+        "lavender handwritten architecture",
+        "手写圆体架构图",
+        "淡紫手写路线图",
+        "淡紫架构图",
+        "紫蓝杏三色模型图",
+        "薰衣草架构图"
+      ],
+      "status": "validated",
+      "portability_status": "untested",
+      "tags": [
+        "film-strip-thumbnails",
+        "handwritten-labels",
+        "lavender-tonal",
+        "model-architecture",
+        "training-roadmap",
+        "two-accent-subsystems"
+      ],
+      "best_for": [
+        "论文模型架构总览、多子系统协作图、分阶段训练路线图"
+      ],
+      "not_for": [],
+      "path": "templates/lavender-tonal-architecture-figure/style-pack.json",
+      "fingerprint_sha256": "5cadce8073f9e8c5901859748a2824da9603d4036a63560b49c14d2290dd6bf2",
+      "reference_count": 3,
+      "updated_at": "2026-10-27"
+    },
+    {
+      "organization": {
+        "family_id": "macaron-nested-method-figure",
+        "family_name": "马卡龙套盒方法图",
+        "variant_id": "default",
+        "variant_name": "默认版",
+        "facets": {
+          "use_cases": [
+            "paper",
+            "technical-report"
+          ],
+          "archetypes": [
+            "mechanism",
+            "pipeline"
+          ],
+          "expressions": [
+            "mixed"
+          ]
+        }
+      },
       "slug": "macaron-nested-method-figure",
       "name": "马卡龙套盒方法图",
       "aliases": [
@@ -129,9 +325,28 @@
       "path": "templates/macaron-nested-method-figure/style-pack.json",
       "fingerprint_sha256": "25ad6060b52ca6c66bdaccfc02e30a657fb4709b666719fcf5e511812b532559",
       "reference_count": 1,
-      "updated_at": "2026-08-25"
+      "updated_at": "2026-09-22"
     },
     {
+      "organization": {
+        "family_id": "playful-cartoon-schematic",
+        "family_name": "俏皮卡通手绘示意图",
+        "variant_id": "default",
+        "variant_name": "默认版",
+        "facets": {
+          "use_cases": [
+            "education",
+            "paper"
+          ],
+          "archetypes": [
+            "mechanism",
+            "pipeline"
+          ],
+          "expressions": [
+            "illustrated-mechanism"
+          ]
+        }
+      },
       "slug": "playful-cartoon-schematic",
       "name": "俏皮卡通手绘示意图",
       "aliases": [
@@ -164,9 +379,27 @@
       "path": "templates/playful-cartoon-schematic/style-pack.json",
       "fingerprint_sha256": "aa7ad7b12e161f5fe5d7fd439d02241ef11c4fab9ae27b2a82919f1c89ad9aef",
       "reference_count": 1,
-      "updated_at": "2026-08-25"
+      "updated_at": "2026-09-22"
     },
     {
+      "organization": {
+        "family_id": "research-proposal-roadmap",
+        "family_name": "科研申报总体路线图",
+        "variant_id": "text-framework",
+        "variant_name": "文字框架版",
+        "facets": {
+          "use_cases": [
+            "research-proposal",
+            "technical-report"
+          ],
+          "archetypes": [
+            "roadmap"
+          ],
+          "expressions": [
+            "text-framework"
+          ]
+        }
+      },
       "slug": "research-proposal-roadmap",
       "name": "科研申报总体路线图",
       "aliases": [
@@ -195,7 +428,59 @@
       "path": "templates/research-proposal-roadmap/style-pack.json",
       "fingerprint_sha256": "4eae611e0dfd0b24c7f71e780b94effd96a16d52b182cf878d8002b515390df5",
       "reference_count": 1,
-      "updated_at": "2026-08-25"
+      "updated_at": "2026-09-22"
+    },
+    {
+      "organization": {
+        "family_id": "research-proposal-roadmap",
+        "family_name": "科研申报总体路线图",
+        "variant_id": "illustrated-mechanism",
+        "variant_name": "图示机制版",
+        "facets": {
+          "use_cases": [
+            "paper",
+            "research-proposal",
+            "technical-report"
+          ],
+          "archetypes": [
+            "mechanism",
+            "pipeline",
+            "roadmap"
+          ],
+          "expressions": [
+            "illustrated-mechanism"
+          ]
+        }
+      },
+      "slug": "research-proposal-roadmap-illustrated",
+      "name": "浅彩行带图示图",
+      "aliases": [
+        "illustrated research roadmap",
+        "图文科研路线图",
+        "带图示技术路线图",
+        "科研申报图示版",
+        "科研申报总体路线图图示版",
+        "行带机制图"
+      ],
+      "status": "validated",
+      "portability_status": "passed",
+      "tags": [
+        "banded-rows",
+        "mechanism-illustrations",
+        "pastel",
+        "research-roadmap"
+      ],
+      "best_for": [
+        "科研申报、技术报告的图示化技术路线与机制解释"
+      ],
+      "not_for": [
+        "坐标轴数据图表",
+        "纯文字政策条目"
+      ],
+      "path": "templates/research-proposal-roadmap-illustrated/style-pack.json",
+      "fingerprint_sha256": "01f178e121fc8a74f964533724fbae40de69ab3280cfda59234dc18d9dc76672",
+      "reference_count": 1,
+      "updated_at": "2026-09-23"
     }
   ]
 }

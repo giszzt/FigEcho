@@ -1,0 +1,203 @@
+{
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "notes": "original reference retained in this Style Pack"
+    },
+    {
+      "path": "references/reference-02.png",
+      "role": "style_reference",
+      "notes": "original reference retained in this Style Pack"
+    },
+    {
+      "path": "references/reference-03.png",
+      "role": "style_reference",
+      "notes": "original reference retained in this Style Pack"
+    }
+  ],
+  "evidence_scope": {
+    "generalization": "multi-reference-intersection",
+    "limits": "Visual inspection only; colors and proportions approximate, no pixel sampling or generation validation."
+  },
+  "style_summary": "窄阶段栏与宽解释区构成逐行分镜；灰蓝实虚线框承载手写文字与卡通节点，双层箭头区分阶段和动作，编号与结论条突出证据。",
+  "signature_anchors": [
+    {
+      "id": "stage-rows",
+      "dimension": "layout",
+      "rule": "窄阶段栏与宽解释区逐行对齐",
+      "evidence": "All three images: left column about one eighth width, variable-height aligned rows.",
+      "weight": 24,
+      "confidence": "high",
+      "transfer_rule": "按新内容拓扑重算行数与内部列数",
+      "prompt_token": "窄阶段栏与宽解释区逐行对齐，纵向推进主阶段，横向展开内部步骤。"
+    },
+    {
+      "id": "blue-panel-hierarchy",
+      "dimension": "components",
+      "rule": "灰蓝实线主框与虚线案例框",
+      "evidence": "All images have solid rounded panels; images 2 and 3 repeatedly have dashed case panels.",
+      "weight": 18,
+      "confidence": "high",
+      "transfer_rule": "案例存在时使用虚线子框",
+      "prompt_token": "灰蓝细实线小圆角主框与同色虚线案例框组合，白底和窄间隙保持紧凑层次。"
+    },
+    {
+      "id": "handwritten-hierarchy",
+      "dimension": "typography",
+      "rule": "彩色手写标题与黑色正文",
+      "evidence": "All images throughout.",
+      "weight": 16,
+      "confidence": "high",
+      "transfer_rule": "保持手写可读性并适配中文",
+      "prompt_token": "彩色手写标题搭配近黑色手写正文，标题置于面板左上角，解释文字紧贴其对象。"
+    },
+    {
+      "id": "cartoon-objects",
+      "dimension": "iconography",
+      "rule": "深轮廓卡通对象与短标签",
+      "evidence": "All images: large stage symbols, small process illustrations, localized highlights.",
+      "weight": 18,
+      "confidence": "high",
+      "transfer_rule": "题材从新内容派生",
+      "prompt_token": "粗深色轮廓、少量柔和明暗的卡通插图，搭配短标签，阶段图标与过程图标有明确大小差异。"
+    },
+    {
+      "id": "two-arrow-scales",
+      "dimension": "connectors",
+      "rule": "白灰向下箭头与黄橙向右箭头",
+      "evidence": "All images: left-column vertical connectors and internal horizontal action arrows.",
+      "weight": 14,
+      "confidence": "high",
+      "transfer_rule": "按阶段与动作关系分配，反馈按内容增加",
+      "prompt_token": "白灰宽体向下箭头与黄橙短粗向右箭头区分阶段推进和内部动作，并与节点保持清楚间隔。"
+    },
+    {
+      "id": "badges-result-strips",
+      "dimension": "components",
+      "rule": "杏色编号圆与圆形状态符号搭配浅色结论条",
+      "evidence": "All images have numbered edits and red status circles with pale strips; images 2 and 3 add green status circles.",
+      "weight": 10,
+      "confidence": "high",
+      "transfer_rule": "仅在内容有步骤或状态时使用对应组件",
+      "prompt_token": "浅杏色编号圆、圆形状态徽章与浅色结论条形成统一的步骤和证据组件。"
+    }
+  ],
+  "transfer_boundary": {
+    "layout_policy": "preserve-visual-rhythm-adapt-to-new-topology",
+    "icon_subject_policy": "derive-from-new-content",
+    "color_role_policy": "assign-by-new-content-hierarchy",
+    "supporting_asset_policy": "allow-user-provided-or-content-required",
+    "hard_constraints": [
+      "Accurate content and topology",
+      "No invented data",
+      "Readable text",
+      "No clipping or occlusion"
+    ],
+    "style_defaults": [
+      "White canvas",
+      "Blue-gray panel borders",
+      "Handwritten legible type",
+      "Outlined cartoon illustrations with local highlights"
+    ]
+  },
+  "source_exclusions": [
+    "Source task names and rule text",
+    "Source animal identities and scene particulars",
+    "Source scores and verdict strings"
+  ],
+  "hard_constraints": [
+    "Accurate content and topology",
+    "No invented data",
+    "Readable text",
+    "No clipping or occlusion"
+  ],
+  "style_defaults": [
+    "White canvas",
+    "Blue-gray panel borders",
+    "Handwritten legible type",
+    "Outlined cartoon illustrations with local highlights"
+  ],
+  "conditional_rules": [
+    "Scene inserts only when needed",
+    "Warning callouts only for actual conditions",
+    "Dashed case frames only for parallel cases"
+  ],
+  "validation": {
+    "rendered": "not-performed",
+    "portability": "untested"
+  },
+  "visual_system": {
+    "layout": {
+      "observations": [
+        "窄阶段栏与宽解释区逐行对齐，按新内容拓扑重算行高与列数"
+      ],
+      "transfer_rules": [
+        "窄阶段栏与宽解释区逐行对齐，按新内容拓扑重算行高与列数"
+      ]
+    },
+    "components": {
+      "observations": [
+        "灰蓝实线主框、虚线子框、杏色编号圆和浅色结论条"
+      ],
+      "transfer_rules": [
+        "灰蓝实线主框、虚线子框、杏色编号圆和浅色结论条"
+      ]
+    },
+    "connectors": {
+      "observations": [
+        "白灰向下阶段箭头与黄橙向右动作箭头，反馈沿空白回接"
+      ],
+      "transfer_rules": [
+        "白灰向下阶段箭头与黄橙向右动作箭头，反馈沿空白回接"
+      ]
+    },
+    "iconography": {
+      "observations": [
+        "深轮廓卡通图标和局部高光，题材来自新内容"
+      ],
+      "transfer_rules": [
+        "深轮廓卡通图标和局部高光，题材来自新内容"
+      ]
+    },
+    "palette": {
+      "observations": [
+        "强调色按新内容层级分配，白底黑字灰蓝框保持稳定"
+      ],
+      "transfer_rules": [
+        "强调色按新内容层级分配，白底黑字灰蓝框保持稳定"
+      ],
+      "background": "#FFFFFF",
+      "structure": "#728EAF",
+      "ink": "#151515",
+      "accent_a": "#244C88",
+      "accent_b": "#F05A24",
+      "accent_c": "#689C3A",
+      "accent_d": "#E51F36"
+    },
+    "typography": {
+      "observations": [
+        "圆润手写体，标题正文约1.3倍，正文清晰可读"
+      ],
+      "transfer_rules": [
+        "圆润手写体，标题正文约1.3倍，正文清晰可读"
+      ]
+    },
+    "surface": {
+      "observations": [
+        "容器平面，插图允许局部柔和明暗与高光"
+      ],
+      "transfer_rules": [
+        "容器平面，插图允许局部柔和明暗与高光"
+      ]
+    },
+    "density": {
+      "observations": [
+        "每阶段2至5节点，短标签与少量说明，按负载调整行高"
+      ],
+      "transfer_rules": [
+        "每阶段2至5节点，短标签与少量说明，按负载调整行高"
+      ]
+    }
+  }
+}

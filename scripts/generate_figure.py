@@ -7,8 +7,9 @@ complete, and only when the current agent has no built-in reference-capable
 image tool (Codex image_gen), or that tool failed.
 
 Scriptable priority:
-  1. labnana-gpt-image-2   (provider=openai,  model=gpt-image-2)
-  2. labnana-nano-banana   (provider=google,  model=gemini-3-pro-image)
+  1. labnana-gpt-image-2   (ListenHub OpenAPI, provider=openai; model chain
+                            gpt-image-2 -> gpt-image-2.5-flare -> gpt-image-2-official)
+  2. labnana-nano-banana   (ListenHub OpenAPI, provider=google, model=gemini-3-pro-image)
   3. openai-official       (images.edit with the reference image)
   4. gemini-official
   5. configured-command    (provider-neutral external command)
@@ -42,35 +43,47 @@ try:
 except Exception:  # pragma: no cover - .env loading is best effort
     pass
 
-LABNANA_DEFAULT_BASE_URL = "https://api.labnana.com"
-LABNANA_IMAGE_ENDPOINT = "/openapi/v1/images/generation"
-LABNANA_GPT_MODEL = "gpt-image-2"
+# Labnana and ListenHub share one account, key and model catalog. The ListenHub
+# OpenAPI (listenhub.ai/docs/zh/openapi/api-reference/image-generation) is the
+# maintained one: it documents every model id and has a free estimate endpoint.
+# Route names keep the labnana- prefix so older job records stay readable.
+LABNANA_DEFAULT_BASE_URL = "https://api.marswave.ai/openapi"
+LABNANA_IMAGE_ENDPOINT = "/v1/images/generation"
+LABNANA_ESTIMATE_ENDPOINT = "/v1/images/generation/estimate-credits"
+# The cheap GPT channels get switched off upstream from time to time and answer
+# "Model X is not available"; the token-priced official tier is the last resort.
+LABNANA_GPT_MODELS = tuple(
+    item.strip()
+    for item in os.environ.get(
+        "FIGECHO_GPT_MODELS", "gpt-image-2,gpt-image-2.5-flare,gpt-image-2-official"
+    ).split(",")
+    if item.strip()
+)
 LABNANA_GEMINI_MODEL = "gemini-3-pro-image"
 
-LABNANA_VARIANTS = {
-    "labnana-gpt-image-2": LABNANA_GPT_MODEL,
-    "labnana-nano-banana": LABNANA_GEMINI_MODEL,
+LABNANA_VARIANTS: dict[str, tuple[str, ...]] = {
+    "labnana-gpt-image-2": LABNANA_GPT_MODELS,
+    "labnana-nano-banana": (LABNANA_GEMINI_MODEL,),
 }
 
-# Labnana rejects any aspectRatio outside the model's own table with a 400.
-# Snapping to the nearest supported ratio keeps the planned canvas intent;
-# dropping the field is only safe where the model infers the ratio itself.
-LABNANA_ALL_RATIOS = (
-    "1:1", "2:3", "3:2", "3:4", "4:3", "9:16", "16:9", "21:9",
-    "1:4", "4:1", "1:8", "8:1",
+# Out-of-table ratios are rejected with a 400. Snapping to the nearest
+# supported ratio keeps the planned canvas intent; dropping the field is only
+# safe where the model infers the ratio itself.
+LABNANA_STANDARD_RATIOS = (
+    "1:1", "2:3", "3:2", "3:4", "4:3", "4:5", "5:4", "9:16", "16:9", "21:9",
 )
+LABNANA_GPT_CAPS: dict[str, Any] = {
+    "provider": "openai",
+    "aspect_ratios": LABNANA_STANDARD_RATIOS,
+    "image_sizes": ("1K", "2K", "4K"),
+    "max_references": 4,
+    # documented: omitting aspectRatio lets the model pick from the prompt
+    "omit_aspect_ok": True,
+}
 LABNANA_MODEL_CAPS: dict[str, dict[str, Any]] = {
-    LABNANA_GPT_MODEL: {
-        "provider": "openai",
-        "aspect_ratios": ("1:1", "2:3", "3:2", "3:4", "4:3", "9:16", "16:9", "21:9"),
-        "image_sizes": ("1K", "2K", "4K"),
-        "max_references": 4,
-        # documented: omitting aspectRatio lets the model pick from the prompt
-        "omit_aspect_ok": True,
-    },
     LABNANA_GEMINI_MODEL: {
         "provider": "google",
-        "aspect_ratios": LABNANA_ALL_RATIOS,
+        "aspect_ratios": LABNANA_STANDARD_RATIOS,
         "image_sizes": ("1K", "2K", "4K"),
         "max_references": 14,
         # omitting aspectRatio here falls back to the 1:1 default, not to
@@ -81,10 +94,13 @@ LABNANA_MODEL_CAPS: dict[str, dict[str, Any]] = {
 
 # business codes ride on HTTP 400, so the status alone cannot classify a failure
 LABNANA_RETRYABLE_CODES = frozenset({29998})
-LABNANA_FATAL_CODES = frozenset({21007, 26004})
-LABNANA_PARAMETER_CODES = frozenset({29003})
+LABNANA_FATAL_CODES = frozenset({21007, 26004, 23016})
+# 29003 covers bad parameters, a closed channel and content failures alike;
+# 26019 is the GPT/Wan "unsupported aspect ratio" code
+LABNANA_PARAMETER_CODES = frozenset({29003, 26019})
+LABNANA_UNAVAILABLE_MARKER = "is not available"
 LABNANA_RETRY_BASE_SECONDS = 20  # provider guidance for 29998
-LABNANA_MAX_BODY_BYTES = 20 * 1024 * 1024
+LABNANA_MAX_BODY_BYTES = 25 * 1024 * 1024
 LABNANA_REFERENCE_BUDGET = 17 * 1024 * 1024
 
 VALID_ROLES = ("style_reference", "supporting_insert", "edit_target")
@@ -110,6 +126,10 @@ class ApiHTTPError(RuntimeError):
                 self.code = int(raw.strip())
             self.api_message = str(body.get("message") or "")[:400]
         super().__init__(f"HTTP {self.status}: {detail}")
+
+
+class ModelUnavailableError(RuntimeError):
+    """The id is known but its channel is closed; the next model may still work."""
 
 
 class FatalBackendError(RuntimeError):
@@ -338,8 +358,44 @@ def _post_json(
 # backends
 
 
+def _labnana_key() -> str | None:
+    return os.environ.get("LISTENHUB_API_KEY") or os.environ.get("LABNANA_API_KEY")
+
+
 def _labnana_available() -> bool:
-    return bool(os.environ.get("LABNANA_API_KEY"))
+    return bool(_labnana_key())
+
+
+def _labnana_base_url() -> str:
+    base = (
+        os.environ.get("LISTENHUB_BASE_URL")
+        or os.environ.get("LABNANA_BASE_URL")
+        or LABNANA_DEFAULT_BASE_URL
+    ).rstrip("/")
+    # old configs point at the bare host (https://api.labnana.com)
+    return base if base.endswith("/openapi") else base + "/openapi"
+
+
+def _labnana_caps(model: str) -> dict[str, Any]:
+    return LABNANA_MODEL_CAPS.get(model, LABNANA_GPT_CAPS)
+
+
+def _estimate_credits(
+    base_url: str, headers: dict[str, str], payload: dict[str, Any]
+) -> dict[str, Any] | None:
+    """Free price check; a failure here never blocks generation."""
+    try:
+        body = _post_json(base_url + LABNANA_ESTIMATE_ENDPOINT, payload, headers, 60)
+    except Exception:
+        return None
+    data = body.get("data") if isinstance(body, dict) else None
+    if not isinstance(data, dict):
+        return None
+    return {
+        key: data.get(key)
+        for key in ("credits", "canGenerate", "requiresSubscription", "pixels", "warnings")
+        if key in data
+    }
 
 
 def _run_labnana(
@@ -350,14 +406,43 @@ def _run_labnana(
     prompt: str,
     out: Path,
 ) -> dict[str, Any]:
-    api_key = os.environ.get("LABNANA_API_KEY")
-    if not api_key:
-        raise RuntimeError("LABNANA_API_KEY is not set.")
-
-    model = LABNANA_VARIANTS.get(variant)
-    if model is None:
+    models = LABNANA_VARIANTS.get(variant)
+    if not models:
         raise ValueError(f"Unsupported Labnana variant: {variant}")
-    caps = LABNANA_MODEL_CAPS[model]
+    skipped: list[str] = []
+    for model in models:
+        try:
+            result = _run_labnana_model(
+                args, model=model, references=references, prompt=prompt, out=out
+            )
+        except ModelUnavailableError as exc:
+            skipped.append(f"{model}: {exc}")
+            continue
+        if skipped:
+            result["notes"] = [
+                "Earlier models in the chain were unavailable and skipped: "
+                + "; ".join(skipped)
+            ] + result["notes"]
+        result["skipped_models"] = skipped
+        return result
+    raise RuntimeError(
+        "Every model in the chain reported its channel unavailable: " + "; ".join(skipped)
+    )
+
+
+def _run_labnana_model(
+    args: argparse.Namespace,
+    *,
+    model: str,
+    references: list[tuple[Path, str]],
+    prompt: str,
+    out: Path,
+) -> dict[str, Any]:
+    api_key = _labnana_key()
+    if not api_key:
+        raise RuntimeError("LISTENHUB_API_KEY (or LABNANA_API_KEY) is not set.")
+
+    caps = _labnana_caps(model)
     provider = str(caps["provider"])
     notes: list[str] = []
 
@@ -395,8 +480,27 @@ def _run_labnana(
         if note:
             notes.append(note)
 
-    base_url = os.environ.get("LABNANA_BASE_URL", LABNANA_DEFAULT_BASE_URL).rstrip("/")
+    base_url = _labnana_base_url()
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+
+    estimate_config: dict[str, Any] = {"imageSize": image_size}
+    if first_aspect:
+        estimate_config["aspectRatio"] = first_aspect
+    estimate = _estimate_credits(
+        base_url,
+        headers,
+        {
+            "model": model,
+            "prompt": prompt,
+            "imageConfig": estimate_config,
+            "referenceImages": reference_payload,
+        },
+    )
+    if estimate and estimate.get("canGenerate") is False:
+        raise FatalBackendError(
+            f"{model} needs {estimate.get('credits')} credits and the balance is too low.",
+            "labnana-",
+        )
 
     attempts: list[dict[str, Any]] = []
     plans: list[dict[str, Any]] = [{"aspect": first_aspect, "prompt": prompt}]
@@ -421,7 +525,7 @@ def _run_labnana(
         body_bytes = len(json.dumps(payload, ensure_ascii=False).encode("utf-8"))
         if body_bytes > LABNANA_MAX_BODY_BYTES:
             raise RuntimeError(
-                f"Request body is {body_bytes // 1048576} MB, above Labnana's 20 MB cap. "
+                f"Request body is {body_bytes // 1048576} MB, above the 25 MB cap. "
                 "Use fewer or smaller reference images."
             )
 
@@ -443,6 +547,8 @@ def _run_labnana(
                         "message": exc.api_message or exc.detail[:400],
                     }
                 )
+                if LABNANA_UNAVAILABLE_MARKER in exc.api_message:
+                    raise ModelUnavailableError(exc.api_message) from exc
                 if exc.code in LABNANA_FATAL_CODES or exc.status in (401, 403):
                     raise FatalBackendError(
                         f"Labnana account failure (code {exc.code}): "
@@ -517,8 +623,10 @@ def _run_labnana(
     image_bytes, mime = extracted
     written = _save_image_bytes(out, image_bytes, mime)
     return {
-        "backend": f"labnana/{provider}",
+        "backend": f"listenhub/{provider}",
+        "base_url": base_url,
         "model": model,
+        "estimate": estimate,
         "requested_aspect_ratio": requested,
         "submitted_aspect_ratio": used_aspect or "omitted",
         "aspect_source": "prompt-only" if used_aspect is None and requested != "auto" else aspect_source,
@@ -723,15 +831,17 @@ def _routes(args: argparse.Namespace) -> list[dict[str, Any]]:
             "priority": 1,
             "route": "labnana-gpt-image-2",
             "available": _labnana_available(),
-            "required": ["LABNANA_API_KEY"],
-            "aspect_ratios": list(LABNANA_MODEL_CAPS[LABNANA_GPT_MODEL]["aspect_ratios"]),
-            "max_references": LABNANA_MODEL_CAPS[LABNANA_GPT_MODEL]["max_references"],
+            "required": ["LISTENHUB_API_KEY or LABNANA_API_KEY"],
+            "base_url": _labnana_base_url(),
+            "model_chain": list(LABNANA_GPT_MODELS),
+            "aspect_ratios": list(LABNANA_GPT_CAPS["aspect_ratios"]),
+            "max_references": LABNANA_GPT_CAPS["max_references"],
         },
         {
             "priority": 2,
             "route": "labnana-nano-banana",
             "available": _labnana_available(),
-            "required": ["LABNANA_API_KEY"],
+            "required": ["LISTENHUB_API_KEY or LABNANA_API_KEY"],
             "aspect_ratios": list(LABNANA_MODEL_CAPS[LABNANA_GEMINI_MODEL]["aspect_ratios"]),
             "max_references": LABNANA_MODEL_CAPS[LABNANA_GEMINI_MODEL]["max_references"],
         },
@@ -772,7 +882,7 @@ def precheck(args: argparse.Namespace) -> int:
                     "image_gen first."
                     if ok
                     else "No scriptable backend configured. Copy env.example to .env (or write "
-                    "~/.claude/image-backends.env) and set LABNANA_API_KEY."
+                    "~/.claude/image-backends.env) and set LISTENHUB_API_KEY."
                 ),
             },
             ensure_ascii=False,

@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0.0",
+  "slug": "lavender-tonal-architecture-figure",
+  "name": "薰衣草淡紫架构图",
+  "aliases": [
+    "lavender handwritten architecture",
+    "手写圆体架构图",
+    "淡紫手写路线图",
+    "淡紫架构图",
+    "紫蓝杏三色模型图",
+    "薰衣草架构图"
+  ],
+  "description": "",
+  "status": "validated",
+  "portability_status": "untested",
+  "tags": [
+    "film-strip-thumbnails",
+    "handwritten-labels",
+    "lavender-tonal",
+    "model-architecture",
+    "training-roadmap",
+    "two-accent-subsystems"
+  ],
+  "best_for": [
+    "论文模型架构总览、多子系统协作图、分阶段训练路线图"
+  ],
+  "not_for": [],
+  "created_at": "2026-10-27",
+  "updated_at": "2026-10-27",
+  "rights_scope": "personal-local",
+  "reference_policy": "original-reference-images",
+  "style_prompt": "style-prompt.md",
+  "style_spec": "style-spec.json",
+  "prompt_sha256": "d9adeff1b7fccb55e1d3b8aa8b703da35af7b08220a648c531c77fb427fbf248",
+  "fingerprint_sha256": "5cadce8073f9e8c5901859748a2824da9603d4036a63560b49c14d2290dd6bf2",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "original_name": "reference-01.png",
+      "sha256": "eafd0b319af15936045a117557412a940dc187479f88af37e495e6e40bc7ac63"
+    },
+    {
+      "path": "references/reference-02.png",
+      "role": "style_reference",
+      "original_name": "reference-02.png",
+      "sha256": "8e454a9dfde0dbbff2b4590e97104d3a91fd5fc34b50556ccd5addadaeb7c35c"
+    },
+    {
+      "path": "references/reference-03.png",
+      "role": "style_reference",
+      "original_name": "reference-03.png",
+      "sha256": "5b59deaf36ea8198d650793a2802e4d4c71dac5fbc044f118bdda60baffd6c7b"
+    }
+  ],
+  "validation": {
+    "style_review": "style-review.json",
+    "preview": "preview.png",
+    "weighted_score": 92.0,
+    "dimension_passes": [
+      "components",
+      "connectors",
+      "iconography",
+      "palette",
+      "typography"
+    ]
+  },
+  "organization": {
+    "family_id": "lavender-tonal-architecture",
+    "family_name": "薰衣草淡紫架构图",
+    "variant_id": "default",
+    "variant_name": "默认版",
+    "facets": {
+      "use_cases": [
+        "paper",
+        "technical-report"
+      ],
+      "archetypes": [
+        "architecture",
+        "pipeline",
+        "roadmap"
+      ],
+      "expressions": [
+        "mixed"
+      ]
+    }
+  }
+}

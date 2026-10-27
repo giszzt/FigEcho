@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "slug": "blue-gray-pill-architecture-figure",
+  "name": "蓝灰胶囊架构图",
+  "aliases": [
+    "Muse架构图风格",
+    "三层虚线边界图",
+    "斜体说明架构图",
+    "胶囊标签架构图",
+    "蓝灰系统说明图"
+  ],
+  "description": "",
+  "status": "validated",
+  "portability_status": "untested",
+  "tags": [],
+  "best_for": [],
+  "not_for": [],
+  "created_at": "2026-10-09",
+  "updated_at": "2026-10-27",
+  "rights_scope": "personal-local",
+  "reference_policy": "original-reference-images",
+  "style_prompt": "style-prompt.md",
+  "style_spec": "style-spec.json",
+  "prompt_sha256": "dfc69bdc3962b4b5525a4f5cfde956e123379b40a62dbfc4d929917d30b4aec6",
+  "fingerprint_sha256": "9c4818cc43d8890b8f955c4d9f1f0892f0b2e632a6f5bf7c84f12b43d9fd13ab",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "original_name": "ref1.png",
+      "sha256": "a4c03608ed4d61f4d3cab1728d52fb260e099b3910d35bbf9351268c2d76c459"
+    },
+    {
+      "path": "references/reference-02.png",
+      "role": "style_reference",
+      "original_name": "ref2.png",
+      "sha256": "9d36efb4ec9c2a8c9af0c7739943ff2f5031b3b05611104e4ff05b30947b2550"
+    }
+  ],
+  "validation": {
+    "style_review": "style-review.json",
+    "preview": "preview.png",
+    "weighted_score": 92.5,
+    "dimension_passes": [
+      "layout",
+      "components",
+      "connectors",
+      "typography",
+      "iconography",
+      "palette"
+    ]
+  }
+}

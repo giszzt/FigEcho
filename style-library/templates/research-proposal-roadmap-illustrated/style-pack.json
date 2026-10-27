@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "slug": "research-proposal-roadmap-illustrated",
+  "name": "浅彩行带图示图",
+  "aliases": [
+    "illustrated research roadmap",
+    "图文科研路线图",
+    "带图示技术路线图",
+    "科研申报图示版",
+    "科研申报总体路线图图示版",
+    "行带机制图"
+  ],
+  "description": "科研申报总体路线图的图示机制变体；行带骨架与机制插图、对象连续性和双层连线编码。",
+  "status": "validated",
+  "portability_status": "passed",
+  "tags": [
+    "banded-rows",
+    "mechanism-illustrations",
+    "pastel",
+    "research-roadmap"
+  ],
+  "best_for": [
+    "科研申报、技术报告的图示化技术路线与机制解释"
+  ],
+  "not_for": [
+    "坐标轴数据图表",
+    "纯文字政策条目"
+  ],
+  "created_at": "2026-09-22",
+  "updated_at": "2026-09-23",
+  "rights_scope": "personal-local",
+  "reference_policy": "original-reference-images",
+  "style_prompt": "style-prompt.md",
+  "style_spec": "style-spec.json",
+  "prompt_sha256": "18acc9e3e382cb3c32ed7bf3707044646347c8fb0c1b11f120fcb5ab5048f78b",
+  "fingerprint_sha256": "01f178e121fc8a74f964533724fbae40de69ab3280cfda59234dc18d9dc76672",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "original_name": "codex-clipboard-24c4e6dc-672c-4f57-89e5-886d8ab7f549.png",
+      "sha256": "a1e4f711a9eedc37dd75970ecfede5bdc0de9e0d62a414b6e1e23fdcef4aa173"
+    }
+  ],
+  "validation": {
+    "style_review": "style-review.json",
+    "preview": "preview.png",
+    "weighted_score": 94.5,
+    "dimension_passes": [
+      "layout",
+      "components",
+      "iconography",
+      "connectors",
+      "palette",
+      "typography",
+      "surface"
+    ],
+    "portability_review": "portability-review.json",
+    "portability_score": 94.5
+  },
+  "organization": {
+    "family_id": "research-proposal-roadmap",
+    "family_name": "科研申报总体路线图",
+    "variant_id": "illustrated-mechanism",
+    "variant_name": "图示机制版",
+    "facets": {
+      "use_cases": [
+        "paper",
+        "research-proposal",
+        "technical-report"
+      ],
+      "archetypes": [
+        "mechanism",
+        "pipeline",
+        "roadmap"
+      ],
+      "expressions": [
+        "illustrated-mechanism"
+      ]
+    }
+  }
+}

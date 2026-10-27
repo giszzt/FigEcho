@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "generated_image": "output/final.png",
+  "renders_reviewed": [
+    "output/final.png"
+  ],
+  "review_basis": "人工逐锚点看图 + render-check 画幅与密度",
+  "verdict": "pass",
+  "weighted_score": 92.0,
+  "dimension_passes": [
+    "components",
+    "connectors",
+    "iconography",
+    "palette",
+    "typography"
+  ],
+  "anchor_scores": [
+    {
+      "anchor_id": "lavender-tonal-nesting",
+      "dimension": "palette",
+      "weight": 22,
+      "score": 4,
+      "visible_evidence": "主体大面板极浅紫、编解码与 μ/σ 内卡浅紫、重参数化横带中紫，全部同一色相按明度分层",
+      "mismatch": "",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "two-accent-subsystems",
+      "dimension": "palette",
+      "weight": 18,
+      "score": 4,
+      "visible_evidence": "输入与重建缩略图卡及其箭头为浅天蓝，ε 噪声卡与箭头为暖杏，各圈一个子系统",
+      "mismatch": "",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "handwritten-rounded-type",
+      "dimension": "typography",
+      "weight": 18,
+      "score": 3,
+      "visible_evidence": "标题与标签为圆润手写感字体，公式用衬线斜体单独成行",
+      "mismatch": "手写起伏比参考图弱，接近圆头无衬线",
+      "deviation": "手写起伏比参考图弱，接近圆头无衬线",
+      "next_action": "定向修该连线或下次提示词强化"
+    },
+    {
+      "anchor_id": "stubby-solid-arrows",
+      "dimension": "connectors",
+      "weight": 14,
+      "score": 3,
+      "visible_evidence": "主体箭头深紫实心三角、直角折线，μ/σ 到横带与 z 到解码器为短竖箭头",
+      "mismatch": "编码器到 μ/σ 卡的箭头过淡；x̂ 到重建损失的箭头起点悬空",
+      "deviation": "编码器到 μ/σ 卡的箭头过淡；x̂ 到重建损失的箭头起点悬空",
+      "next_action": "定向修该连线或下次提示词强化"
+    },
+    {
+      "anchor_id": "evidence-thumbnails-and-token-cells",
+      "dimension": "iconography",
+      "weight": 16,
+      "score": 4,
+      "visible_evidence": "手写数字缩略图当数据证据，μ、σ、z、ε 用圆角小方格加省略号，损失卡配紫色线性图标与淡紫圆形底托",
+      "mismatch": "",
+      "deviation": "",
+      "next_action": ""
+    },
+    {
+      "anchor_id": "airy-rounded-boxes",
+      "dimension": "components",
+      "weight": 12,
+      "score": 4,
+      "visible_evidence": "细描边圆角盒文字居中，训练目标用淡紫虚线大框，两面板之间浅色竖虚线",
+      "mismatch": "",
+      "deviation": "",
+      "next_action": ""
+    }
+  ],
+  "content_issues": [
+    "Reconstruction x̂ 到 Reconstruction loss 的箭头起点悬空，未接到 x̂ 卡",
+    "Encoder 到 μ/log σ² 卡的箭头过淡",
+    "画面上下白边偏多"
+  ]
+}
