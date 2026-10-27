@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "generated_image": "output/final.png",
+  "review_basis": "visible-generated-image",
+  "anchor_scores": [
+    {
+      "anchor_id": "anchor-1",
+      "score": 4,
+      "visible_evidence": "三条不等高行带，左侧窄竖标签、右侧宽主体，与四阶段来源不同",
+      "mismatch": "",
+      "next_action": "none"
+    },
+    {
+      "anchor_id": "anchor-2",
+      "score": 3,
+      "visible_evidence": "虚线外框与实线子面板存在，中带剖面及对照分组清楚；上下两带标题条留空",
+      "mismatch": "上下行标题条留空，面板较少",
+      "next_action": "保留；后续跨主题样本观察"
+    },
+    {
+      "anchor_id": "anchor-3",
+      "score": 4,
+      "visible_evidence": "装置图占主体，分流、滤床剖面、颗粒前后对照、回用途径都用插图解释",
+      "mismatch": "",
+      "next_action": "none"
+    },
+    {
+      "anchor_id": "anchor-4",
+      "score": 4,
+      "visible_evidence": "黑色阶段箭头与蓝色水流实线、监测虚线分开；最终图例一致",
+      "mismatch": "",
+      "next_action": "none"
+    },
+    {
+      "anchor_id": "anchor-5",
+      "score": 4,
+      "visible_evidence": "绿、琥珀、紫重新映射三个处理阶段；白底及深描边保持",
+      "mismatch": "",
+      "next_action": "none"
+    },
+    {
+      "anchor_id": "anchor-6",
+      "score": 4,
+      "visible_evidence": "中文黑体层级清楚，左竖标签与紧邻图像的说明可辨",
+      "mismatch": "",
+      "next_action": "none"
+    },
+    {
+      "anchor_id": "anchor-7",
+      "score": 3,
+      "visible_evidence": "容器无界面投影，装置图采用克制材质；部分植物装饰仍偏多",
+      "mismatch": "局部植物装饰略多",
+      "next_action": "保留；后续跨主题样本观察"
+    }
+  ],
+  "weighted_score": 94.5,
+  "dimension_passes": [
+    "layout",
+    "components",
+    "iconography",
+    "connectors",
+    "palette",
+    "typography",
+    "surface"
+  ],
+  "verdict": "pass",
+  "evidence_boundary": "self-review; one distinct synthetic topic, no OCR or blind review"
+}

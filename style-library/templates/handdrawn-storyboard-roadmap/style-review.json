@@ -1,0 +1,104 @@
+{
+  "review_method": "visual inspection; no automated OCR or blind review",
+  "anchors": [
+    {
+      "id": "stage-rows",
+      "score": 4,
+      "evidence": "Five aligned narrow left labels and broad right panels",
+      "deviation": "none"
+    },
+    {
+      "id": "blue-panel-hierarchy",
+      "score": 3,
+      "evidence": "Blue-gray solid panels and dashed nested comparison/process boxes",
+      "deviation": "Comparison dashed borders use accent colors"
+    },
+    {
+      "id": "handwritten-hierarchy",
+      "score": 3,
+      "evidence": "Handwritten Chinese title, orange and blue sections, dark body",
+      "deviation": "Heavier lettering than references"
+    },
+    {
+      "id": "cartoon-objects",
+      "score": 4,
+      "evidence": "Thick dark outline card boxes, gears, magnifier and chip",
+      "deviation": "none"
+    },
+    {
+      "id": "two-arrow-scales",
+      "score": 3,
+      "evidence": "Gray-white vertical stage arrows and yellow-orange internal arrows",
+      "deviation": "Decode return terminates over calculation area, rather than token input; repeat meaning remains legible"
+    },
+    {
+      "id": "badges-result-strips",
+      "score": 4,
+      "evidence": "Apricot numbered circles and pale outcome bands",
+      "deviation": "none"
+    }
+  ],
+  "weighted_score_percent": 88,
+  "semantic_review": "Core reuse and memory tradeoff accurate. Comparison arrows repaired to feed old cache and new-token computation independently into attention. Lifecycle return is schematic, not a precise computational graph.",
+  "safe_margin": "All text visible; outer-panel borders trigger automated edge-ink warning.",
+  "portability": "Visually transferred to KV cache topic; no independent evaluation.",
+  "verdict": "pass",
+  "weighted_score": 88.0,
+  "anchor_scores": [
+    {
+      "id": "stage-rows",
+      "score": 4,
+      "evidence": "Five aligned narrow left labels and broad right panels",
+      "deviation": "none",
+      "dimension": "layout",
+      "visible_evidence": "Five aligned narrow left labels and broad right panels"
+    },
+    {
+      "id": "blue-panel-hierarchy",
+      "score": 3,
+      "evidence": "Blue-gray solid panels and dashed nested comparison/process boxes",
+      "deviation": "Comparison dashed borders use accent colors",
+      "dimension": "components",
+      "visible_evidence": "Blue-gray solid panels and dashed nested comparison/process boxes"
+    },
+    {
+      "id": "handwritten-hierarchy",
+      "score": 3,
+      "evidence": "Handwritten Chinese title, orange and blue sections, dark body",
+      "deviation": "Heavier lettering than references",
+      "dimension": "typography",
+      "visible_evidence": "Handwritten Chinese title, orange and blue sections, dark body"
+    },
+    {
+      "id": "cartoon-objects",
+      "score": 4,
+      "evidence": "Thick dark outline card boxes, gears, magnifier and chip",
+      "deviation": "none",
+      "dimension": "iconography",
+      "visible_evidence": "Thick dark outline card boxes, gears, magnifier and chip"
+    },
+    {
+      "id": "two-arrow-scales",
+      "score": 3,
+      "evidence": "Gray-white vertical stage arrows and yellow-orange internal arrows",
+      "deviation": "Decode return terminates over calculation area, rather than token input; repeat meaning remains legible",
+      "dimension": "connectors",
+      "visible_evidence": "Gray-white vertical stage arrows and yellow-orange internal arrows"
+    },
+    {
+      "id": "badges-result-strips",
+      "score": 4,
+      "evidence": "Apricot numbered circles and pale outcome bands",
+      "deviation": "none",
+      "dimension": "components",
+      "visible_evidence": "Apricot numbered circles and pale outcome bands"
+    }
+  ],
+  "dimension_passes": [
+    "components",
+    "connectors",
+    "iconography",
+    "layout",
+    "typography"
+  ]
+}

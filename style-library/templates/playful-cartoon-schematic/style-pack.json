@@ -31,7 +31,7 @@
     "带坐标轴的定量数据图表"
   ],
   "created_at": "2026-08-24",
-  "updated_at": "2026-08-25",
+  "updated_at": "2026-09-22",
   "rights_scope": "personal-local",
   "reference_policy": "original-reference-images",
   "style_prompt": "style-prompt.md",
@@ -58,5 +58,24 @@
       "palette",
       "typography"
     ]
+  },
+  "organization": {
+    "family_id": "playful-cartoon-schematic",
+    "family_name": "俏皮卡通手绘示意图",
+    "variant_id": "default",
+    "variant_name": "默认版",
+    "facets": {
+      "use_cases": [
+        "education",
+        "paper"
+      ],
+      "archetypes": [
+        "mechanism",
+        "pipeline"
+      ],
+      "expressions": [
+        "illustrated-mechanism"
+      ]
+    }
   }
 }

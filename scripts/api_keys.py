@@ -13,6 +13,8 @@ without copying the secret around. Never commit any of them.
 """
 from __future__ import annotations
 
+SCRIPT_INTERFACE = "internal-module"
+
 import os
 from pathlib import Path
 
@@ -26,8 +28,11 @@ CANDIDATES = [
 ]
 
 KNOWN_KEYS = {
+    "LISTENHUB_API_KEY",
+    "LISTENHUB_BASE_URL",
     "LABNANA_API_KEY",
     "LABNANA_BASE_URL",
+    "FIGECHO_GPT_MODELS",
     "OPENAI_API_KEY",
     "GEMINI_API_KEY",
     "GOOGLE_API_KEY",

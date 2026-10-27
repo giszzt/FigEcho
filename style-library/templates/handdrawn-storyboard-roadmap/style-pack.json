@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "slug": "handdrawn-storyboard-roadmap",
+  "name": "手绘分镜路线图",
+  "aliases": [
+    "handdrawn storyboard roadmap",
+    "卡通技术路线图",
+    "手写体流程图",
+    "手绘科普机制图",
+    "白底分镜图",
+    "科研过程分镜图"
+  ],
+  "description": "",
+  "status": "validated",
+  "portability_status": "untested",
+  "tags": [
+    "blue-gray-panels",
+    "cartoon-icons",
+    "handwritten-labels",
+    "stage-rows",
+    "two-level-arrows"
+  ],
+  "best_for": [
+    "技术机制科普、分阶段研究路线、实验流程与案例对比"
+  ],
+  "not_for": [
+    "精确数据图表、极简海报或需要大量长段正文的图版"
+  ],
+  "created_at": "2026-10-08",
+  "updated_at": "2026-10-08",
+  "rights_scope": "personal-local",
+  "reference_policy": "original-reference-images",
+  "style_prompt": "style-prompt.md",
+  "style_spec": "style-spec.json",
+  "prompt_sha256": "07aa47fff9722d3a3c90637d5f722b088b9b9ac9c76fc32912d1e27b31bc82c9",
+  "fingerprint_sha256": "39e9e749f528cf4aec81510dac200f26b076ed4ee3cde246f45e1032761a92db",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "original_name": "codex-clipboard-bd9d0bbf-5771-48dc-9087-2f80ccd9590a.png",
+      "sha256": "af6bbec93f0ea3db03cde3bcfbcfbc8a055a865d30362cfbeb0c83a5c6e1bd36"
+    },
+    {
+      "path": "references/reference-02.png",
+      "role": "style_reference",
+      "original_name": "codex-clipboard-51f6e1c7-d667-41e6-8701-b7fbf2e90a2c.png",
+      "sha256": "64d17933730b4166b809bd3672430d2c3f6d78eef60d2290de26eb6fd2f9c797"
+    },
+    {
+      "path": "references/reference-03.png",
+      "role": "style_reference",
+      "original_name": "codex-clipboard-4d20e3e0-d767-471b-94f0-c01c24b0f871.png",
+      "sha256": "54ac982c5d185b2f2ed9f0b0e61a41975d17ea5ea5f19e8f3bfa1d43d9d3642f"
+    }
+  ],
+  "validation": {
+    "style_review": "style-review.json",
+    "preview": "preview.png",
+    "weighted_score": 88.0,
+    "dimension_passes": [
+      "components",
+      "connectors",
+      "iconography",
+      "layout",
+      "typography"
+    ]
+  },
+  "organization": {
+    "family_id": "handdrawn-storyboard-roadmap",
+    "family_name": "手绘分镜路线图",
+    "variant_id": "illustrated-mechanism",
+    "variant_name": "卡通分镜版",
+    "facets": {
+      "use_cases": [
+        "education",
+        "paper",
+        "technical-report"
+      ],
+      "archetypes": [
+        "comparison",
+        "mechanism",
+        "pipeline",
+        "roadmap"
+      ],
+      "expressions": [
+        "illustrated-mechanism"
+      ]
+    }
+  }
+}

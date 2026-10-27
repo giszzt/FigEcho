@@ -5,3 +5,9 @@ __pycache__/
 *.pyc
 .pytest_cache/
 figecho-job/
+/LESSONS.md
+# Personal reference asset; not part of the distributable example library.
+/style-library/templates/blue-cream-green-project-roadmap/
+# Locally built browsable gallery; embeds personal reference thumbnails.
+/style-library/gallery.html
+/style-library/.gallery-cache/

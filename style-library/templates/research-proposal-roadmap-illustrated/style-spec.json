@@ -1,0 +1,193 @@
+{
+  "schema_version": "3.0.0",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "notes": "original reference retained in this Style Pack"
+    }
+  ],
+  "evidence_scope": {
+    "reference_count": 1,
+    "generalization": "single-reference-hypothesis"
+  },
+  "style_summary": "浅彩竖向行带，左窄标签与右侧分面板，图示解释机制并以短标签及双层连接编码组织过程。",
+  "signature_anchors": [
+    {
+      "id": "anchor-1",
+      "dimension": "layout",
+      "weight": 22,
+      "rule": "纵向行带由左侧窄标签和右侧宽内容区构成，行带高度随过程复杂度变化",
+      "prompt_token": "纵向行带由左侧窄标签和右侧宽内容区构成，行带高度随过程复杂度变化",
+      "evidence": [
+        "全图四条行带，左侧标签约占5%，第二行高于第一行"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "anchor-2",
+      "dimension": "components",
+      "weight": 18,
+      "rule": "浅灰虚线外框包住细实线子面板，子面板顶部贴浅彩标题条，分组不超过三层",
+      "prompt_token": "浅灰虚线外框包住细实线子面板，子面板顶部贴浅彩标题条，分组不超过三层",
+      "evidence": [
+        "场景组装的两列子面板及建筑生成的上下子面板"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "anchor-3",
+      "dimension": "iconography",
+      "weight": 22,
+      "rule": "机制插图占子面板主体，紧邻短标签，同一对象以输入、中间态和输出连续呈现",
+      "prompt_token": "机制插图占子面板主体，紧邻短标签，同一对象以输入、中间态和输出连续呈现",
+      "evidence": [
+        "同一建筑从图像到素模纹理，院落到分解对象及校正前后"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "anchor-4",
+      "dimension": "connectors",
+      "weight": 14,
+      "rule": "模块间用近黑短实线箭头，图内映射和路径用有语义图例的彩色虚线",
+      "prompt_token": "模块间用近黑短实线箭头，图内映射和路径用有语义图例的彩色虚线",
+      "evidence": [
+        "建筑生成黑箭头与动态再现蓝色路径，视觉语义彩色对应线"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "anchor-5",
+      "dimension": "palette",
+      "weight": 12,
+      "rule": "白底为主，每条行带使用浅彩填充与同色深描边，插图保留克制的自然色",
+      "prompt_token": "白底为主，每条行带使用浅彩填充与同色深描边，插图保留克制的自然色",
+      "evidence": [
+        "蓝紫琥珀绿分区，树木绿色与建筑中性色在图示内部"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "anchor-6",
+      "dimension": "typography",
+      "weight": 8,
+      "rule": "中文无衬线分级排字，竖向标签加粗，子面板标题居中，图下注释紧邻对象",
+      "prompt_token": "中文无衬线分级排字，竖向标签加粗，子面板标题居中，图下注释紧邻对象",
+      "evidence": [
+        "竖排阶段名、面板标题与图下对象标签"
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "anchor-7",
+      "dimension": "surface",
+      "weight": 4,
+      "rule": "界面容器采用平面细描边，插图可用轻材质和轴测体积而不添加界面投影",
+      "prompt_token": "界面容器采用平面细描边，插图可用轻材质和轴测体积而不添加界面投影",
+      "evidence": [
+        "白底卡片和轴测三维模型共存"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "visual_system": {
+    "layout": {
+      "observations": [
+        "全图四条行带，左侧标签约占5%，第二行高于第一行"
+      ],
+      "transfer_rules": [
+        "按新内容拓扑重算阶段数、内部分栏与画幅，不固定四行或无标题。"
+      ]
+    },
+    "components": {
+      "observations": [
+        "场景组装的两列子面板及建筑生成的上下子面板"
+      ],
+      "transfer_rules": [
+        "同级面板对齐，标题条贴上沿，子面板最多三层嵌套。"
+      ]
+    },
+    "connectors": {
+      "observations": [
+        "建筑生成黑箭头与动态再现蓝色路径，视觉语义彩色对应线"
+      ],
+      "transfer_rules": [
+        "阶段流程与图内机制分别编码，必要关系才连线。"
+      ]
+    },
+    "palette": {
+      "observations": [
+        "蓝紫琥珀绿分区，树木绿色与建筑中性色在图示内部",
+        "背景 #FFFFFF；结构 #C9CDD4；文字 #1A1A1A；蓝 #C5D9F1；紫 #E6D8F0；黄 #FDE9C4；绿 #CFE3B8。"
+      ],
+      "transfer_rules": [
+        "根据新内容层级分配强调色，颜色不绑定固定学科。"
+      ]
+    },
+    "typography": {
+      "observations": [
+        "竖排阶段名、面板标题与图下对象标签"
+      ],
+      "transfer_rules": [
+        "同层级字号一致，图下注释与对象相邻。"
+      ]
+    },
+    "iconography": {
+      "observations": [
+        "同一建筑从图像到素模纹理，院落到分解对象及校正前后"
+      ],
+      "transfer_rules": [
+        "按新内容实体选择插图，表现其转换、分解、对照或空间关系。"
+      ]
+    },
+    "surface": {
+      "observations": [
+        "白底卡片和轴测三维模型共存"
+      ],
+      "transfer_rules": [
+        "容器保持平面，插图的材质与体积依内容需要采用。"
+      ]
+    },
+    "density": {
+      "observations": [
+        "同层级对象与短标签紧密组织"
+      ],
+      "transfer_rules": [
+        "每区三至六个主要标签，复杂关系优先用图示解释而非缩小字号。"
+      ]
+    }
+  },
+  "transfer_boundary": {
+    "layout_policy": "preserve-visual-rhythm-adapt-to-new-topology",
+    "icon_subject_policy": "derive-from-new-content",
+    "color_role_policy": "assign-by-new-content-hierarchy",
+    "supporting_asset_policy": "allow-user-provided-or-content-required",
+    "hard_constraints": [
+      "内容准确且关系正确",
+      "全部必需文字可读且无裁切",
+      "不带入源图专有信息"
+    ],
+    "style_defaults": [
+      "白底浅彩行带；机制图示与短标签共同承担信息"
+    ]
+  },
+  "conditional_rules": [
+    "标题、页脚、阶段数与画幅由任务决定",
+    "同一主题中的处理对象保持跨步骤连续性",
+    "证据图片须来自真实材料；生成插图仅作为机制示意"
+  ],
+  "anti_generic": [
+    "不要缩成文字框旁的小图标；插图应解释转换或关系",
+    "不要复制四行布局；按新内容关系重算"
+  ],
+  "source_exclusions": [
+    "literal:GD-SceneGen",
+    "literal:GD-SceneAlign",
+    "literal:GD-SceneAct",
+    "literal:FLUX",
+    "literal:583",
+    "literal:古籍",
+    "literal:陈氏书院"
+  ]
+}

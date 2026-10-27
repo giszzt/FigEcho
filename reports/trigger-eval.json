@@ -1,0 +1,471 @@
+{
+  "ok": true,
+  "threshold": 0.34,
+  "description_concepts": [
+    "deliverable",
+    "diagram_domain",
+    "new_content",
+    "reference_image",
+    "style_action",
+    "style_library"
+  ],
+  "missing_description_concepts": [],
+  "summary": {
+    "total": 36,
+    "passed": 36,
+    "false_positive": 0,
+    "false_negative": 0,
+    "pass_rate": 1.0
+  },
+  "failures": [],
+  "results": {
+    "should_trigger": [
+      {
+        "prompt": "参考这张技术路线图的风格，把我的项目方案画成同风格的新图。",
+        "family": "zh-reference-generate",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "diagram_domain",
+          "style_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "提取这组论文图的布局、配色、字体和线框，形成可复用提示词。",
+        "family": "zh-extract",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "deliverable",
+          "diagram_domain"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "保留这张科研示意图的手绘信息图气质，内容换成我提供的实验流程。",
+        "family": "zh-imagegen",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "diagram_domain",
+          "new_content"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "先分析这张方法框架图的视觉语法，不需要马上生成。",
+        "family": "zh-visual-grammar",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "deliverable",
+          "diagram_domain",
+          "style_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "用这三张参考图提取共同风格，再把我的新内容做成同一视觉家族的 PNG。",
+        "family": "zh-multi-reference",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.8,
+        "matched_concepts": [
+          "deliverable",
+          "new_content",
+          "reference_image",
+          "style_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "这段内容还没有图示结构，请先决定合适的布局，再参考这张图的风格出图。",
+        "family": "zh-planning",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "deliverable",
+          "diagram_domain",
+          "reference_image"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "Extract the visual grammar from these scientific schematics and give me a reusable prompt.",
+        "family": "en-extract",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "deliverable",
+          "style_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "Plan the visualization, then create a new raster technical infographic from my content in the style family of the supplied image.",
+        "family": "en-plan-generate",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.8,
+        "matched_concepts": [
+          "diagram_domain",
+          "new_content",
+          "reference_image",
+          "style_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把参考图的版式语法和图标风格迁移过来，原图文字和 Logo 都不要，最后画成纯图片。",
+        "family": "zh-boundary",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "deliverable",
+          "reference_image",
+          "style_action"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "我给的是一段朴素的研究说明，你先想清楚图型、层级和阅读路径，再按参考图风格生成。",
+        "family": "zh-plain-text-to-visual",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "deliverable",
+          "diagram_domain",
+          "reference_image"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把刚从这张技术图提取的风格保存成模板，名字叫马卡龙三级科研框架。",
+        "family": "zh-style-library-save",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "diagram_domain",
+          "style_library"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "列出风格库里适合高密度技术路线图的已有模板。",
+        "family": "zh-style-library-search",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "diagram_domain",
+          "style_library"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "用风格库里的蓝灰线稿系统架构模板画我的新内容。",
+        "family": "zh-style-library-reuse",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "new_content",
+          "style_library"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "提取这张架构图的完整提示词，配色部分必须给具体颜色编码。",
+        "family": "zh-concrete-palette",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "deliverable",
+          "diagram_domain"
+        ],
+        "negative_pattern": null
+      }
+    ],
+    "should_not_trigger": [
+      {
+        "prompt": "帮我画一个登录流程图，不需要参考任何现有风格。",
+        "family": "plain-diagram",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "diagram_domain"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把这张照片背景换成夕阳。",
+        "family": "photo-edit",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "new_content"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "生成一张水彩风格的海边插画。",
+        "family": "general-imagegen",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "deliverable"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把这张图转成可编辑 SVG，结构和像素位置全部保留。",
+        "family": "exact-vector-trace",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "reference_image"
+        ],
+        "negative_pattern": "转成可编辑"
+      },
+      {
+        "prompt": "参考这张架构图的视觉系统，用我的模块关系重画成可编辑 SVG。",
+        "family": "editable-svg-request",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "diagram_domain",
+          "new_content"
+        ],
+        "negative_pattern": "可编辑 SVG"
+      },
+      {
+        "prompt": "文字和公式必须准确，插图借鉴这张图，走 SVG 加位图的混合渲染。",
+        "family": "hybrid-request",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "reference_image"
+        ],
+        "negative_pattern": "混合渲染"
+      },
+      {
+        "prompt": "一比一复刻这张论文图，所有位置都不要变。",
+        "family": "one-to-one",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "diagram_domain"
+        ],
+        "negative_pattern": "一比一复刻"
+      },
+      {
+        "prompt": "去掉这张 AI 图片右下角的水印。",
+        "family": "watermark",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "Review this SVG for accessibility problems.",
+        "family": "svg-review",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": "review this SVG"
+      },
+      {
+        "prompt": "给我解释一下这张架构图表达了什么。",
+        "family": "diagram-explanation",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "diagram_domain"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把下面的 Mermaid 渲染成 PNG。",
+        "family": "format-conversion",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "deliverable"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "设计一套公众号品牌色和字体规范。",
+        "family": "brand-system",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把这封销售邮件保存成可复用模板。",
+        "family": "email-template-library",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "style_library"
+        ],
+        "negative_pattern": null
+      }
+    ],
+    "near_neighbor": [
+      {
+        "prompt": "把这张技术图做成可编辑的矢量版本，内容和版式完全一致。",
+        "family": "figure-vectorization",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "diagram_domain"
+        ],
+        "negative_pattern": "做成可编辑的矢量版本"
+      },
+      {
+        "prompt": "根据这段文字做一张架构图，你自由发挥风格。",
+        "family": "text-only-architecture",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "diagram_domain"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "分析这张海报的品牌视觉风格，并生成新的活动海报。",
+        "family": "poster-style",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "deliverable"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "参考这个网页的设计风格重做我的落地页。",
+        "family": "web-style",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "帮我改一下现有 SVG 里的两个标签。",
+        "family": "svg-edit",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "根据论文内容做一张科研示意图，没有参考图。",
+        "family": "scientific-no-reference",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "diagram_domain",
+          "reference_image"
+        ],
+        "negative_pattern": "没有参考图"
+      },
+      {
+        "prompt": "对比两张信息图哪张更清晰，只给评价。",
+        "family": "visual-review-only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "diagram_domain"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "模仿这位插画师的画风画一个人物头像。",
+        "family": "artist-style-portrait",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "帮我整理一套网站 UI 组件模板库。",
+        "family": "ui-template-library",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,235 @@
+{
+  "schema_version": "3.0.0",
+  "references": [
+    {
+      "path": "references/reference-01.png",
+      "role": "style_reference",
+      "notes": "original reference retained in this Style Pack"
+    },
+    {
+      "path": "references/reference-02.png",
+      "role": "style_reference",
+      "notes": "original reference retained in this Style Pack"
+    },
+    {
+      "path": "references/reference-03.png",
+      "role": "style_reference",
+      "notes": "original reference retained in this Style Pack"
+    }
+  ],
+  "evidence_scope": {
+    "reference_count": 3,
+    "generalization": "multi-reference-shared-patterns"
+  },
+  "style_summary": "白底宽幅论文架构图，整张图压在一个薰衣草色相里，靠明度分出外层面板、内卡和枢纽强调带三级层次，边框都是同色系加深的细描边圆角矩形。另用浅天蓝和暖杏两个辅色各圈一个子系统，箭头跟着所属子系统换色，主体箭头是深紫粗短实心三角。文字用手写感的圆润字体，黑色粗体做标题、常规体做说明，配少量居中的紫色线性图标和淡色圆形底托。真实画面以缩略图或胶片条嵌进卡片当证据，一串小方格加省略号表示序列。整体留白松、密度中等，像一张手绘白板被认真描过一遍。",
+  "signature_anchors": [
+    {
+      "id": "lavender-tonal-nesting",
+      "dimension": "palette",
+      "rule": "主体只用一个薰衣草色相，按明度分三级：外层面板极浅紫 #F8F5FD 配 #8070AA 描边，内卡浅紫 #EDE6F8 配 #A292BC 描边，枢纽强调带中紫 #DDCDF2 配 #7E6CB0 描边；同一主体内不换色相",
+      "evidence": [
+        "三张图的主体面板、内卡和贯通横带都是同一淡紫色相的深浅变化",
+        "外框描边是比填充明显更深的紫灰"
+      ],
+      "weight": 22,
+      "confidence": "high",
+      "prompt_token": "主体全部落在同一薰衣草色相里，外层面板极浅紫、内卡浅紫、枢纽横带中紫，按明度分层而不换色相"
+    },
+    {
+      "id": "two-accent-subsystems",
+      "dimension": "palette",
+      "rule": "除主体紫外最多再引入两个辅色子系统：辅色 A 浅天蓝（填充 #EEF7FD、描边 #9DC0D6、连线 #6B9ABA），辅色 B 暖杏（填充 #FBF2E3、描边 #E2B878、连线 #D49D4B）；每个辅色只圈一个独立子系统，其箭头、小方格和描边都跟随该辅色",
+      "evidence": [
+        "视频预测类面板与箭头统一为浅蓝",
+        "输出端独立模块与它的上下箭头统一为暖杏色"
+      ],
+      "weight": 18,
+      "confidence": "high",
+      "prompt_token": "淡紫主体之外只用浅天蓝和暖杏两个辅色各圈一个子系统，子系统内的箭头和小方格跟随自身辅色"
+    },
+    {
+      "id": "handwritten-rounded-type",
+      "dimension": "typography",
+      "rule": "全图使用手写感圆润字体，笔画圆头、略带手绘起伏；面板主标题粗体黑色居中，模块标题粗体，说明文字常规体深灰，字号比例约 1.0 / 0.75 / 0.6；公式或符号可用衬线斜体单独呈现",
+      "evidence": [
+        "所有标题与标签都是 Comic 一类的手写圆体",
+        "公式行单独使用衬线斜体"
+      ],
+      "weight": 18,
+      "confidence": "high",
+      "prompt_token": "文字统一用手写感圆润字体，黑色粗体标题配深灰常规说明，符号公式才用衬线斜体"
+    },
+    {
+      "id": "stubby-solid-arrows",
+      "dimension": "connectors",
+      "rule": "箭头为 2-3px 实线加粗短实心三角头，主体箭头深紫 #6657B5；水平垂直走线，跨区连接走一次直角 L 形折线，上下堆叠的盒子之间用短竖箭头相接，箭头起止于盒子边缘",
+      "evidence": [
+        "堆叠模块之间全是短竖紫箭头",
+        "跨面板连接用直角折线并在端点给三角头"
+      ],
+      "weight": 14,
+      "confidence": "high",
+      "prompt_token": "连线用深紫粗短实心三角箭头，直角折线走线，上下堆叠的盒子之间只用短竖箭头相接"
+    },
+    {
+      "id": "evidence-thumbnails-and-token-cells",
+      "dimension": "iconography",
+      "rule": "真实画面以小缩略图嵌入卡片，连续画面用带齿孔的浅蓝胶片条承载；序列数据用一排同色圆角小方格加中间省略号表示；其余语义用紫色细线线性图标，图标常放在淡紫圆形底托里与标题左侧并排",
+      "evidence": [
+        "胶片条齿孔框住多帧实拍缩略图",
+        "一排浅蓝或暖杏小方格中间夹省略号",
+        "奖励类模块的线性图标坐在淡紫圆形底托上"
+      ],
+      "weight": 16,
+      "confidence": "high",
+      "prompt_token": "实拍缩略图或胶片条当证据嵌进卡片，序列用一排圆角小方格加省略号，其余用紫色细线图标配淡紫圆形底托"
+    },
+    {
+      "id": "airy-rounded-boxes",
+      "dimension": "components",
+      "rule": "所有容器是 8-14px 圆角矩形，1-1.5px 同色系细描边，内部文字居中且四周留足内边距；独立的可选或训练类模块用淡紫虚线圆角大框圈出，并列大面板之间用浅灰紫竖向虚线分隔；密度中等，盒子之间留明显白色间隙",
+      "evidence": [
+        "强化学习类模块整体套在淡紫虚线框内",
+        "两阶段面板之间一条浅色竖向虚线",
+        "卡片内文字居中且留白宽松"
+      ],
+      "weight": 12,
+      "confidence": "medium",
+      "prompt_token": "容器是细描边圆角盒，文字居中留足内边距，独立模块用淡紫虚线大框圈出，并列大面板用浅色竖虚线隔开"
+    }
+  ],
+  "visual_system": {
+    "layout": {
+      "observations": [
+        "宽幅横条画布，比例约 2.6:1 到 3:1",
+        "架构类图自下而上读，输入在底、输出在顶；路线类图左右并列两大面板、面板内自上而下",
+        "一条贯通全宽的中紫强调带常作为整张图的枢纽",
+        "辅色子系统通常放在主体一侧，用一支彩色箭头接入"
+      ],
+      "transfer_rules": [
+        "分区数量与阅读方向按新内容拓扑重算",
+        "最核心的融合或决策环节给一条贯通的中紫强调带",
+        "四周留约 1% 画布宽的边距，面板之间留白色间隙"
+      ]
+    },
+    "components": {
+      "observations": [
+        "外层面板是大圆角极浅紫盒，标题粗体居中压在顶部",
+        "内卡圆角更小、填充更深一档",
+        "独立模块用淡紫短虚线圆角框包住",
+        "并列大面板之间是浅色竖向虚线"
+      ],
+      "transfer_rules": [
+        "层级最多三级盒子加一条强调带",
+        "卡内只放短标签或一两行说明，文字居中"
+      ]
+    },
+    "connectors": {
+      "observations": [
+        "箭头粗短，三角头实心",
+        "主体箭头深紫，子系统箭头取辅色",
+        "跨区走直角 L 形折线"
+      ],
+      "transfer_rules": [
+        "箭头颜色跟随所属子系统",
+        "不用曲线和双向箭头",
+        "箭头起止于盒子边缘不穿过盒子"
+      ]
+    },
+    "palette": {
+      "observations": [
+        "背景 #FFFFFF",
+        "薰衣草三级：#F8F5FD / #EDE6F8 / #DDCDF2，描边 #8070AA / #A292BC / #7E6CB0",
+        "主体箭头 #6657B5，虚线框 #9E8AC3，分隔虚线 #C4C0D8",
+        "浅天蓝子系统：#EEF7FD / #9DC0D6 / #6B9ABA，小方格 #D3EEFF",
+        "暖杏子系统：#FBF2E3 / #E2B878 / #D49D4B，小方格 #F8ECD2",
+        "文字 #1B1B27，说明文字 #3C363F"
+      ],
+      "transfer_rules": [
+        "薰衣草三级与文字色为稳定角色",
+        "浅天蓝与暖杏是强调色槽位，按新内容的层级与分组重新分配",
+        "高饱和颜色只出现在小图标点缀"
+      ]
+    },
+    "typography": {
+      "observations": [
+        "手写感圆润字体贯穿全图",
+        "标题粗体黑色，说明常规体深灰",
+        "公式用衬线斜体"
+      ],
+      "transfer_rules": [
+        "拉丁字母用 Comic Neue 一类，中文用圆润手写体一类",
+        "保持约 1.0 / 0.75 / 0.6 三档字号"
+      ]
+    },
+    "iconography": {
+      "observations": [
+        "紫色细线线性图标，常坐在淡紫圆形底托里",
+        "实拍缩略图与胶片条承担证据角色",
+        "小方格序列加省略号表示 token 或动作序列"
+      ],
+      "transfer_rules": [
+        "图标题材从新内容派生",
+        "没有实拍素材时用简洁线性示意代替缩略图"
+      ]
+    },
+    "surface": {
+      "observations": [
+        "全平面填充，没有投影，没有渐变",
+        "只有缩略图本身带真实质感"
+      ],
+      "transfer_rules": [
+        "默认纯平面，用户提供的照片按缩略图卡整合"
+      ]
+    },
+    "density": {
+      "observations": [
+        "每个面板 3-6 个盒子，每个盒子 1-3 行字",
+        "留白宽松，盒子间隙明显"
+      ],
+      "transfer_rules": [
+        "单个标签不超过 8 个汉字或 4 个英文词",
+        "内容超量时拆面板而不是缩字号"
+      ]
+    }
+  },
+  "transfer_boundary": {
+    "layout_policy": "preserve-visual-rhythm-adapt-to-new-topology",
+    "icon_subject_policy": "derive-from-new-content",
+    "color_role_policy": "assign-by-new-content-hierarchy",
+    "supporting_asset_policy": "allow-user-provided-or-content-required",
+    "hard_constraints": [
+      "preserve user-provided meaning and relationships",
+      "keep all required text legible and accurate",
+      "exclude source-specific content from new figures",
+      "no cropping or occlusion of any box, icon or label",
+      "no invented modules, steps, numbers or labels"
+    ],
+    "style_defaults": [
+      "默认纯白背景与全平面填充",
+      "默认手写感圆润字体与细描边圆角盒",
+      "默认薰衣草主色加至多两个辅色子系统"
+    ]
+  },
+  "conditional_rules": [
+    "内容含真实画面、截图或实验帧时才用缩略图与胶片条，否则用线性示意",
+    "内容只有一个子系统时只用薰衣草主色，不硬加辅色",
+    "存在冻结、锁定、只更新某部分等状态时，用雪花或锁一类小图标加短标注",
+    "有公式时单独成行，用衬线斜体"
+  ],
+  "anti_generic": [
+    "不要把淡紫做成渐变紫或霓虹紫科技海报",
+    "不要换成工整的黑体或宋体，手写圆体是辨识度的一半",
+    "不要每个盒子都换一种颜色，主体必须同一色相按明度分层",
+    "不要画卡通人物或立体插画，图示靠线性图标、缩略图和小方格"
+  ],
+  "source_exclusions": [
+    "literal:RynnUnify",
+    "literal:GSPO",
+    "literal:Joint Attention",
+    "literal:Action Expert",
+    "literal:Agentic RL",
+    "源图中的机械臂、碗、勺子和方块实拍画面",
+    "源图的模块名称、训练阶段名称与奖励公式"
+  ]
+}

@@ -30,7 +30,7 @@ FigEcho 的成图路线只有位图。参考图用于条件化新图生成，不
 
 `python scripts/generate_figure.py --precheck` 报告脚本侧可用后端。precheck 为正不等于可以跳过内置工具。
 
-密钥来自 `.env`：优先 skill 根目录 `.env`，其次 `~/.claude/image-backends.env`，最后复用 `~/.claude/skills/figedit-v2/.env`。复制 `env.example` 填 `LABNANA_API_KEY` 即可。不要求用户在对话里粘贴完整密钥。
+密钥来自 `.env`：优先 skill 根目录 `.env`，其次 `~/.claude/image-backends.env`，最后复用 `~/.claude/skills/figedit-v2/.env`。复制 `env.example` 填 `LISTENHUB_API_KEY` 即可（旧名 `LABNANA_API_KEY` 仍认，同一把 lh_ 密钥）。不要求用户在对话里粘贴完整密钥。
 
 ## 输入角色
 
@@ -77,12 +77,12 @@ prompt.md 原文提交，不另写一份英文摘要，也不为了迁就后端�
 
 技术图的布局是按画幅规划的，画幅错了整张图的阅读路径都会塌。
 
-**规划阶段就要选后端支持的比例。** Labnana 各模型只认自己那张比例表，表外的值一律 400：
+**规划阶段就要选后端支持的比例。** `labnana-*` 路由走 ListenHub OpenAPI（`https://api.marswave.ai/openapi`，与 Labnana 同账号同密钥），表外比例一律 400：
 
-- `gpt-image-2`（labnana-gpt-image-2）：`1:1` `2:3` `3:2` `3:4` `4:3` `9:16` `16:9` `21:9`，参考图最多 4 张；
-- `gemini-3-pro-image`（labnana-nano-banana）：上面 8 个再加 `1:4` `4:1` `1:8` `8:1`，参考图最多 14 张。
+- GPT 路由（型号链 `gpt-image-2` → `gpt-image-2.5-flare` → `gpt-image-2-official`）：`1:1` `2:3` `3:2` `3:4` `4:3` `4:5` `5:4` `9:16` `16:9` `21:9`，参考图最多 4 张；不支持的比例报 26019；
+- `gemini-3-pro-image`：同上 10 种，参考图最多 14 张；不支持的比例报 29003。
 
-`--precheck` 会把这两张表打出来，visual-plan 锁 canvas.aspect_ratio 之前先看一眼。
+GPT 型号链只在上游返回 "Model X is not available"（通道临时关闭）时才切下一个，切换写进 `provider.skipped_models` 和 `notes`。`gpt-image-2-official` 按 token 计价，同一张图约是 lite 档的两倍。每次出图前脚本先调免费的 estimate-credits，结果记在 `provider.estimate`。
 
 脚本对表外比例不再直接丢参数，而是按对数距离吸附到最近的合法比例（`5:4` → `4:3`，`1.91:1` → `16:9`），
 并在 `aspect_source` 记 `snapped`、在 `notes` 里写清楚。吸附结果和原计划差得远时，重做分区再出图，别硬套。

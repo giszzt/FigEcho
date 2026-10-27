@@ -19,7 +19,7 @@
     "深色科技海报、数据图表、写实渲染图"
   ],
   "created_at": "2026-08-21",
-  "updated_at": "2026-08-25",
+  "updated_at": "2026-09-22",
   "rights_scope": "personal-local",
   "reference_policy": "original-reference-images",
   "style_prompt": "style-prompt.md",
@@ -56,5 +56,24 @@
     "论文方法总览图",
     "马卡龙套盒图",
     "马卡龙方法图"
-  ]
+  ],
+  "organization": {
+    "family_id": "macaron-nested-method-figure",
+    "family_name": "马卡龙套盒方法图",
+    "variant_id": "default",
+    "variant_name": "默认版",
+    "facets": {
+      "use_cases": [
+        "paper",
+        "technical-report"
+      ],
+      "archetypes": [
+        "mechanism",
+        "pipeline"
+      ],
+      "expressions": [
+        "mixed"
+      ]
+    }
+  }
 }

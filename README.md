@@ -3,7 +3,7 @@
 
   <p>
     <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.10+"></a>
-    <a href="./manifest.json"><img src="https://img.shields.io/badge/Version-0.1.0-B06846?style=flat-square" alt="Version 0.1.0"></a>
+    <a href="./manifest.json"><img src="https://img.shields.io/badge/Version-0.2.0-B06846?style=flat-square" alt="Version 0.2.0"></a>
     <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-8A8C90?style=flat-square" alt="MIT License"></a>
   </p>
 
@@ -86,9 +86,15 @@ FigEcho（图易现）是一个面向技术图的 AI Agent Skill。它从参考�
     cd FigEcho
     python -m unittest discover -s tests -p "test_*.py"
 
-需要 Python 3.10 或更高版本。只抽取风格与生成提示词时不需要 API Key；只有在 Agent 没有内置图像工具、又要求直接出图时，才需要配置第三方图片后端。
+使用前确认：
+
+- [ ] Python 3.10 或更高版本
+- [ ] 想用可视画廊的缩略图缓存时，装好 Pillow（没有也能用，会直接引用原图）
+- [ ] 只有 Agent 没有内置图像工具、又要求直接出图时，才需要配置第三方图片后端的 API Key；只抽风格、出提示词不需要
 
 ## 直接开始
+
+你可以直接这样说：
 
 - “提取这张技术路线图的布局、图标、线框、配色和字体，给我一份可复用的风格提示词。”
 - “分析这组三张论文示意图，找出它们共同的视觉语法。”
@@ -141,13 +147,27 @@ rendered validation 检查一次真实成图是否体现了风格锚点；portab
 
 每个 Style Pack 包含命名信息、别名、适用场景、完整提示词、视觉指纹、原始参考图和验证记录。模板先以 candidate 保存，通过真实成图检查后成为 validated；完成跨主题迁移测试后，`portability_status` 才能变为 passed。
 
-仓库内附带 6 个示例 Style Pack。`preview.png` 只用于浏览，真正复用时仍会同时加载原始参考图与完整 Prompt。
+仓库内附带 10 个示例 Style Pack。`preview.png` 只用于浏览，真正复用时仍会同时加载原始参考图与完整 Prompt。
+
+模板按「风格家族 → 表达变体」组织。同一套行带、容器、配色骨架归入一个家族，表达方式明显不同时另立变体，比如课题路线图的纯文字版和图示版。检索可以按用途、关系图型、视觉家族、表达方式四个维度交叉筛选，search/list 的结果按家族分组，相近模板不会挤满候选。
+
+文字检索能排序，挑风格还得看图。`gallery` 命令把整个库生成一页离线网页，图版墙只放原始参考图，点开看适合与不适合的场景、配色、别名和调用话术，最多三个风格并排比较。增删改模板后页面自动重建，不用手工维护。
+
+<p align="center">
+  <img src="./assets/gallery-preview.png" alt="FigEcho 风格画廊" width="88%">
+</p>
 
     python scripts/style_library.py list
     python scripts/style_library.py search "高密度 科研"
     python scripts/style_library.py show macaron-nested-method-figure
     python scripts/style_library.py add --job-dir ./figecho-job --name "马卡龙三级科研框架" --slug pastel-nested-research-framework --alias "淡彩科研框架"
+    python scripts/style_library.py taxonomy
+    python scripts/style_library.py search "科研申报 技术路线" --use-cases research-proposal --archetypes roadmap
+    python scripts/style_library.py list --family research-proposal-roadmap
+    python scripts/style_library.py gallery --open
     python scripts/style_library.py validate
+
+画廊与缩略图缓存内嵌参考图，默认不进版本库。要发给别人看时用 `--exclude <slug>` 排掉不宜公开的模板，并用 `--out` 输出到库外目录。
 
 Style Library 默认位于 Skill 包内。可通过 `FIGECHO_LIBRARY` 指向独立的持久化目录，避免升级或重新安装 Skill 时遗漏个人模板。
 
@@ -156,7 +176,9 @@ Style Library 默认位于 Skill 包内。可通过 `FIGECHO_LIBRARY` 指向独�
 成图模式共用同一份 `prompt.md` 与同一套验收标准：
 
 - Agent 自带可接收参考图的图像工具时优先使用内置工具；
-- 没有内置工具时，`scripts/generate_figure.py` 可依次尝试 Labnana GPT-Image-2、Nano Banana、OpenAI 官方、Gemini 官方或自定义命令。
+- 没有内置工具时，`scripts/generate_figure.py` 可依次尝试 ListenHub OpenAPI（GPT Image 与 Nano Banana，和 Labnana 同账号同密钥）、OpenAI 官方、Gemini 官方或自定义命令。
+
+ListenHub 的 GPT 路由按 `gpt-image-2` → `gpt-image-2.5-flare` → `gpt-image-2-official` 的型号链出图，前一个通道临时关闭才换下一个，切换记录写进生成记录。出图前先调免费的积分预估。型号链可用 `FIGECHO_GPT_MODELS` 覆盖。
 
 先检查当前可用路线：
 
@@ -182,7 +204,9 @@ Style Library 默认位于 Skill 包内。可通过 `FIGECHO_LIBRARY` 指向独�
     python scripts/style_library.py validate
     python scripts/generate_figure.py --precheck
 
-完整排错信息放在 [docs/troubleshooting.md](./docs/troubleshooting.md)，README 只保留首次使用所需的主路径。
+发布前另用 [jisai-meta-skill](https://github.com/giszzt) 的 `python scripts/validate_skill.py <FigEcho 目录>` 检查包结构。
+
+完整排错信息（Troubleshooting）放在 [docs/troubleshooting.md](./docs/troubleshooting.md)，README 只保留首次使用所需的主路径。
 
 ## 边界与许可
 
@@ -198,6 +222,14 @@ FigEcho 迁移的是布局语法、组件规则、色彩关系、字体类别、
 ## Author
 
 [giszzt](https://github.com/giszzt) · Jisai / 极思狂想
+
+<!-- jisai-profile:start -->
+## 关于极思狂想
+
+- 微信公众号: 极思狂想（ID: Jisairo）
+- GitHub: https://github.com/giszzt
+
+<!-- jisai-profile:end -->
 
 ## License
 
